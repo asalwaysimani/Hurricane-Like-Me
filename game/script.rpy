@@ -3,20 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define ew = Character("Eir", image="Eir")
-define kj = Character("Karla", image="Karla")
-define tc = Character("Troy", image="Troy")
-define ct = Character("Courtney", image="Courtney")
-define jl = Character("Jade", image="Jade")
-define cw1 = Character("Coworker Andie")
-define cw2 = Character("Coworker Nic")
-define cw3 = Character("Coworker Daniel")
-define sa1 = Character("Station Agent Mindy")
-define sa2 = Character("Station Agent Jenny")
-define itg = Character("Steve, the IT Guy")
-define psg = Character("Customer Service Rep Alan")
-define rep = Character("Sheen Representative")
-define fdl = Character("Receptionist Jenny")
+
 
 image L3rd = "images/Backplate5.png"
 define config.layers = ['master', 'transient', 'screens', 'overlay']

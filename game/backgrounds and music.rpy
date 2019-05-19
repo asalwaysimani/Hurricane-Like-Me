@@ -1,4 +1,7 @@
-###MUSIC###
+###################################################################################
+######################################MUSIC########################################
+###################################################################################
+
 define audio.office = "music/Crinoline Dreams.mp3"
 define audio.messenger = "music/Bicycle.mp3"
 define audio.angelshare = "music/Angel Share.mp3"
@@ -6,7 +9,13 @@ define audio.lemonade = "music/Digital Lemonade.mp3"
 define audio.dreamer = "music/Dreamer.mp3"
 define audio.easylemon = "music/Easy Lemon 60 second.mp3"
 
-###BACKGROUNDS###
+###################################################################################
+##################################SOUND EFFECTS####################################
+###################################################################################
+
+###################################################################################
+##############################SOLID COLORS BACKGROUNDS#############################
+###################################################################################
 
 image bg grey = "#626262" #Eir's Office
 image bg blue grey = "#4860aa" #It Office
@@ -18,13 +27,45 @@ image bg white = "#ffffff"
 image bg black = "#000000"
 image bg rose ="#d06b9b"
 
-image condo07 = "images/by_unclemugen/condo_Day 07.jpg"
-image condo08 = "images/by_unclemugen/condo_Day 08.jpg"
-image JadeOffice = "images/by_unclemugen/future_office.jpg"
+###################################################################################
+####################################BACKGROUNDS####################################
+###################################################################################
+
 image EirBedroomNight = "images/by_unclemugen/room_evening_light_on.jpg"
-image EirBedroomDawn = "images/by_unclemugen/room_dawn_light_on.jpg"
-image EirBedroomDusklighton = "image/by_unclemugen/room_dusk_light_on.jpg"
-image EirBedroomDusklightoff = "image/by_unclemugen/room_dusk_light_off.jpg"
+image EirBedroomDawn = "images/by_unclemugen/room_dawn_light_on.jpg" #Aldo doubles as Eir's Bedroom Evening
+#image EirBedroomDay = ""
+#image EirBedroomDusklighton = "image/by_unclemugen/room_dusk_light_on.jpg"
+#image EirBedroomDusklightoff = "image/by_unclemugen/room_dusk_light_off.jpg"
+
+#image EirOfficeDay = ""
+#image EirOfficeAfternoon = ""
+#image EirOfficeEvening = ""
+#image EirOfficeITDept = ""
+image IntJadeOffice = "images/by_unclemugen/future_office.jpg"
+#image ExtJadeOffice = ""
+
+#image SubwayCarDay = ""
+#image SubwayCarEvening = ""
+#image IntSubwayStationEvening = ""
+#image ExtSubwayStationDay = ""
+#image ExtSubwayStationEvening = ""
+
+#image PhoneStoreDay = ""
+
+#image IntResturantDay = ""
+#image IntResturantNight = ""
+
+image TeganCondoKitchen = "images/by_unclemugen/condo_Day 07.jpg"
+#image TeganCondoLivingRoomDay = "images/by_unclemugen/condo_Day 08.jpg" #This is also a shot of the kitchen we need a living room angle
+#image TeganCondoLivingRoomNight = 
+
+#image IntConferenceRoomDay = ""
+
+#image ExtStreetDay = ""
+#image ExtStreetAfternoon = ""
+#image ExtStreetNight = ""
+
+
 image trainday = "images/by_unclemugen/train_one.jpg"
 image trainstationDusk = "images/by_unclemugen/train_station_almost_dusk copy.jpg"
 image trainstationMorning = "images/by_unclemugen/train_station_morning copy.jpg"

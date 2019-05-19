@@ -1,3 +1,26 @@
+###################################################################################
+##################################CHARACTERS#######################################
+###################################################################################
+
+define ew = Character("Eir", image="Eir")
+define kj = Character("Karla", image="Karla")
+define tc = Character("Troy", image="Troy")
+define ct = Character("Courtney", image="Courtney")
+define jl = Character("Jade", image="Jade")
+define cw1 = Character("Coworker Andie")
+define cw2 = Character("Coworker Nic")
+define cw3 = Character("Coworker Daniel")
+define sa1 = Character("Station Agent Mindy")
+define sa2 = Character("Station Agent Jenny")
+define itg = Character("Steve, the IT Guy")
+define psg = Character("Customer Service Rep Alan")
+define rep = Character("Sheen Representative")
+define fdl = Character("Receptionist Jenny")
+
+###################################################################################
+####################################IMAGES#########################################
+###################################################################################
+
 image Troy = "images/by_deji/Troy_Neutral.png"
 image Troy Bored = "images/by_deji/Troy_Bored.png"
 image Troy Happy = "images/by_deji/Troy_Happy.png"
@@ -22,8 +45,8 @@ image side Courtney = "images/by_deji/Courtney_Neutral.png"
 image side Courtney Happy = "images/by_deji/Courtney_Happy.png"
 
 image Coworker1 = "images/by_deji/Coworker1_Neutral.png"
-image Coworker1 Blush = "images/by_deji/Coworker1_Blush.png"
-image Coworker1 Embarrassed = "images/by_deji/Coworker1_Embarrassed.png"
+#image Coworker1 Blush = "images/by_deji/Coworker1_Blush.png"
+#image Coworker1 Embarrassed = "images/by_deji/Coworker1_Embarrassed.png"
 image Coworker2 = "images/by_deji/Coworker2_Neutral.png"
 image Coworker3 = "images/by_deji/Coworker3_Neutral.png"
 image ItGuy = "images/by_deji/ItGuy_Neutral.png"
@@ -34,6 +57,10 @@ image side StationAgent1 = "images/by_deji/StationAgent_Neutral.png"
 #image Guard1
 #image Guard2
 #image FrontDesk
+
+###################################################################################
+##################################INFO SCREENS#####################################
+###################################################################################
 
 init python:
     xmax = config.screen_width
@@ -59,6 +86,11 @@ init -2 python:
     style.infoscreen_bar.left_gutter = 0
     style.infoscreen_bar.thumb = None
 
+###################################################################################
+#################################CHARACTER INFO####################################
+###################################################################################
+
+
 init python:
 
     class char:
@@ -77,3 +109,4 @@ init 1:
     birthday="",
     sign="",
     )
+
