@@ -16,6 +16,9 @@ $ Mood_Sleep = 0
 $ Mood_Panic = 0
 $ Mood_Stress = 0
 
+init python:
+    mp = MultiPersistent("HurricaneLikeMe.renpy.org")
+
 #The game starts here.
 
 label start:

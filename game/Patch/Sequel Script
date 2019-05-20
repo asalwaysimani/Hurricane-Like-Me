@@ -1,0 +1,4 @@
+#Whirlwind of You
+
+init python:
+    $mp = MultiPersistent("HurricaneLikeMe.renpy.org")
