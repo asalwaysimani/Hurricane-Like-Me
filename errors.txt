@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 48: end of line expected.
-    show L3rd at left with easeinleft onlayer overlay
-                                      ^
+File "game/music_sfx.rpy", line 1: expected 'word' not found.
+    define.audio.alarmclock = "music/alarm_clock.mp3"
+          ^
 
 Ren'Py Version: Ren'Py 7.2.2.491
-Wed May  8 09:34:36 2019
+Sun May 26 11:11:34 2019

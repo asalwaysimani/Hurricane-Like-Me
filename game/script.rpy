@@ -48,11 +48,11 @@ tc "Because you were late, we were supposed to start this ten minutes ago."
 
 show Eir Embarrassed at left
 
-ew "Ek, no we were supposed to start when I got here!"
+ew "Ek, no we were supposed to start when I got here! I'm the main character!"
 
 show Troy Bored at right
 
-tc "Which, you know what never mind. We're here we're starting this."
+tc "We're the main, you know what never mind. We're here we're starting this."
 
 show Troy VHappy at right
 
@@ -68,10 +68,10 @@ ew "Also, while the story is complete there are several visual assets that aren'
 tc "Like sprites & backgrounds"
 show Eir Bored at left
 tc "Hence our current form and this lovely dove grey behind us."
-ew "Exactly. So our lovely creator has used the even lovelier Deji's placeholder sprites in their places."
+#ew "Exactly. So our lovely creator has used the even lovelier Deji's placeholder sprites in their places."
 show Eir VHappy at left
-show Coworker1 at center
-ew "Aren't they so stinking cute?"
+#show Coworker1 at center
+#ew "Aren't they so stinking cute?"
 tc "Okay, enough chatter from the two of us, onto the game!"
 hide Eir
 hide Troy
@@ -88,55 +88,116 @@ hide bg grey with w12
 pause (1)
 
 #INT. EIR’S APARTMENT, DAY - FRIDAY
-scene EirBedroomDawn
-"The alarm clock goes off with a cruel consistency, and I groan under my blankets."
-"Beep beep beep."
-ew "Please, please be quiet."
-show Eir Bored
-"My pleas don’t matter to the clock. Eventually I remove my hand from a nest of blankets to slap the alarm clock into submission. I can afford five more minutes."
-"...Right?"
-"The alarm clock says otherwise, continuing to beep despite my groans and hits."
-ew "Argh, what time even is it?"
-"I slap around my table for a few seconds until I find my phone, pulling it into the blankets with me."
-"It’s 8:15 in the morning."
-show Eir Panic
-"I have a forty minute commute and it’s 8:15."
-"Oh god. Oh my god."
-"For a moment I contemplate if I really need a job."
-"And then I’m up."
-"I rush into the closet, moving past the piles of clothes and digging through my shoes. I take a glance at the outfit I prepared on hanging on the back of my bedroom door. Black shoes will do. I dig out a pair."
-show Eir
-ew "Okay, I have this in the bag"
-"I stumble through the stray shoes and clothes, grab a book from my End Table Of Books™ to read on the way, and change while I get my hair presentable."
+scene EirApartmentDay
 
-$ workbag.add_item("Phone")
+play sound alarmclock
+
+"The alarm clock goes off with a cruel consistency, and I groan under my blankets."
+
+"Caw Caw Caw Caw."
+
+stop sound fadeout 1.0
+
+ew "Please, please be quiet." 
+$Mood_Hungry -= 1 
+$Mood_Chill += 10
+$Mood_Sleep += 2
+
+show Eir Bored in PJs
+
+"Her pleas don’t matter though, not to this demon of a clock. She removes her hand from a nest of blankets to slap the alarm clock into submission. SHe can afford five more minutes."
+"...Right?"
+"The alarm clock says otherwise, continuing to beep despite her groans and hits."
+
+ew "Argh, what time even is it?"
+
+"She slaps around her table for a few seconds until she finds her phone, pulling it into the blankets with her."
+"It’s 8:15 in the morning."
+
+$Mood_Happy -= 5
+$Mood_Focus += 9
+$Mood_Chill -= 10
+$Mood_Panic += 8
+
+show Eir Panic in PJs
+
+"She has a forty minute commute and it’s 8:15."
+ew "Oh god. Oh my god."
+
+show Eir Surprised in PJs
+
+"Oh god. Oh my {i}god{/i}, she thinks. For a moment she contemplate if she really need a job."
+"And then she is up and ready to go"
+"She rushes into the closert, moving past a pile of clothing, and finally digging through her shoes. She takes a glance at the outfit she's prepared hanging on the back of her bedroom door. Black shoes will do. She digs out a pair"
+
+show Eir Neutral in Work
+
+ew "Okay, I have this in the bag"
+
+"She stumbles through the stray shoes and clothes, grabbing a book from her End Table of Boks(TM). Pausing to maker her hair presentable before rushing out of the door"
+
+$Mood_Happy += 7
+$Mood_Chill += 10
+$Mood_Panic -= 8
+$ workbag.add_item("Work Phone")
 $ workbag.add_item("Laptop")
-$ purse.add_item("Planner")
+$ workbag.add_item("Planner")
+$ purse.add_item("Personal Phone")
+$ purse.add_item("Headphones")
 
 "Then, the daily grind begins."
 
 hide Eir
 
+#Potential CG Here#
+
+scene IntSubwayCarDay
+
+"Eir is on the train, she is reading and listening to music. She is sitting with her head down buried in her book.
+The train isn't very crowded. In the distance at the other end of the train is Troy standing in his bike messenger uniform with headphones on.
+He is leaning on his bike, standing by the doors. The train hurtles down the tracks."
+
+#Title Appears on screen here 
+
 show bg black with w33
 pause (1)
 
 #INT. EIR’S OFFICE, DAY FRIDAY
-scene bg grey
+scene IntEirOfficeDay
 
-"9 AM"
-show Eir at left
+show text "9AM." at tc
+
+show Eir at left in Work
+
 "I arrive to the office exactly on time. Which given that I ride mass transit it is a testament to my skill."
-"Smoothing my skirt down I unshoulder my bag and make my way to my cubicial."
-"I have the Sheen Project to work on today, which honestly might take me all day to do."
-"However I am waylaid before I even make it there."
-show Coworker1 Embarrassed at right
-cw1 "Eir! Would you mind helping with this here?"
+
+hide text "9AM" at tc
+
+"She arrives at the office exactly on time. WHich given that she had to ride mass transit is a testament to her time management skills.
+Smoothing her jacket down, she unshoulders her purse and workback and makes her way to her cubicle. She has the Sheen Project to work on
+today, which might take her all day to do."
+
+"However, she is waylaid before she even makes it there."
+
+show cw1 Embarrassed at right
+
+cw1 "Eir! Would you mind helping with this?"
+
+"If Pete weren't so close, Eir would hae cussed under her breath. She shakes off the last reminates of sleep and put's her game face on."
+$Mood_Happy -= 5
+$Mood_Focus += 1
+$Mood_Chill -= 5
+$Mood_Sleep -= 2
+
 ew "Of course!"
+
 "I look over one of my coworker’s design and give some quick feedback."
+
 show Eir Happy
+
 "I don’t even remember what I’m saying, but I make sure to leave with a smile before heading to my desk."
 hide Eir
-hide Coworker1
+hide cw1
 "I’m about an hour into my work when I’m disrupted again."
 show Eir Bored
 ew "Okay, the Sheens need this in by 10 am Monday, but I want to turn it in today. For the--"

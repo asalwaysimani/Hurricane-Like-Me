@@ -1,74 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'image/by_unclemugen/room_dusk_light_on.jpg'>:
-  File "game/script.rpy", line 628, in script
-    ew "Home sweet home!"
-  File "renpy/common/000window.rpy", line 98, in _window_auto_callback
-    _window_show()
-  File "renpy/common/000window.rpy", line 60, in _window_show
-    renpy.with_statement(trans)
-IOError: Couldn't find file 'image/by_unclemugen/room_dusk_light_on.jpg'.
+While running game code:
+  File "game/script.rpy", line 92, in script
+    play sound alarm_clock.mp3
+  File "renpy/common/000statements.rpy", line 268, in execute_play_sound
+    renpy.sound.play(_audio_eval(p["file"]),
+  File "renpy/common/000statements.rpy", line 32, in _audio_eval
+    return eval(expr, locals=store.audio.__dict__)
+  File "game/script.rpy", line 92, in <module>
+    play sound alarm_clock.mp3
+AttributeError: 'unicode' object has no attribute 'mp3'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 628, in script
-    ew "Home sweet home!"
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 618, in execute
-    statement_name("say")
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 43, in statement_name
-    i(name)
-  File "renpy/common/000window.rpy", line 98, in _window_auto_callback
-    _window_show()
-  File "renpy/common/000window.rpy", line 60, in _window_show
-    renpy.with_statement(trans)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/exports.py", line 1452, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 2207, in do_with
-    clear=clear)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 2649, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3132, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 2055, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 485, in renpy.display.render.render_screen
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/layout.py", line 717, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/transition.py", line 358, in render
-    bottom = render(self.old_widget, width, height, st, at)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/layout.py", line 717, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/layout.py", line 717, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/image.py", line 495, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/image.py", line 306, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/im.py", line 580, in render
-    return cache.get(self, render=True)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/im.py", line 266, in get
-    surf = image.load()
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/im.py", line 625, in load
-    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/loader.py", line 555, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'image/by_unclemugen/room_dusk_light_on.jpg'.
+  File "game/script.rpy", line 92, in script
+    play sound alarm_clock.mp3
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1911, in execute
+    self.call("execute")
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1899, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/statements.py", line 220, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 268, in execute_play_sound
+    renpy.sound.play(_audio_eval(p["file"]),
+  File "renpy/common/000statements.rpy", line 32, in _audio_eval
+    return eval(expr, locals=store.audio.__dict__)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1961, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1954, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 92, in <module>
+    play sound alarm_clock.mp3
+AttributeError: 'unicode' object has no attribute 'mp3'
 
 Darwin-16.6.0-x86_64-i386-64bit
-Ren'Py 7.0.0.196
+Ren'Py 7.2.2.491
 Hurricane Like Me 0.2
-Thu Aug 30 15:48:06 2018
+Sun May 26 11:13:01 2019

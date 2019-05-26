@@ -1,0 +1,1 @@
+define audio.alarmclock = "music/alarm_clock.mp3"

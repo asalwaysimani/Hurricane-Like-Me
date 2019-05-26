@@ -24,3 +24,4 @@ init -1 python:
 
 default workbag = Container()
 default purse = Container()
+default person = Container()
