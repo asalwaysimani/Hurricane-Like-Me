@@ -202,3 +202,4 @@ Analyze screens took 0.00s
 Prepare screens took 0.00s
 Running _start took 0.00s
 The window was minimized.
+The window was restored.
