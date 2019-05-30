@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/music_sfx.rpy", line 1: expected 'word' not found.
-    define.audio.alarmclock = "music/alarm_clock.mp3"
-          ^
+File "game/characters.rpy", line 38: Line is indented, but the preceding attribute statement does not expect a block. Please check this line's indentation.
+    "EirTired"
+    ^
 
 Ren'Py Version: Ren'Py 7.2.2.491
-Sun May 26 11:11:34 2019
+Mon May 27 13:31:28 2019

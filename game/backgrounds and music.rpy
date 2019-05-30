@@ -13,6 +13,8 @@ define audio.easylemon = "music/Easy Lemon 60 second.mp3"
 ##################################SOUND EFFECTS####################################
 ###################################################################################
 
+define audio.alarmclock = "music/alarm_clock.mp3"
+
 ###################################################################################
 ##############################SOLID COLORS BACKGROUNDS#############################
 ###################################################################################
@@ -31,33 +33,34 @@ image bg rose ="#d06b9b"
 ####################################BACKGROUNDS####################################
 ###################################################################################
 
+image EirBedroomDay = "images/by_unclemugen/room_dawn_light_on.jpg" #Also doubles as Eir's Bedroom Evening
+image EirBedroomEvening = "images/by_Laynesis/EirBedroomEvening"
 image EirBedroomNight = "images/by_unclemugen/room_evening_light_on.jpg"
-image EirBedroomDawn = "images/by_unclemugen/room_dawn_light_on.jpg" #Aldo doubles as Eir's Bedroom Evening
-#image EirBedroomDay = ""
-#image EirBedroomDusklighton = "image/by_unclemugen/room_dusk_light_on.jpg"
-#image EirBedroomDusklightoff = "image/by_unclemugen/room_dusk_light_off.jpg"
 
-#image EirOfficeDay = ""
-#image EirOfficeAfternoon = ""
-#image EirOfficeEvening = ""
-#image EirOfficeITDept = ""
+image EirOfficeDay = "images/by_Laynesis/EirOfficeDay"
+image EirOfficeAfternoon = "images/by_Laynesis/EirOfficeAfternoon"
+image EirOfficeEvening = "images/by_Laynesis/EirOfficeEvening"
+image EirOfficeITDept = "images/by_Laynesis/EirOfficeITDeptartment"
 image IntJadeOffice = "images/by_unclemugen/future_office.jpg"
-#image ExtJadeOffice = ""
+image ExtJadeOffice = "images/by_Laynesis/ExtJadeOfficeHallway"
 
-#image SubwayCarDay = ""
-#image SubwayCarEvening = ""
-#image IntSubwayStationEvening = ""
-#image ExtSubwayStationDay = ""
-#image ExtSubwayStationEvening = ""
+image IntSubwayCarDay = "images/by_Laynesis/IntSubwayCarDay"
+image IntSubwayCarEvening = "images/by_Laynesis/IntSubwayCarEvening"
 
-#image PhoneStoreDay = ""
+image IntSubwayStationDay = "images/by_Laynesis/IntSubwayStationDay"
+image IntSubwayStationEvening = "images/by_Laynesis/IntSubwayStationEvening"
 
-#image IntResturantDay = ""
-#image IntResturantNight = ""
+image IntPhoneStoreDay = "images/by_Laynesis/IntPhoneStoreDay"
 
-image TeganCondoKitchen = "images/by_unclemugen/condo_Day 07.jpg"
-#image TeganCondoLivingRoomDay = "images/by_unclemugen/condo_Day 08.jpg" #This is also a shot of the kitchen we need a living room angle
-#image TeganCondoLivingRoomNight = 
+image IntResturantDay = "images/by_Laynesis/IntResturantDay"
+image IntResturantNight = "images/by_Laynesis/IntResturantNight"
+
+image TeganCondoLivingRoomDay = "images/by_unclemugen/condo_Day 08.jpg" #This is also a shot of the kitchen we need a living room angle
+image TeganCondoLivingRoomNight = "images/by_Laynesis/TeganCondoLivingRoomNight"
+
+image IntConferenceRoomDay = "images/by_Laynesis/IntConferenceRoomDay"
+
+image ExtStreetAfternoon = "images/by_Laynesis/ExtStreetAfteroon"
 
 #image IntConferenceRoomDay = ""
 

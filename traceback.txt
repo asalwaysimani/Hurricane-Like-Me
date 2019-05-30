@@ -1,40 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 92, in script
-    play sound alarm_clock.mp3
-  File "renpy/common/000statements.rpy", line 268, in execute_play_sound
-    renpy.sound.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 32, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
-  File "game/script.rpy", line 92, in <module>
-    play sound alarm_clock.mp3
-AttributeError: 'unicode' object has no attribute 'mp3'
+  File "game/script.rpy", line 171, in script
+    show text "9AM" at topcenter
+  File "game/script.rpy", line 171, in <module>
+    show text "9AM" at topcenter
+NameError: name 'topcenter' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 92, in script
-    play sound alarm_clock.mp3
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1911, in execute
-    self.call("execute")
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1899, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/statements.py", line 220, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 268, in execute_play_sound
-    renpy.sound.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 32, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
+  File "game/script.rpy", line 171, in script
+    show text "9AM" at topcenter
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1169, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1128, in show_imspec
+    at_list = [ renpy.python.py_eval(i) for i in at_list ]
   File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1961, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1954, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 92, in <module>
-    play sound alarm_clock.mp3
-AttributeError: 'unicode' object has no attribute 'mp3'
+  File "game/script.rpy", line 171, in <module>
+    show text "9AM" at topcenter
+NameError: name 'topcenter' is not defined
 
 Darwin-16.6.0-x86_64-i386-64bit
 Ren'Py 7.2.2.491
 Hurricane Like Me 0.2
-Sun May 26 11:13:01 2019
+Sun May 26 11:42:31 2019

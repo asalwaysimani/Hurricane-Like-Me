@@ -1530,6 +1530,18 @@ screen invdisplay:
             for item in purse.inventory:
                 text ("[item.item]")
 
+screen moodpointdisplay:
+        vbox:
+            xalign 1.0
+            yalign 0.0
+            text "Happy :[Mood_Happy]"
+            text "Focus :[Mood_Focus]"
+            text "Hungry :[Mood_Hungry]"
+            text "Chill :[Mood_Chill]"
+            text "Sleep :[Mood_Sleep]"
+            text "Panic :[Mood_Panic]"
+            text "Stress :[Mood_Stress]"
+
 
 
 ####################END##############################

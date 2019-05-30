@@ -7,9 +7,9 @@ define kj = Character("Karla", image="Karla")
 define tc = Character("Troy", image="Troy")
 define ct = Character("Courtney", image="Courtney")
 define jl = Character("Jade", image="Jade")
-define cw1 = Character("Coworker Pete")
-define cw2 = Character("Coworker Aubrey")
-define cw3 = Character("Coworker Callahan")
+define cwPete = Character("Coworker Pete")
+define cwAubrey = Character("Coworker Aubrey")
+define cwCallahan = Character("Coworker Callahan")
 define sa1 = Character("Station Agent Mindy")
 define sa2 = Character("Station Agent Jenny")
 define itg = Character("Steve, the IT Guy")
@@ -21,6 +21,34 @@ define fdl = Character("Receptionist Jenny")
 ####################################IMAGES#########################################
 ###################################################################################
 
+layeredimage Eir:
+    always:
+        "EirBase"
+    group outfit:
+        attribute casual default:
+            "EirCasual"
+        attribute work:
+            "EirWork"
+        attribute PJs:
+            "EirPJsSweats"
+    group face:
+        attribute Neutral default:
+            "EirNeutral"
+        attribute Tired:
+            "EirTired"
+        attribute Surprised:
+            "EirSurprised"
+        attribute Angry:
+            "EirAngry"
+        attribute Happy:
+            "EirHappy"
+        attribute Agitated:
+            "EirAgitated"
+        attribute Confused:
+            "EirConfused"
+        attribute Panic:
+            "EirPanic"
+
 image Troy = "images/by_deji/Troy_Neutral.png"
 image Troy Bored = "images/by_deji/Troy_Bored.png"
 image Troy Happy = "images/by_deji/Troy_Happy.png"
@@ -30,25 +58,17 @@ image Troy Blush = "images/by_deji/Troy_Blush.png"
 image Troy Embarrassed = "images/by_deji/Troy_Embarrassed.png"
 image Troy Panic = "images/by_deji/Troy_Panic.png"
 
-image Eir = "images/by_deji/Eir_Neutral.png"
-image Eir Happy = "images/by_deji/Eir_Happy.png"
-image Eir VHappy = "images/by_deji/Eir_VHappy.png"
-image Eir Angry = "images/by_deji/Eir_Angry.png"
-image Eir Bored = "images/by_deji/Eir_Bored.png"
-image Eir Embarrassed = "images/by_deji/Eir_Embarrassed.png"
-image Eir Panic = "images/by_deji/Eir_Panic.png"
-
 image Jade = "images/by_deji/Jade_Neutral.png"
 image side Karla = "images/by_deji/Karla_Neutral.png"
 image side Karla Bored = "images/by_deji/Karla_Bored.png"
 image side Courtney = "images/by_deji/Courtney_Neutral.png"
 image side Courtney Happy = "images/by_deji/Courtney_Happy.png"
 
-image Coworker1 = "images/by_deji/Coworker1_Neutral.png"
+image cwPete = "images/by_deji/Coworker1_Neutral.png"
 #image Coworker1 Blush = "images/by_deji/Coworker1_Blush.png"
 #image Coworker1 Embarrassed = "images/by_deji/Coworker1_Embarrassed.png"
-image Coworker2 = "images/by_deji/Coworker2_Neutral.png"
-image Coworker3 = "images/by_deji/Coworker3_Neutral.png"
+image cwAubrey = "images/by_deji/Coworker2_Neutral.png"
+image cwCallahan = "images/by_deji/Coworker3_Neutral.png"
 image ItGuy = "images/by_deji/ItGuy_Neutral.png"
 image psgEmployee = "images/by_deji/StoreEmployee_Bored.png"
 image side StationAgent1 = "images/by_deji/StationAgent_Neutral.png"

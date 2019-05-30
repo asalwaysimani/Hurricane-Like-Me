@@ -8,20 +8,20 @@
 image L3rd = "images/Backplate5.png"
 define config.layers = ['master', 'transient', 'screens', 'overlay']
 
-$ Mood_Happy = 0
-$ Mood_Focus = 0
-$ Mood_Hungry = 0
-$ Mood_Chill = 0
-$ Mood_Sleep = 0
-$ Mood_Panic = 0
-$ Mood_Stress = 0
-
 init python:
     mp = MultiPersistent("HurricaneLikeMe.renpy.org")
 
 #The game starts here.
 
 label start:
+
+    $ Mood_Happy = 0
+    $ Mood_Focus = 0
+    $ Mood_Hungry = 0
+    $ Mood_Chill = 0
+    $ Mood_Sleep = 0
+    $ Mood_Panic = 0
+    $ Mood_Stress = 0
 
 show bg grey with w12
 pause (.5)
@@ -75,7 +75,7 @@ show Eir VHappy at left
 tc "Okay, enough chatter from the two of us, onto the game!"
 hide Eir
 hide Troy
-hide Coworker1
+hide cwPete
 
 label Prelude:
 show screen invdisplay
@@ -90,6 +90,9 @@ pause (1)
 #INT. EIR’S APARTMENT, DAY - FRIDAY
 scene EirApartmentDay
 
+show text "{size=40}Friday{/size}" at truecenter with Pause (4)
+hide text with dissolve
+
 play sound alarmclock
 
 "The alarm clock goes off with a cruel consistency, and I groan under my blankets."
@@ -99,19 +102,25 @@ play sound alarmclock
 stop sound fadeout 1.0
 
 ew "Please, please be quiet." 
+
+show screen moodpointdisplay
+
 $Mood_Hungry -= 1 
 $Mood_Chill += 10
 $Mood_Sleep += 2
 
 show Eir Bored in PJs
 
-"Her pleas don’t matter though, not to this demon of a clock. She removes her hand from a nest of blankets to slap the alarm clock into submission. SHe can afford five more minutes."
+"Her pleas don’t matter though, not to this demon of a clock. She removes her hand from a nest of blankets to slap the alarm clock into submission. She can afford five more minutes."
+
 "...Right?"
-"The alarm clock says otherwise, continuing to beep despite her groans and hits."
+
+"The alarm clock says otherwise, continuing to caw at her despite her groans and hits."
 
 ew "Argh, what time even is it?"
 
 "She slaps around her table for a few seconds until she finds her phone, pulling it into the blankets with her."
+
 "It’s 8:15 in the morning."
 
 $Mood_Happy -= 5
@@ -122,12 +131,15 @@ $Mood_Panic += 8
 show Eir Panic in PJs
 
 "She has a forty minute commute and it’s 8:15."
+
 ew "Oh god. Oh my god."
 
 show Eir Surprised in PJs
 
 "Oh god. Oh my {i}god{/i}, she thinks. For a moment she contemplate if she really need a job."
+
 "And then she is up and ready to go"
+
 "She rushes into the closert, moving past a pile of clothing, and finally digging through her shoes. She takes a glance at the outfit she's prepared hanging on the back of her bedroom door. Black shoes will do. She digs out a pair"
 
 show Eir Neutral in Work
@@ -153,8 +165,12 @@ hide Eir
 
 scene IntSubwayCarDay
 
-"Eir is on the train, she is reading and listening to music. She is sitting with her head down buried in her book.
-The train isn't very crowded. In the distance at the other end of the train is Troy standing in his bike messenger uniform with headphones on.
+"Eir is on the train, she is reading and listening to music. 
+She is sitting with her head down buried in her book."
+
+"The train isn't very crowded." 
+
+"In the distance at the other end of the train is Troy standing in his bike messenger uniform with headphones on.
 He is leaning on his bike, standing by the doors. The train hurtles down the tracks."
 
 #Title Appears on screen here 
@@ -165,25 +181,26 @@ pause (1)
 #INT. EIR’S OFFICE, DAY FRIDAY
 scene IntEirOfficeDay
 
-show text "9AM." at tc
+show text "9AM" at topcenter
 
 show Eir at left in Work
 
 "I arrive to the office exactly on time. Which given that I ride mass transit it is a testament to my skill."
 
-hide text "9AM" at tc
+hide text "9AM" 
 
-"She arrives at the office exactly on time. WHich given that she had to ride mass transit is a testament to her time management skills.
-Smoothing her jacket down, she unshoulders her purse and workback and makes her way to her cubicle. She has the Sheen Project to work on
-today, which might take her all day to do."
+"She arrives at the office exactly on time. Which given that she had to ride mass transit is a testament to her time management skills.
+Smoothing her jacket down, she unshoulders her purse and workback and makes her way to her cubicle. 
+She has the Sheen Project to work on today, which might take her all day to do."
 
 "However, she is waylaid before she even makes it there."
 
 show cw1 Embarrassed at right
 
-cw1 "Eir! Would you mind helping with this?"
+cwPete "Eir! Would you mind helping with this?"
 
 "If Pete weren't so close, Eir would hae cussed under her breath. She shakes off the last reminates of sleep and put's her game face on."
+
 $Mood_Happy -= 5
 $Mood_Focus += 1
 $Mood_Chill -= 5
@@ -191,120 +208,235 @@ $Mood_Sleep -= 2
 
 ew "Of course!"
 
-"I look over one of my coworker’s design and give some quick feedback."
+"She looks over Pete's design and gves some quick feedback. She doesn't even remember what she's saying,
+but she makes sure to leave with a smile before heading to her desk finally"
 
-show Eir Happy
+$Mood_Happy -= 2
 
-"I don’t even remember what I’m saying, but I make sure to leave with a smile before heading to my desk."
 hide Eir
-hide cw1
-"I’m about an hour into my work when I’m disrupted again."
-show Eir Bored
-ew "Okay, the Sheens need this in by 10 am Monday, but I want to turn it in today. For the--"
-show Coworker2 at right
-cw2 "Excuse me Eir?"
-"{i}Ugh{/i}, not this guy again."
+hide cwPete
+
+show text "{size=40}10:30AM{/size}" at truecenter with Pause (4)
+hide text
+
+"She's about an hour into her work when she's distrupted again."
+
+show Eir Happy at left
+
+ew "kay, the Sheen projects needs to be ready by 10 am Monday, but I want to turn it in today. For the--"
+
+show cw2 at right
+
+cwAubrey "Excuse me Eir?"
+
+"{i}Ugh{/i}, not Aubrey again."
+
+ew "Yes? How can I help?" 
+#Show Eir Angry at top left
 show Eir VHappy
-ew "Yes? How can I help?"
-cw2 "Could you deal with the Johnsons? They’re outside."
+
+cwAubrey "Could you deal with the Johnsons? They’re outside."
+
 ew "Sure! I’ll be right there."
-hide Coworker2
+
+hide cwAubrey
 hide Eir
-"After a quick chat with the Johnsons, and no help from my coworker, I return to my desk."
-" Sheen project, I’m coming for--"
-show Coworker3 at right #Panic
-cw3 "Eir? Oh thank god you’re here!"
-show Eir Panic at left
+
+"After a quick chat with the Johnsons and no help from her coworkers, she returns to her desk." 
+
+"{i}How did I end up as the people person in this office? 
+I never know what to say to people? Argh, get it together Eir{/i}" #Upper screen text as if in a thought 
+
+"The Sheen Project, she's coming for--"
+
+show Eir Tired at left
+show cwCallahan Panic at right
+
+cwCallahan "Eir! Oh thank god you're here"
+
+show Eir Panic
+
 ew "What is it?"
-cw3 " I think I accidentally deleted a file for the Mendes drafts, could you come check?"
-"{i}Oh you’ve got to be kidding me.{/i}"
+
+cwCallahan "I think I accidentally deleted a file for the Mendes drafts, could you come check?"
+"{i}Oh you’ve got to be kidding me.{/i}" #Upper screen text as if in a thought 
+
 show Eir VHappy
+#show Eir Angry at top left
+
 ew "I’m happy to help! Just let me drop this at my desk real fast"
-"I’m not happy to help."
-hide Coworker3
-show Eir Bored
-"But I manage to recover the files and power walk to my cubicle without too much trouble."
-"I take a quick glance at the clock, then around to see if anyone needs my help."
-show Eir
-"I sigh in relief when I see no one staring too hard at my desk, and finally get to work."
-hide Eir
+
+"She is not happy to help. SHe manages to recover the file, which shockling has actually been deleted and power walks back to her cubicle without much trouble.
+She takes a quick glance around at the clock, almost half the day wasted there's no way that she's
+going to turn in the Sheen project early. So much for that hope and dream.
+She then looks around to see if anyone needs her help {i}God help her if they need her help{/i}
+Eir sighs in relief when she sees no one staring too hard at her desk or even in her general direction."
+
+hide IntEirOfficeDay
 
 show bg black with w33
 pause (1)
 
 scene bg grey
-"4:30 PM"
+
+show text "{size=40}5:30 PM{/size}" at truecenter with Pause (4)
+
 show Eir Happy at left
-"My jaw cracks a little as I yawn. In my shoes so do my toes as I flex them."
-"I glance at my computer clock, thirty minutes until quitting time."
-"And then the weekend. The glorious, glorious weekend. "
-show Coworker2 at right
-cw2 "Eir, Ms Logan needs you in her office. She asked for you by name again."
-show Eir Panic
-"And poof there goes the dreams of leaving on time today."
-show Eir
-ew "One second, just saving my work."
-hide Coworker2
-"I quickly save and quit out of my work, giving the clock on my computer one more longing glance before collecting my laptop."
-"I roll my shoulders once, then twice, then put on my best ‘How can I help you face’ and head towards her office."
-show Eir VHappy
+
+"Her jaw cracks a little as she yawns. She flexes her toes in her shows, they crack a little as well.
+Glancing at her computer colock, {i}thirty minutes until quitting time{/i} she thinks to herself.
+And then it's the weekend. The glorious, glorious weekend."
+
+show Eir Tired
+
+show cwAubrey at left
+
+cwAubrey "Eir, Ms. Logan needs you in her office"
+
+"She leans in and whispers it in a conspiratorial manner"
+
+cwAubrey "She asked for you by name"
+
+$Mood_Chill -=5
+$Mood_Panic -=5
+
+"{i}Oh god, I'm going to get fired...on a Friday{/i}" #Upper screen text as if in a thought bubble 
+
+"And poof! There goes Eir's dreams of leavin on time today. And probably also having a job."
+
+ew "One second. Just savig my work"
+
+show Eir Neutral
+#Show Eir Panic at top left
+
+"She quickly saves and closes her work, giving the clock on her desktop computer one more longing glance
+before collecting her laptop {i}definitely not hugging it to her chest{/i}. She rolls her shoulder once, then twice,
+then puts on her best 'How can I help you face' and heads past Aubrey towards Ms. Logan's office"
+
+hide cwAubrey
 hide Eir
+hide bg grey
+
+scene IntJadeOffice
+
+#Scene to be written goes here.
+
+$Mood_Happy +=5
+$Mood_Focus +=5
+$Mood_Panic -=3
 
 show bg black with w33
 pause (1)
 
 #INT. EIR’S APARTMENT, NIGHT - FRIDAY
-scene condo07
-show Eir
-"The second I close the door my shoes are off. Kicked into a heap just out of the way."
-" I dump my bag swiftly after and make a beeline for my bedroom."
+scene EirBedroomEvening
+show Eir at left
+
+"The second she closes the door her shoes are off. Kicked into a heap just out of thdoorway.
+Just as quickly she dumps her bag, then makes a beeline for her bedroom"
 $ workbag.remove_item("Phone")
 $ workbag.remove_item("Laptop")
 $ purse.remove_item("Planner")
-"In a flash my work clothes have joined the pile and I’m comfortably back in my house wear."
-show Eir Happy
-"I pad back to the front door and fish out from my bag my work and personal phone."
-"The work phone goes straight onto the side table to charge while I pocket my own phone."
-ew "God I don’t know how I did it!"
-show Eir
-"I grab a bag of chips to snack on as I lay on my bed. I’m exhausted, and I still have work tomorrow too."
-"I can handle work fine when I’m there, but everything else seems to screw itself up."
-ew "I wish I could manage things a little bit easier. Even get some help."
-"If I made a lot more money, I’d even consider a maid service at this point. But that’s a pipe dream right now."
-"I finish my chips with a sigh, knowing I can’t afford another delivery splurge."
-"I trudge over to the kitchen, grab myself some almost expired eggs and a tin of tuna, and prepare dinner."
-ew "I'll have to buy groceries on the way back from work."
-"With that thought, I take my little sandwich to the kitchen table, not bothering to grab myself a plate."
-"After a lackluster end to a stressful day, I head to bed dreading the next week."
 hide Eir
+
+"In a flash, her work clothese have joine the pile and she is comfortably back in her house wear"
+show EirPJsSweats
+
+#Add footstep sfx
+
+"She zooms back t the front door and fishes out her phones from her bag juggling both, her own personal phone and her too large work phone in her small hands.
+The work phone goes straight onto the side table to charge while she pockets her own phone"
+
+ew "I don't know how I did it!"
+
+"She grabs a bag of chips to snack on as she lays on her bed exhausted."
+
+#Add chips sound sfx here
+
+"And here is still work tomorrow, on the weekend no less! She can handle work fine when she is there but everything seems to be screwed up the second she leaves the office, case and point her apartment."
+
+"She looks around her apartment, saying it is kind of a mess would be an understatement. 
+There is a pile of pens on the floor, several sheets of paper she's been working on laying about, a blanket and a pillow in a heap in front of the couch, gods when was the last time that she cleaned?"
+
+$Mood_Happy -=3
+
+ew "Man, I wish I could manage things a little bit better. Even if it means getting some help"
+
+show EirNeutral
+
+"IF she made just a little bit more money, she'd even consider a maid service. But that's a pipe dream for right now."
+
+"She finishes her chips with a sigh."
+
+#stop sound
+
+"Knowing that she can't afford another delivery splurge she considers" 
+
+"{i}Do chips count as dinner? They are technically vegetables{/i}" #Upper screen text as if in a thought bubble  
+
+"She trudges into the kichen, grabs herslf some almost expired eggs, a tin of tuna, and prepares dinner."
+
+ew "I'll have to buy groceries on the way back from work tomorrow"
+
+"{i}Argh work on a Saturday{/i}"#Upper screen text as if in a thought bubble
+
+"The thought of going grocery shopping on a weekend sends a shudder through her body but she has too,
+her fridge is practically bare. Pushing that thought from her mind she takes her little sandwhich to the kitchen island not even bothering to grab herself a plate.
+After a lackluster end to a stressful day, she heads to bed mouring the fact she's given up her weekend for extra work.
+At least she's putting in a good impression with Jade."
+
+"{i}At least there is that.{/i}"
+
+#Weekend work montage, Eir in her mostly empty office with headphones firmly on. Eir trying to go grocery shopping two nights in a row only for her to have left the office and the line be super long on Saturday afternoon when she goes and too late on Sunday as it closes early. 
+
+#Skips a week 
+
+show text "{size=40}Wednesday{/size}" at truecenter with Pause (4)
+hide text with dissolve
 show bg black with w33
 pause (1)
 
-#INT. EIR’S OFFICE, DAY THURSDAY
-scene bg grey
+scene ExtJadeOffice
 $ workbag.add_item("Phone")
 $ workbag.add_item("Laptop")
 $ purse.add_item("Planner")
-show Jade at right
-show Eir at left
+
+show JadeHappy at right
+show EirNeutral at left
 
 jl "Eir! How are you?"
-"I pale as I see my boss, Jade Logan, sitting at my desk. What’s she even {i}doing{/i} here?"
 
-show Eir VHappy
-ew "Hey Ms. Logan! What brings you over here?"
-jl "Oh nothing much, just wanted to greet our star employee for an amazing job with the Sheen project?"
-ew "They liked it?"
-show Eir Panic
-jl "They love it!"
-"Jade clasps my hands in hers, and I can’t help but grin at that. It always feels good to do well at work, no matter how tiring it is."
-show Eir Happy
-jl "Now, they’d like to hire you again. But the project’s another rush order, would that be okay?"
-ew "Of course"
-"So I’m definitely working overtime if I don’t work my butt off."
-hide Jade
-show Eir at center
-"I do my best to look chipper as I sit at my desk, starting on this new project."
+"She pales as she sees her boss between her and her cubicle."
+
+"{i}What is she even doing here this early? Is this about the weekend?{/i}"
+
+ew "Hi, Ms Logan! WHat brings you over here?"
+
+#Show ChibiEirPanic at top left
+
+jl "Oh nothing much, just wanted to thank our star employee for an {i}amazing{/i} 
+job on the Sheen Project and then the last minute Dennis Project as well"
+
+show EirSuprised
+
+ew "THey liked it?"
+
+show JadeIntense
+
+jl "THey love it! I'm so impressed with what you got done, and in a weekend no less!"
+
+"Jade clasp Eir's hands in hers. Eir hopes Jade doesnt realize how sweaty they are.
+She manages to force a grin onto her face, it does always feel good to do well at work no matter how tiring it is."
+
+show EirHappy
+
+jl "Now they want to hire you, personally for another project. But the project is another rush order, 
+as the Dennis Project was from last weekend, would that be okay?"
+
+
+
+
+
 
 hide screen invdisplay
 #END OF ACT
