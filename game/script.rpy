@@ -23,6 +23,9 @@ label start:
     $ Mood_Panic = 0
     $ Mood_Stress = 0
 
+    $ RelationshipCW = 0
+    $ RelationshipJade = 0
+
 show bg grey with w12
 pause (.5)
 show text "{size=40}Preface{/size}" at truecenter with Pause (4)
@@ -30,35 +33,35 @@ hide text with dissolve
 hide bg grey with w12
 pause (1)
 scene bg grey
-show Troy at right
+show TroyBase at right
 
 #These display lines of dialogue.
 
 tc "So this is they story of me, Troy Colby, and the time I tried to do the right thing and still got stuck literally holding the bag."
 show L3rd  onlayer overlay at left with easeinleft
 pause (15)
-show Eir Angry at left
+show EirAngry at left
 
 ew "Now wait a second there Troy!"
 tc "This is Eir, she's the main character of this game."
 
-show Troy Happy at right
+show TroyHappy at right
 ew "Thats right I'm the main character so why are you here doing the intro?"
 tc "Because you were late, we were supposed to start this ten minutes ago."
 
-show Eir Embarrassed at left
+show EirEmbarrassed at left
 
 ew "Ek, no we were supposed to start when I got here! I'm the main character!"
 
-show Troy Bored at right
+show TroyBored at right
 
 tc "We're the main, you know what never mind. We're here we're starting this."
 
-show Troy VHappy at right
+show TroyIntense at right
 
 tc "Welcome to Hurricane Like Me."
 
-show Eir VHappy at left
+show EirHappy at left
 
 ew "A visual novel written for Summer Novel Festival in 2018."
 tc "Please keep in mind this was our first visual novel so there are some kinks to work out."
@@ -66,11 +69,16 @@ tc "In fact any and all feedback is welcomed."
 ew "Our creator even made a handy dandy feedback form on the bottom in the menu"
 ew "Also, while the story is complete there are several visual assets that aren't fully implimented."
 tc "Like sprites & backgrounds"
-show Eir Bored at left
+
+show EirBored at left
+
 tc "Hence our current form and this lovely dove grey behind us."
 #ew "Exactly. So our lovely creator has used the even lovelier Deji's placeholder sprites in their places."
-show Eir VHappy at left
+
+show EirHappy at left
+
 #show Coworker1 at center
+
 #ew "Aren't they so stinking cute?"
 tc "Okay, enough chatter from the two of us, onto the game!"
 hide Eir
@@ -173,13 +181,13 @@ She is sitting with her head down buried in her book."
 "In the distance at the other end of the train is Troy standing in his bike messenger uniform with headphones on.
 He is leaning on his bike, standing by the doors. The train hurtles down the tracks."
 
-#Title Appears on screen here 
+#TODO: Title Appears on screen here 
 
 show bg black with w33
 pause (1)
 
 #INT. EIR’S OFFICE, DAY FRIDAY
-scene IntEirOfficeDay
+scene EirOfficeDay
 
 show text "9AM" at topcenter
 
@@ -195,7 +203,7 @@ She has the Sheen Project to work on today, which might take her all day to do."
 
 "However, she is waylaid before she even makes it there."
 
-show cw1 Embarrassed at right
+show cwPete Embarrassed at right
 
 cwPete "Eir! Would you mind helping with this?"
 
@@ -225,7 +233,7 @@ show Eir Happy at left
 
 ew "kay, the Sheen projects needs to be ready by 10 am Monday, but I want to turn it in today. For the--"
 
-show cw2 at right
+show cwAubrey at right
 
 cwAubrey "Excuse me Eir?"
 
@@ -272,7 +280,7 @@ going to turn in the Sheen project early. So much for that hope and dream.
 She then looks around to see if anyone needs her help {i}God help her if they need her help{/i}
 Eir sighs in relief when she sees no one staring too hard at her desk or even in her general direction."
 
-hide IntEirOfficeDay
+hide EirOfficeDay
 
 show bg black with w33
 pause (1)
@@ -319,7 +327,7 @@ hide bg grey
 
 scene IntJadeOffice
 
-#Scene to be written goes here.
+#TODO: Scene to be written goes here.
 
 $Mood_Happy +=5
 $Mood_Focus +=5
@@ -342,7 +350,7 @@ hide Eir
 "In a flash, her work clothese have joine the pile and she is comfortably back in her house wear"
 show EirPJsSweats
 
-#Add footstep sfx
+#TODO: Add footstep sfx
 
 "She zooms back t the front door and fishes out her phones from her bag juggling both, her own personal phone and her too large work phone in her small hands.
 The work phone goes straight onto the side table to charge while she pockets her own phone"
@@ -419,11 +427,11 @@ job on the Sheen Project and then the last minute Dennis Project as well"
 
 show EirSuprised
 
-ew "THey liked it?"
+ew "They liked it?"
 
 show JadeIntense
 
-jl "THey love it! I'm so impressed with what you got done, and in a weekend no less!"
+jl "They love it! I'm so impressed with what you got done, and in a weekend no less!"
 
 "Jade clasp Eir's hands in hers. Eir hopes Jade doesnt realize how sweaty they are.
 She manages to force a grin onto her face, it does always feel good to do well at work no matter how tiring it is."
@@ -433,13 +441,180 @@ show EirHappy
 jl "Now they want to hire you, personally for another project. But the project is another rush order, 
 as the Dennis Project was from last weekend, would that be okay?"
 
+ew "Of course!"
 
+"So she's definitely going to be working overtime and unfortunately the weekend as well probably. 
+But she doesn't mind working her butt off. She does her best to look chipper as she slideds into her desk chair, 
+ready to start on this new project."
 
+hide Jade
+hide Eir
 
+show text "{size=40}WEDNESDAY{/size}" at truecenter with Pause (4)
+hide text with dissolve
+show bg black with w33
+pause (1)
 
+scene IntRestaurantDay
+
+show TroyBarista at left
+
+"Troy Colby is making his thrid macchiato for a customer when his coworker Marcia enters."
+
+show MarciaWork at right
+
+"He would sigh in relief but the customoer is watching him avidly as he makes their drink. He maintains his best work smile.
+He gets it, but this happens all the time. Thankfully he doesn't have a shift anywhere else after so he doesn't mind staying later. 
+Regardless, he nods his hell at Marcia as she pulls her apron over her head and comves around the counter."
+
+tc "Hey!"
+
+cwMarcia "I’m sorry about being late man, my car broke down and--"
+
+tc "It's no problem, shit happens. I get it. I'll finish this up and get out of your way."
+
+"Troy really wishes she'd at least waited a couple of months before using the old car excise again. But he wasn't going to call her out for it."
+
+cwMarcia "I'll bring it over to the customer."
+
+"Troy gives her the same smile he gives customers."
+
+cwMarcia "So what are your plans for Friday?"
+
+tc "Probably passing out after my shift at the courier shop, why"
+
+"Troy knows he's about to walk into a trap."
+
+show HarveyWork at right #TODO: make sure they don't overlap with Marcia
+
+cwHarvey "Seriously, you don't remember? Friday is Julia's promotion party!"
+
+"Oh yeahhhhhhhhh, that was a thing that was happening and he might have even recalled promising Julia that he wouldn't miss it."
+
+tc "I thought that was next Friday. I'm going to be beat, I doubt I'll be able to make it."
+
+cwHarvey "COme on dude, our manager, who's great --"
+
+"She is."
+
+cwHarvey "--is going to be totally running this place, at least stop in and say hi."
+
+"Argh, he could see where this was going already, a trap just as he suspected. But he has to try anyway."
+
+tc "I'll send her a text or something, I know I'm going to be exhausted."
+
+"Really he's always in a state of exhaustion. Which given his lifestlye and work habits isn't really surprising."
+
+cwMarcia "You know,s eh said she was really looking forward to seeing you."
+
+"And here comes the guilt. Which he is weak to."
+
+tc "Alright alright I'll try to make it. Just don't be pissed if I can't and pass out."
+
+cwMarcia "It's alright, I have arms of steel I'll drag you myself if I have to."
+
+cwHarvey "I'll help."
+
+tc "Well I'm {i}definitely{/i} going now."
+
+"With the choice taken out of his hands, Troy takes his apron off and heads towards to door. On his way out he pulls out his phone and adds a reminder alert for Friday."
+
+hide Troy
+hide Marcia
+hide Harvey
+
+show text "{size=40}FRIDAY{/size}" at truecenter with Pause (4)
+hide text with dissolve
+show bg black with w33
+pause (1)
+
+scene IntEirOfficeDay
+
+show text "{size=40}9:15AM{/size}" at truecenter with Pause (4)
+hide text 
+
+show EirWork at left
+show cwAubrey at right
+
+#TODO: finish writing and fleshing out start of this scen
+
+menu NoseyCoworker:
+    "What should Eir do?"
+    "Overly polite shooing, Eir turns the covnersation to Aubrey's own project.":
+        $Mood_Happy +=2
+        $RelationshipCW -=2
+        if RelationshipCW ==2:
+            "Aubrey agrees that she does need to finish her own project but she invites Eir come check it out with her."
+            menu DrinksWithCoworkers:
+                "Yes, Eir comes to look at Aubrey project which is admittedly pretty nice.":
+                    $RelationshipCW +=2
+                "Promises to come check it out later, wants to knock out her own project first.":
+                    $RelationshipCW +=1
+    "Passive agressive shooing, mentioning isn't Aubrey behind on their own project?":
+        $Mood_Happy -=2
+        $RelationshipCW -=2
+        if RelationshipCW is -2:
+            "Aubry leaves in a huff, shooting Eir annoyed looks over the cubicle wall as she passes by."
+    "Escape to the bathroom and loiter until the coast is clear.":
+        $Mood_Happy +=1
+        if RelationshipCW ==1:
+            "When Eir comes back from the bathroom no one is waiting for her. 
+            She is able to continue working. She mouths sorry at Aubrey when they make eye contact."
+
+show text "{size=40}1:45PM{/size}" at truecenter with Pause (4)
+hide text
+
+show EirNeutral at left
+
+"As Eir finishes up her lunch at her desk she notices Pete peaking over at her out of the corner of her eyes.
+She gets up to throw her trash away and yup he is totally watching her as she returns from the kitchen."
+
+menu:
+    "Eir returns to her desk and tries to look very busy.":
+        "Eir is feeing pretty happy. The Sheen version two project is going well, it is getting done fast and it is even good.
+        As she works she overhears Pete asking one of her other coworkers a question and since everything is going so well for her she chimes to help. 
+        Pete's question is a fun and easy thing for her to solve. 
+        She understands where he got tripped up and appreciates that he asked someone else instead of coming to her."
+            $Mood_Chill +=4
+            $Mood_Happy +=4
+            $RelationshipCW +=4
+                if Mood_Happy ==5: #TODO: Check Eir Happy mood points as of right now
+                    call LeaveEarly
+    "Eir ask what is up and Pete comes over.":
+        "Eir is pretty tired thankfully the Sheen version two project is going well. 
+        It's going to get done but she's probably going to have to stay late to get it done on time if she doesn't want to come in on the weekend. 
+        As she is taking a mental break she see's Pete is still looking at her and calls him over. It turns out that his question while interesting is long and complicated. 
+        It takes them a while to sort it out and she sort of wishes he had googled what was wrong before coming to her as a head start."
+            $Mood_Chill -=2
+            $Mood_Stress -=2
+            $RelationshipCW +=2
+                if Mood_Stress ==5: #TODO: Check Eir Stressed Mood points here
+                    call LeavesLate
+    "Eir looks at Pete before quickly looking away but it's too late eye contact had been made.":
+        "Can this day just end. Eir can get nothing done constantly being intrupted by her coworkers. First Aubrey this morning being nosy.
+        Now Pete with his never ending questions about everything. The eye contact seeme to signal to Pete that Eir was able to help him out even if that wasn't what she meant to do.
+        Eir however is too nice and too much of a pushover to tell him no. She spends a long time trying to figure out his project band then returns to her work. 
+        However she can't stop herself from stewing about the time she has wasted helping him. Now she's totally behind on the Sheen project and mad about it."
+            $Mood_Chill -=4
+            $Mood_Focus -=4
+            $Mood_Stress -=4
+            $Mood_Happy -=4
+                if Mood_Chill <=0:
+                    call WeekendWork
+hide Eir
+
+scene ExtStreetAfteroon
+
+#TODO:Replace with actually written scene at later date.
+
+"Troy biking around delivering packages. Troy has to deliver five packages to different people all over the city. Depending on time of day this may be easier or harder due to traffic. While he is biking around his phone pings with a reminder. Julia's party is in a half an hour."
+
+show bg black with w33
+pause (1)
 
 hide screen invdisplay
-#END OF ACT
+#END OF PRELUDE
+
 show bg black with w9
 pause (1)
 hide bg black with w9
@@ -452,91 +627,9 @@ pause (2)
 hide bg black with bites
 pause (2)
 
-scene bg white
-show text "Act 1" at truecenter with Pause (4)
-hide text with dissolve
-
-#INT. EIR’S OFFICE, EVENING THURSDAY
-scene bg grey
-show Eir
-"I glance at the clock then around the office. No one is heading my way, no one is looking at my funny. "
-"This could be my shot. I glance at the clock again."
-"Technically I’m done with the draft of the new Sheen project, in record time even for me."
-"Technically I could leave. Another glance around the office."
-"But no one else has, what are they all working on?"
-" For once it seems my coworkers are diligently on top of their own work with no input from me."
-ew "This isn’t a dream, right?"
-"I consider for a moment sneaking away to the bathroom, hiding out there for a while before circling back to my desk for my things and betting on a hasty retreat home. "
-"Well, they do say to be the change you want to see in the world. "
-"And I really want to see a world where I leave work early. First stop, the bathroom. "
-
-#INT. EIR’S OFFICE BATHROOM, EVENING THURSDAY
-scene bg blue
-
-"I splash water on my face and formulate my plan."
-"Under no circumstance will I be deterred. I’m done with work, I can leave."
-ew "I got this. All I have to do is leave and not feel too guilty about it. That should be easy."
-"I always have this weird tingling feeling in the back of my head when I leave before my coworkers."
-"However this time it won’t put me off. I’m positive there is nothing waiting for me and if it is it can definitely wait till tomorrow."
-"My plan is firm, grocery psg then home."
-"I leave the bathroom with a new sense of confidence that is quickly shot down by a coworker waiting at my desk."
-
-scene bg grey
-
-show Coworker3 at right
-cw3 "Oh thank god I caught you Eir! I really need your help."
-hide Coworker3
-hide Eir
-
 #INT. SUBWAY CAR, EVENING THURSDAY
 
-scene trainday
-"So much for a quick retreat from work. At least it was still light out."
-"And I had an even slower haul to and from the grocery psg, but I’m finally heading home."
-"Too lazy to get my earbuds out, I settle for listening to the subway and the passing sound of the city."
-"It takes all my power not to fall asleep. And even then, I’m startled when I hear it’s my stop."
-$ workbag.remove_item("Phone")
-$ workbag.remove_item("Laptop")
-$ purse.remove_item("Planner")
-"Hurrying off, my plan to get home and pass out is all that’s on my mind."
-ew "Wait...I’m missing something."
-"I do a quick fumble around my bags, and instantly realize my work bag, with all my materials, are still on that train."
 
-#EXT. SUBWAY STATION, EVENING THURSDAY
-scene trainstationDusk
-
-show Eir Panic at right
-ew "Shit, shit, {i}shit{/i}!"
-"I rush over to the station agent as quickly as I can."
-show side StationAgent1 at left
-sa1 "How can I help you?"
-ew "My--my bag! I left my bag on that train."
-sa1 "Well, we can’t stop it. You’re close enough to the end of the line that you can wait until it comes back around."
-ew "...okay"
-#show Eir Sad
-"I stand there fo a few minutes, trying not to cry in front of the station agent."
-"I might be a mess, but I try to contain that mess in my private life."
-hide StationAgent1
-hide Eir
-
-"30 Minutes Later"
-
-scene trainstationNight
-show StationAgent1
-sa1 "You can check the train now, don’t worry, I won’t charge you."
-ew "Thank you so much!"
-"At least I have that going for me."
-hide StationAgent1
-show Eir Panic
-"I rush onto the train again. Overhead I vaguely hear the station agents voice over the intercom."
-"I check where I think I was sitting, check where I didn’t think I was sitting."
-"But there’s nothing there. I check the next car, just in case but there’s still nothing there."
-"I'm pretty sure now is an okay time to start crying"
-"When I switch train cars and head back, I remember thanking the station agent between my frustrated tears before walking home."
-"I’m completely defeated, and I don’t know what to do. "
-hide Eir
-
-#INSERT TRANSITION HERE
 
 show Troy
 tc "Man, I really didn’t mean to stay out this late. "
@@ -672,9 +765,9 @@ show Coworker1
 show Coworker2 at left
 show Coworker3 at right
 
-cw1 "Eir is everything okay?"
+cwPete "Eir is everything okay?"
 ew "Uh, yeah I’m fine."
-cw1 "Really?"
+cwPete "Really?"
 ew "...not really. I need a favor, actually."
 
 "Anxiety curls up in my throat. I don’t like asking for favors, especially from my coworkers. But I have to do this."

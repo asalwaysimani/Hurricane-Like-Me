@@ -40,6 +40,7 @@ image EirBedroomNight = "images/by_unclemugen/room_evening_light_on.jpg"
 image EirOfficeDay = "images/by_Laynesis/EirOfficeDay"
 image EirOfficeAfternoon = "images/by_Laynesis/EirOfficeAfternoon"
 image EirOfficeEvening = "images/by_Laynesis/EirOfficeEvening"
+image EirOfficeBathroom = "image/by_Laynesis/EirOfficeBathroom"
 image EirOfficeITDept = "images/by_Laynesis/EirOfficeITDeptartment"
 image IntJadeOffice = "images/by_unclemugen/future_office.jpg"
 image ExtJadeOffice = "images/by_Laynesis/ExtJadeOfficeHallway"
@@ -52,8 +53,8 @@ image IntSubwayStationEvening = "images/by_Laynesis/IntSubwayStationEvening"
 
 image IntPhoneStoreDay = "images/by_Laynesis/IntPhoneStoreDay"
 
-image IntResturantDay = "images/by_Laynesis/IntResturantDay"
-image IntResturantNight = "images/by_Laynesis/IntResturantNight"
+image IntRestaurantDay = "images/by_Laynesis/IntResturantDay"
+image IntRestaurantNight = "images/by_Laynesis/IntResturantNight"
 
 image TeganCondoLivingRoomDay = "images/by_unclemugen/condo_Day 08.jpg" #This is also a shot of the kitchen we need a living room angle
 image TeganCondoLivingRoomNight = "images/by_Laynesis/TeganCondoLivingRoomNight"

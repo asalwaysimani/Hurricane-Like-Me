@@ -10,6 +10,9 @@ define jl = Character("Jade", image="Jade")
 define cwPete = Character("Coworker Pete")
 define cwAubrey = Character("Coworker Aubrey")
 define cwCallahan = Character("Coworker Callahan")
+define cwMarcia = Character("Barista Marcia")
+define cwHarvey = Character("Barista Harvey")
+define cwJulia = Character("Manager Julia")
 define sa1 = Character("Station Agent Mindy")
 define sa2 = Character("Station Agent Jenny")
 define itg = Character("Steve, the IT Guy")
@@ -25,12 +28,17 @@ layeredimage Eir:
     always:
         "EirBase"
     group outfit:
-        attribute casual default:
+        attribute Casual default:
             "EirCasual"
         attribute work:
             "EirWork"
         attribute PJs:
             "EirPJsSweats"
+    group position:
+        attribute Front default:
+            "EirFrontFace"
+        attribute Side:
+            "EirSide"
     group face:
         attribute Neutral default:
             "EirNeutral"
@@ -49,14 +57,35 @@ layeredimage Eir:
         attribute Panic:
             "EirPanic"
 
-image Troy = "images/by_deji/Troy_Neutral.png"
-image Troy Bored = "images/by_deji/Troy_Bored.png"
-image Troy Happy = "images/by_deji/Troy_Happy.png"
-image Troy VHappy = "images/by_deji/Troy_VHappy.png"
-image Troy Angry = "images/by_deji/Troy_Angry.png"
-image Troy Blush = "images/by_deji/Troy_Blush.png"
-image Troy Embarrassed = "images/by_deji/Troy_Embarrassed.png"
-image Troy Panic = "images/by_deji/Troy_Panic.png"
+layeredimage Troy:
+    always:
+        "TroyBase"
+    group outfit:
+        attribute Casual default:
+            "TroyCasual"
+        attribute Barista:
+            "TroyBarista"
+        attribute BikeMessenger:
+            "TroyBike"
+    group position:
+        attribute Front default:
+            "TroyFrontFace"
+        attribute Side:
+            "TroySide"
+    group face:
+        attribute Neutral:
+            "TroyNeutral"
+        attribute Tired:
+            "TroyTired"
+        attribute Surprised:
+            "TroySurprised"
+        attribute Happy:
+            "TroyHappy"
+        attribute Excited:
+            "TroyExcited"
+        attribute Intense:
+            "TroyIntense"
+
 
 image Jade = "images/by_deji/Jade_Neutral.png"
 image side Karla = "images/by_deji/Karla_Neutral.png"

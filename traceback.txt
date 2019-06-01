@@ -1,30 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 171, in script
-    show text "9AM" at topcenter
-  File "game/script.rpy", line 171, in <module>
-    show text "9AM" at topcenter
-NameError: name 'topcenter' is not defined
+  File "renpy/common/00start.rpy", line 203, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 450, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 450, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 460, in _execute_python_hide
+    renpy.load("_reload-2")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 171, in script
-    show text "9AM" at topcenter
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1169, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 1128, in show_imspec
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1961, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1954, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 171, in <module>
-    show text "9AM" at topcenter
-NameError: name 'topcenter' is not defined
+  File "renpy/common/00start.rpy", line 203, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 450, in script
+    python hide:
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 900, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1930, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "renpy/common/00keymap.rpy", line 450, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 460, in _execute_python_hide
+    renpy.load("_reload-2")
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/loadsave.py", line 753, in load
+    log.unfreeze(roots, label="_after_load")
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1885, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 1713, in rollback
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 Darwin-16.6.0-x86_64-i386-64bit
 Ren'Py 7.2.2.491
 Hurricane Like Me 0.2
-Sun May 26 11:42:31 2019
+Fri May 31 23:12:31 2019
