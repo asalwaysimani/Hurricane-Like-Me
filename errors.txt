@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 578: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    $Mood_Chill +=4
-    ^
-
-File "game/script.rpy", line 588: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    $Mood_Chill -=2
-    ^
-
-File "game/script.rpy", line 598: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    $Mood_Chill -=4
+File "game/script.rpy", line 147: expected statement.
+    :
     ^
 
 Ren'Py Version: Ren'Py 7.2.2.491
-Fri May 31 23:52:29 2019
+Mon Jun  3 22:30:40 2019

@@ -52,7 +52,7 @@ cwCallahan "Oh thank god I caught you Eir, I thought you left already!"
 
 call DrinksWithCoworker
 
-return
+
 
 label LeavesLate:
 
@@ -60,7 +60,7 @@ show text "Act One" at truecenter with Pause (4)
 hide text with dissolve
 
 
-return
+
 
 label WeekendWork:
 
@@ -68,4 +68,4 @@ show text "Act One" at truecenter with Pause (4)
 hide text with dissolve
 
 
-return
+

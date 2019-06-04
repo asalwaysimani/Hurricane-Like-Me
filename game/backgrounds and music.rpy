@@ -13,7 +13,7 @@ define audio.easylemon = "music/Easy Lemon 60 second.mp3"
 ##################################SOUND EFFECTS####################################
 ###################################################################################
 
-define audio.alarmclock = "music/alarm_clock.mp3"
+#define audio.alarmclock = "music/alarm_clock.mp3"
 
 ###################################################################################
 ##############################SOLID COLORS BACKGROUNDS#############################

@@ -93,16 +93,16 @@ image side Karla Bored = "images/by_deji/Karla_Bored.png"
 image side Courtney = "images/by_deji/Courtney_Neutral.png"
 image side Courtney Happy = "images/by_deji/Courtney_Happy.png"
 
-image cwPete = "images/by_deji/Coworker1_Neutral.png"
-#image Coworker1 Blush = "images/by_deji/Coworker1_Blush.png"
-#image Coworker1 Embarrassed = "images/by_deji/Coworker1_Embarrassed.png"
-image cwAubrey = "images/by_deji/Coworker2_Neutral.png"
+image cwPete = "images/by_deji/Coworker2_Neutral.png"
+#image cwPete Blush = "images/by_deji/Coworker2_Blush.png"
+#image cwPete Embarrassed = "images/by_deji/Coworker2_Embarrassed.png"
+image cwAubrey = "images/by_deji/Coworker1_Neutral.png"
 image cwCallahan = "images/by_deji/Coworker3_Neutral.png"
 image ItGuy = "images/by_deji/ItGuy_Neutral.png"
 image psgEmployee = "images/by_deji/StoreEmployee_Bored.png"
 image side StationAgent1 = "images/by_deji/StationAgent_Neutral.png"
 #image StationAgent2
-#image side StationAgent2 = "images/by_deji/StationAgent2_Neutral.png"
+image side StationAgent2 = "images/by_deji/StationAgent2_Neutral.png"
 #image Guard1
 #image Guard2
 #image FrontDesk

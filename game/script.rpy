@@ -38,12 +38,11 @@ show TroyBase at right
 #These display lines of dialogue.
 
 tc "So this is they story of me, Troy Colby, and the time I tried to do the right thing and still got stuck literally holding the bag."
-show L3rd  onlayer overlay at left with easeinleft
 pause (15)
 show EirAngry at left
 
 ew "Now wait a second there Troy!"
-tc "This is Eir, she's the main character of this game."
+# tc "This is Eir, she's the main character of this game."
 
 show TroyHappy at right
 ew "Thats right I'm the main character so why are you here doing the intro?"
@@ -92,20 +91,21 @@ show bg grey with w12
 pause (1)
 show text "{size=40}Prelude{/size}" at truecenter with Pause (4)
 hide text with dissolve
+window hide
 hide bg grey with w12
 pause (1)
 
 #INT. EIR’S APARTMENT, DAY - FRIDAY
 scene EirApartmentDay
 
-show text "{size=40}Friday{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}Friday{/size}{/font}" at truecenter with Pause (4)
 hide text with dissolve
 
-play sound alarmclock
+
 
 "The alarm clock goes off with a cruel consistency, and I groan under my blankets."
 
-"Caw Caw Caw Caw."
+play sound "music/alarm_clock.mp3" fadein 1.0
 
 stop sound fadeout 1.0
 
@@ -144,17 +144,19 @@ ew "Oh god. Oh my god."
 
 show Eir Surprised in PJs
 
-"Oh god. Oh my {i}god{/i}, she thinks. For a moment she contemplate if she really need a job."
+"{i}Oh god. Oh my god{/i}"
 
-"And then she is up and ready to go"
+ew """For a moment she contemplate if she really need a job.
 
-"She rushes into the closert, moving past a pile of clothing, and finally digging through her shoes. She takes a glance at the outfit she's prepared hanging on the back of her bedroom door. Black shoes will do. She digs out a pair"
+And then she is up and ready to go
+
+She rushes into the closet, moving past a pile of clothing, and finally digging through her shoes. She takes a glance at the outfit she's prepared hanging on the back of her bedroom door. Black shoes will do. She digs out a pair"""
 
 show Eir Neutral in Work
 
 ew "Okay, I have this in the bag"
 
-"She stumbles through the stray shoes and clothes, grabbing a book from her End Table of Boks(TM). Pausing to maker her hair presentable before rushing out of the door"
+"She stumbles through the stray shoes and clothes, grabbing a book from her End Table of Books. Pausing to maker her hair presentable before rushing out of the door"
 
 $Mood_Happy += 7
 $Mood_Chill += 10
@@ -162,6 +164,7 @@ $Mood_Panic -= 8
 $ workbag.add_item("Work Phone")
 $ workbag.add_item("Laptop")
 $ workbag.add_item("Planner")
+$ workbag.add_item("Work ID")
 $ purse.add_item("Personal Phone")
 $ purse.add_item("Headphones")
 
@@ -183,23 +186,25 @@ He is leaning on his bike, standing by the doors. The train hurtles down the tra
 
 #TODO: Title Appears on screen here 
 
+window hide
 show bg black with w33
 pause (1)
 
 #INT. EIR’S OFFICE, DAY FRIDAY
 scene EirOfficeDay
 
-show text "9AM" at topcenter
+show text "{size=40}{font=Roboto-Black.ttf}9 AM{/size}{/font}" at truecenter with Pause (4)
+hide text
 
-show Eir at left in Work
+show EirWork at left
 
 "I arrive to the office exactly on time. Which given that I ride mass transit it is a testament to my skill."
 
-hide text "9AM" 
+"She arrives at the office exactly on time. Which given that she had to ride mass transit is a testament to her time management skills."
 
-"She arrives at the office exactly on time. Which given that she had to ride mass transit is a testament to her time management skills.
-Smoothing her jacket down, she unshoulders her purse and workback and makes her way to her cubicle. 
-She has the Sheen Project to work on today, which might take her all day to do."
+"Smoothing her jacket down, she unshoulders her purse and workback and makes her way to her cubicle." 
+
+"She has the Sheen Project to work on today, which might take her all day to do."
 
 "However, she is waylaid before she even makes it there."
 
@@ -221,15 +226,15 @@ but she makes sure to leave with a smile before heading to her desk finally"
 
 $Mood_Happy -= 2
 
-hide Eir
+hide EirWork
 hide cwPete
 
-show text "{size=40}10:30AM{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}10:30 AM{/size}{/font}" at truecenter with Pause (4)
 hide text
 
 "She's about an hour into her work when she's distrupted again."
 
-show Eir Happy at left
+show EirHappy at left
 
 ew "kay, the Sheen projects needs to be ready by 10 am Monday, but I want to turn it in today. For the--"
 
@@ -237,10 +242,10 @@ show cwAubrey at right
 
 cwAubrey "Excuse me Eir?"
 
-"{i}Ugh{/i}, not Aubrey again."
+"{i}Ugh, not Aubrey again.{/i}"
 
 ew "Yes? How can I help?" 
-#Show Eir Angry at top left
+#show EirChibiAngry at topleft
 show Eir VHappy
 
 cwAubrey "Could you deal with the Johnsons? They’re outside."
@@ -250,10 +255,10 @@ ew "Sure! I’ll be right there."
 hide cwAubrey
 hide Eir
 
-"After a quick chat with the Johnsons and no help from her coworkers, she returns to her desk." 
+"After a quick chat with the Johnsons and no help from Aubrey, she returns to her desk." 
 
 "{i}How did I end up as the people person in this office? 
-I never know what to say to people? Argh, get it together Eir{/i}" #Upper screen text as if in a thought 
+I never know what to say to people?, get it together Eir{/i}" #Upper screen text as if in a thought 
 
 "The Sheen Project, she's coming for--"
 
@@ -262,44 +267,53 @@ show cwCallahan Panic at right
 
 cwCallahan "Eir! Oh thank god you're here"
 
-show Eir Panic
+show EirPanic
 
 ew "What is it?"
 
 cwCallahan "I think I accidentally deleted a file for the Mendes drafts, could you come check?"
 "{i}Oh you’ve got to be kidding me.{/i}" #Upper screen text as if in a thought 
 
-show Eir VHappy
-#show Eir Angry at top left
+show EirHappy
+#show EirChibiAngry at topleft
 
 ew "I’m happy to help! Just let me drop this at my desk real fast"
 
-"She is not happy to help. SHe manages to recover the file, which shockling has actually been deleted and power walks back to her cubicle without much trouble.
-She takes a quick glance around at the clock, almost half the day wasted there's no way that she's
-going to turn in the Sheen project early. So much for that hope and dream.
-She then looks around to see if anyone needs her help {i}God help her if they need her help{/i}
-Eir sighs in relief when she sees no one staring too hard at her desk or even in her general direction."
+"She is not happy to help. She manages to recover the file, which shockling has actually been deleted and power walks back to her cubicle without much trouble."
+
+"She takes a quick glance around at the clock, almost half the day wasted there's no way that she's going to turn in the Sheen project early. So much for that hope and dream."
+
+"She then looks around to see if anyone needs her help"
+
+"{i}God help her if they need her help{/i}"
+
+"Eir sighs in relief when she sees no one staring too hard at her desk or even in her general direction."
 
 hide EirOfficeDay
 
+window hide
 show bg black with w33
 pause (1)
 
 scene bg grey
 
-show text "{size=40}5:30 PM{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}5:30 PM{/font}{/size}" at truecenter with Pause (4)
+hide text
 
-show Eir Happy at left
+show EirHappy at left
 
 "Her jaw cracks a little as she yawns. She flexes her toes in her shows, they crack a little as well.
-Glancing at her computer colock, {i}thirty minutes until quitting time{/i} she thinks to herself.
-And then it's the weekend. The glorious, glorious weekend."
+Glancing at her computer clock"
 
-show Eir Tired
+"{i}Thirty minutes until quitting time{/i}"
 
-show cwAubrey at left
+"And then it's the weekend. The glorious, glorious weekend."
 
-cwAubrey "Eir, Ms. Logan needs you in her office"
+show EirTired
+
+show cwAubrey at right
+
+cwAubrey "Eir, Ms Logan needs you in her office"
 
 "She leans in and whispers it in a conspiratorial manner"
 
@@ -310,11 +324,11 @@ $Mood_Panic -=5
 
 "{i}Oh god, I'm going to get fired...on a Friday{/i}" #Upper screen text as if in a thought bubble 
 
-"And poof! There goes Eir's dreams of leavin on time today. And probably also having a job."
+"And poof! There goes Eir's dreams of leaving on time today. And probably also having a job."
 
-ew "One second. Just savig my work"
+ew "One second. Just saving my work"
 
-show Eir Neutral
+show EirNeutral
 #Show Eir Panic at top left
 
 "She quickly saves and closes her work, giving the clock on her desktop computer one more longing glance
@@ -347,13 +361,14 @@ $ workbag.remove_item("Laptop")
 $ purse.remove_item("Planner")
 hide Eir
 
-"In a flash, her work clothese have joine the pile and she is comfortably back in her house wear"
+"In a flash, her work clothes have joined the pile and she is comfortably back in her house wear"
 show EirPJsSweats
 
 #TODO: Add footstep sfx
 
-"She zooms back t the front door and fishes out her phones from her bag juggling both, her own personal phone and her too large work phone in her small hands.
-The work phone goes straight onto the side table to charge while she pockets her own phone"
+"""She zooms back to the front door and fishes out her phones from her bag juggling both, her own personal phone and her too large work phone in her small hands.
+
+The work phone goes straight onto the side table to charge while she pockets her own phone"""
 
 ew "I don't know how I did it!"
 
@@ -372,7 +387,7 @@ ew "Man, I wish I could manage things a little bit better. Even if it means gett
 
 show EirNeutral
 
-"IF she made just a little bit more money, she'd even consider a maid service. But that's a pipe dream for right now."
+"If she made just a little bit more money, she'd even consider a maid service. But that's a pipe dream for right now."
 
 "She finishes her chips with a sigh."
 
@@ -382,25 +397,28 @@ show EirNeutral
 
 "{i}Do chips count as dinner? They are technically vegetables{/i}" #Upper screen text as if in a thought bubble  
 
-"She trudges into the kichen, grabs herslf some almost expired eggs, a tin of tuna, and prepares dinner."
+"She trudges into the kichen, grabs herself some almost expired eggs, a tin of tuna, and prepares dinner."
 
 ew "I'll have to buy groceries on the way back from work tomorrow"
 
 "{i}Argh work on a Saturday{/i}"#Upper screen text as if in a thought bubble
 
-"The thought of going grocery shopping on a weekend sends a shudder through her body but she has too,
+"""The thought of going grocery shopping on a weekend sends a shudder through her body but she has too,
 her fridge is practically bare. Pushing that thought from her mind she takes her little sandwhich to the kitchen island not even bothering to grab herself a plate.
 After a lackluster end to a stressful day, she heads to bed mouring the fact she's given up her weekend for extra work.
-At least she's putting in a good impression with Jade."
+At least she's putting in a good impression with Jade."""
 
 "{i}At least there is that.{/i}"
+
+hide Eir
 
 #Weekend work montage, Eir in her mostly empty office with headphones firmly on. Eir trying to go grocery shopping two nights in a row only for her to have left the office and the line be super long on Saturday afternoon when she goes and too late on Sunday as it closes early. 
 
 #Skips a week 
 
-show text "{size=40}Wednesday{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}Wednesday{/font}{/size}" at truecenter with Pause (4)
 hide text with dissolve
+window hide
 show bg black with w33
 pause (1)
 
@@ -410,7 +428,7 @@ $ workbag.add_item("Laptop")
 $ purse.add_item("Planner")
 
 show JadeHappy at right
-show EirNeutral at left
+show Eir at left
 
 jl "Eir! How are you?"
 
@@ -450,8 +468,9 @@ ready to start on this new project."
 hide Jade
 hide Eir
 
-show text "{size=40}WEDNESDAY{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}Wednesday{/font}{/size}" at truecenter with Pause (4)
 hide text with dissolve
+window hide
 show bg black with w33
 pause (1)
 
@@ -523,14 +542,15 @@ hide Troy
 hide Marcia
 hide Harvey
 
-show text "{size=40}FRIDAY{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}Friday{/font}{/size}" at truecenter with Pause (4)
 hide text with dissolve
+window hide
 show bg black with w33
 pause (1)
 
 scene IntEirOfficeDay
 
-show text "{size=40}9:15AM{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}9:15 AM{/font}{/size}" at truecenter with Pause (4)
 hide text 
 
 show EirWork at left
@@ -543,7 +563,7 @@ menu NoseyCoworker:
     "Overly polite shooing, Eir turns the covnersation to Aubrey's own project.":
         $Mood_Happy +=2
         $RelationshipCW -=2
-        if RelationshipCW ==2:
+        if RelationshipCW >=2:
             "Aubrey agrees that she does need to finish her own project but she invites Eir come check it out with her."
             menu DrinksWithCoworkers:
                 "Yes, Eir comes to look at Aubrey project which is admittedly pretty nice.":
@@ -557,11 +577,11 @@ menu NoseyCoworker:
             "Aubry leaves in a huff, shooting Eir annoyed looks over the cubicle wall as she passes by."
     "Escape to the bathroom and loiter until the coast is clear.":
         $Mood_Happy +=1
-        if RelationshipCW ==1:
+        if RelationshipCW >=1:
             "When Eir comes back from the bathroom no one is waiting for her. 
             She is able to continue working. She mouths sorry at Aubrey when they make eye contact."
 
-show text "{size=40}1:45PM{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=Roboto-Black.ttf}1:45 PM{/font}{/size}" at truecenter with Pause (4)
 hide text
 
 show EirNeutral at left
@@ -573,34 +593,33 @@ menu:
     "Eir returns to her desk and tries to look very busy.":
         "Eir is feeing pretty happy. The Sheen version two project is going well, it is getting done fast and it is even good.
         As she works she overhears Pete asking one of her other coworkers a question and since everything is going so well for her she chimes to help. 
-        Pete's question is a fun and easy thing for her to solve. 
-        She understands where he got tripped up and appreciates that he asked someone else instead of coming to her."
-            $Mood_Chill +=4
-            $Mood_Happy +=4
-            $RelationshipCW +=4
-                if Mood_Happy ==5: #TODO: Check Eir Happy mood points as of right now
-                    call LeaveEarly
+        Pete's question is a fun and easy thing for her to solve. She understands where he got tripped up and appreciate that he asked someone else instead of coming to her."
+        $Mood_Chill +=4
+        $Mood_Happy +=4
+        $RelationshipCW +=4
+        if Mood_Happy >=5: #TODO: Check Eir Happy mood points as of right now
+                call LeaveEarly
     "Eir ask what is up and Pete comes over.":
         "Eir is pretty tired thankfully the Sheen version two project is going well. 
         It's going to get done but she's probably going to have to stay late to get it done on time if she doesn't want to come in on the weekend. 
         As she is taking a mental break she see's Pete is still looking at her and calls him over. It turns out that his question while interesting is long and complicated. 
         It takes them a while to sort it out and she sort of wishes he had googled what was wrong before coming to her as a head start."
-            $Mood_Chill -=2
-            $Mood_Stress -=2
-            $RelationshipCW +=2
-                if Mood_Stress ==5: #TODO: Check Eir Stressed Mood points here
-                    call LeavesLate
+        $Mood_Chill -=2
+        $Mood_Stress -=2
+        $RelationshipCW +=2
+        if Mood_Stress >=5: #TODO: Check Eir Stressed Mood points here
+                call LeavesLate
     "Eir looks at Pete before quickly looking away but it's too late eye contact had been made.":
         "Can this day just end. Eir can get nothing done constantly being intrupted by her coworkers. First Aubrey this morning being nosy.
         Now Pete with his never ending questions about everything. The eye contact seeme to signal to Pete that Eir was able to help him out even if that wasn't what she meant to do.
         Eir however is too nice and too much of a pushover to tell him no. She spends a long time trying to figure out his project band then returns to her work. 
         However she can't stop herself from stewing about the time she has wasted helping him. Now she's totally behind on the Sheen project and mad about it."
-            $Mood_Chill -=4
-            $Mood_Focus -=4
-            $Mood_Stress -=4
-            $Mood_Happy -=4
-                if Mood_Chill <=0:
-                    call WeekendWork
+        $Mood_Chill -=4
+        $Mood_Focus -=4
+        $Mood_Stress -=4
+        $Mood_Happy -=4
+        if Mood_Chill <=0:
+                call WeekendWork
 hide Eir
 
 scene ExtStreetAfteroon
