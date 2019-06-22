@@ -95,7 +95,7 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
-screen say(who, what):
+screen say(who, what, side_image=None):
     style_prefix "say"
 
     window:
@@ -109,6 +109,20 @@ screen say(who, what):
                 text who id "who"
 
         text what id "what"
+
+#Eir thought bubbles windows
+
+screen thought(who, what, side_image=None):
+    style_prefix "thought"
+    
+    window:
+        id "window"
+
+        if who is not Note:
+            window:
+                id "thoughtbox"
+                style "thoughtbox"
+                text who id "who"
 
 
     ## If there's a side image, display it above the text. Do not display on the
@@ -205,17 +219,59 @@ style input:
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
 screen choice(items):
-    style_prefix "choice"
+    #style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
+    #vbox:
+    #    for i in items:
+    #        textbutton i.caption action i.action
 
+    window:
+        style "menu_window"
+        xalign 0.5
+        yalign 0.5
+
+        vbox:
+            style "menu"
+            spacing 2
+            for caption, action, chosen in items:
+                if action:
+                    if chosen:
+                        button:
+                            action action
+                            style "menu_choice_chosen_button"
+                            text caption style "menu_choice_chosen"
+                    else:
+                        button:
+                            action action
+                            style "menu_choice_button"
+                            text caption style "menu_choice"
+                else:
+                    text caption style "menu_caption"
+
+init python:
+    ###Choice Buttons go here
+    style.menu_choice_button.background = Frame("gui/Hurricane_Like_Me/Choice/1Idle.png", 44,44)
+    style.menu_choice_button.hover_background = Frame("gui/Hurricane_Like_Me/Choice/1Hover.png", 44, 44)
+    style.menu_choice_chosen_button.background = Frame("gui/Hurricane_Like_Me/Choice/2Idle.png", 44, 44)
+    style.menu_choice_chosen_button.hover_background = Frame("gui/Hurricane_Like_Me/Choice/2Hover.png", 44,44)
+
+    #Customize font and color
+    style.menu_choice.color = "#ffffff"
+    style.menu_choice_chosen.color = "#ffffff"
+    style.menu_choice.size = 22
+
+init -2:
+    $ config.narrator_menu = True
+    style menu_window is default
+    style menu_choice is button_text:
+        clear
+    style menu_choice_button is button:
+        xminimum int(config.screen_width * 0.44)
+        xmaximum int(config.screen_width * 0.77)
 
 ## When this is true, menu captions will be spoken by the narrator. When false,
 ## menu captions will be displayed as empty buttons.
 define config.narrator_menu = True
-
 
 style choice_vbox is vbox
 style choice_button is button
@@ -225,7 +281,6 @@ style choice_vbox:
     xalign 0.5
     ypos 270
     yanchor 0.5
-
     spacing gui.choice_spacing
 
 style choice_button is default:
@@ -351,17 +406,32 @@ style navigation_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
 screen main_menu():
-
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    style_prefix "main_menu"
+    window:
+        style "mainmenu_root"
 
-    add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
+    #main menu buttons
     frame:
-        pass
+        style_prefix "main_menu"
+        xalign .98
+        yalign .98
+
+        has vbox
+
+        textbutton _("Start Game") action Start()
+        textbutton _("Load Game") action ShowMenu("Load")
+        textbutton _("Options") action ShowMenu("Preferences")
+        textbutton _("Credits") action ShowMenu("Credits")
+        textbutton _("Quit") action Quit(confirm=False)
+
+style mainmenu_button:
+    size_group "main_menu"
+    
+    ## This empty frame darkens the main menu.
+    #frame:
+    #    pass
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
@@ -376,25 +446,24 @@ screen main_menu():
             text "[config.version]":
                 style "main_menu_version"
 
-
 style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
+#style main_menu_vbox is vbox
+#style main_menu_text is gui_text
+#style main_menu_title is main_menu_text
+#style main_menu_version is main_menu_text
 
 style main_menu_frame:
     xsize 280
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    background "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg"
 
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -20
-    xmaximum 800
-    yalign 1.0
-    yoffset -20
+#style main_menu_vbox:
+#    xalign 1.0
+#    xoffset -20
+#    xmaximum 800
+#    yalign 1.0
+#    yoffset -20
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)

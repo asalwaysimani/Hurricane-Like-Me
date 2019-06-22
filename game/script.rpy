@@ -13,18 +13,7 @@ init python:
 
 #The game starts here.
 
-label start:
 
-    $ Mood_Happy = 0
-    $ Mood_Focus = 0
-    $ Mood_Hungry = 0
-    $ Mood_Chill = 0
-    $ Mood_Sleep = 0
-    $ Mood_Panic = 0
-    $ Mood_Stress = 0
-
-    $ RelationshipCW = 0
-    $ RelationshipJade = 0
 
 show bg grey with w12
 pause (.5)
@@ -550,17 +539,30 @@ pause (1)
 
 scene IntEirOfficeDay
 
+label start:
+
+    $ Mood_Happy = 0
+    $ Mood_Focus = 0
+    $ Mood_Hungry = 0
+    $ Mood_Chill = 0
+    $ Mood_Sleep = 0
+    $ Mood_Panic = 0
+    $ Mood_Stress = 0
+
+    $ RelationshipCW = 0
+    $ RelationshipJade = 0
+
 show text "{size=40}{font=Roboto-Black.ttf}9:15 AM{/font}{/size}" at truecenter with Pause (4)
 hide text 
 
 show EirWork at left
 show cwAubrey at right
 
-#TODO: finish writing and fleshing out start of this scen
+#TODO: finish writing and fleshing out start of this scene
 
 menu NoseyCoworker:
     "What should Eir do?"
-    "Overly polite shooing, Eir turns the covnersation to Aubrey's own project.":
+    "Overly polite shooing, Eir turns the conversation to Aubrey's own project.":
         $Mood_Happy +=2
         $RelationshipCW -=2
         if RelationshipCW >=2:

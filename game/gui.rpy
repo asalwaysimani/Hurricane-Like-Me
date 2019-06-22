@@ -23,21 +23,21 @@ init python:
 ## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = '#000000'
+define gui.accent_color = '#ff99cc'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = '#aaaaaa'
+define gui.idle_color = '#993366'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
-define gui.idle_small_color = '#888888'
+define gui.idle_small_color = "#ffffff"
 
 ## The color that is used for buttons and bars that are hovered.
 define gui.hover_color = '#000000'
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
-define gui.selected_color = '#555555'
+define gui.selected_color = '#8d455d'
 
 ## The color used for a text button when it cannot be selected.
 define gui.insensitive_color = '#aaaaaa7f'
@@ -55,13 +55,13 @@ define gui.interface_text_color = '#404040'
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "Roboto-Regular.ttf"
+define gui.text_font = "AcariSans-Regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "Roboto-Light.ttf"
+define gui.name_text_font = "AcariSans-Light.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "Roboto-Black.ttf"
+define gui.interface_text_font = "AcariSans-Bold.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 22
@@ -84,9 +84,9 @@ define gui.title_text_size = 50
 
 ## Main and Game Menus #########################################################
 
-## The images used for the main and game menus.
-define gui.main_menu_background = "gui/main_menu2.png"
-define gui.game_menu_background = "gui/game_menu2.png"
+## The images used for the main and game menus. TODO:Come back and check this and make sure that it is the right size and right file
+define gui.main_menu_background = "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg" #A file that contains an image that is used in the background of all screens of the main menu.
+define gui.game_menu_background = "gui/game_menu2.png" #A file that contains an image that is used in the background of all screens of the game menu.
 
 
 ## Dialogue ####################################################################
