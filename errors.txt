@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 438: style property use is not known.
-    use navigation
-       ^
+File "game/screens.rpy", line 363: u'selected' is not a keyword argument or valid child for the imagemap statement.
+    selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
+            ^
 
 Ren'Py Version: Ren'Py 7.2.2.491
-Fri Jun 21 23:51:54 2019
+Sat Jun 22 19:42:55 2019

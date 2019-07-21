@@ -102,7 +102,6 @@ screen say(who, what, side_image=None):
         id "window"
 
         if who is not None:
-
             window:
                 id "namebox"
                 style "namebox"
@@ -118,7 +117,7 @@ screen thought(who, what, side_image=None):
     window:
         id "window"
 
-        if who is not Note:
+        if who is not None:
             window:
                 id "thoughtbox"
                 style "thoughtbox"
@@ -161,6 +160,17 @@ style namebox:
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
+
+style EirThoughts:
+    xpos gui.thoughtbubble_xpos
+    xanchor gui.thoughtbubble_xalign
+    xsize gui.thoughtbubble_width
+    ypos gui.thoughtbubble_ypos
+    ysize gui.thoughtbubble_height
+
+    background Frame("gui/Hurricane_Like_Me/Thought/Thought.png", gui.thoughtbubble_borders, title=gui.thoughtbubble_tile, xalign=gui.thoughtbubble_xalign)
+    padding gui.thoughtbubble_borders.padding
+    
 
 style say_label:
     properties gui.text_properties("name", accent=True)
@@ -309,7 +319,7 @@ screen quick_menu():
             yalign 1.0
 
             textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
+            textbutton _("History") action ('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
@@ -347,43 +357,49 @@ style quick_button_text:
 
 screen navigation():
 
-    vbox:
+    imagemap:
+        ground "gui/Hurricane_Like_Me/TitleScreen/Menu.png"
+        hover "gui/Hurricane_Like_Me/TitleScreen/Menu-Hover.png"
+        #selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
+
+        hotspot (352, 113, 155, 60) action ShowMenu("credits")
+        hotspot (613, 117, 125, 60) action ShowMenu("load")
+        hotspot (841, 94, 315, 80) action Start()
+        hotspot (1270, 184, 185, 60) action ShowMenu("preferences")
+        hotspot (1546, 107, 124, 60) action Quit
+
+#    window:
+#        style "gm_root"
+    
+    frame:
+        style_group "gm_root"
+        xalign .98
+        yalign .98
+
+    hbox:
         style_prefix "navigation"
-
-        xpos gui.navigation_xpos
-        yalign 0.5
-
+        ypos gui.navigation_xpos
+        xalign 0.5
+        yalign -1.0
         spacing gui.navigation_spacing
-
         if main_menu:
-
-            textbutton _("Start") action Start()
+            textbutton _("Credits")action ShowMenu("credits")
+            textbutton _("Load") action ShowMenu("load")
+            textbutton _("Start Game") action Start()
 
         else:
-
             textbutton _("History") action ShowMenu("history")
-
-            textbutton _("Save") action ShowMenu("save")
-
-        textbutton _("Load") action ShowMenu("load")
-
-        textbutton _("Preferences") action ShowMenu("preferences")
-
+            textbutton _("Save Game") action ShowMenu("save")
+            textbutton _("Load Game") action ShowMenu("load")
+            textbutton _("Options") action ShowMenu("preferences")
         if _in_replay:
-
             textbutton _("End Replay") action EndReplay(confirm=True)
-
         elif not main_menu:
-
             textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
-
+            textbutton _("About") action ShowMenu("about")
         if renpy.variant("pc"):
-
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
-
+            textbutton _("Options") action ShowMenu("preferences")
             ## The quit button is banned on iOS and unnecessary on Android.
             textbutton _("Quit") action Quit(confirm=not main_menu)
 
@@ -407,63 +423,38 @@ style navigation_button_text:
 
 screen main_menu():
     ## This ensures that any other menu screen is replaced.
-    tag menu
-
-    window:
-        style "mainmenu_root"
-
-    #main menu buttons
-    frame:
-        style_prefix "main_menu"
-        xalign .98
-        yalign .98
-
-        has vbox
-
-        textbutton _("Start Game") action Start()
-        textbutton _("Load Game") action ShowMenu("Load")
-        textbutton _("Options") action ShowMenu("Preferences")
-        textbutton _("Credits") action ShowMenu("Credits")
-        textbutton _("Quit") action Quit(confirm=False)
-
-style mainmenu_button:
-    size_group "main_menu"
-    
-    ## This empty frame darkens the main menu.
-    #frame:
-    #    pass
-
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
+    text "[renpy.version_string] \"[renpy.version_name]\"" style "main_menu_version"
 
-    if gui.show_name:
+    #if gui.show_name:
 
-        vbox:
-            text "[config.name!t]":
-                style "main_menu_title"
+        #vbox:
+            #text "[config.name!t]":
+                #style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+            #text "[config.version!t]":
+                #style "main_menu_version"
 
 style main_menu_frame is empty
-#style main_menu_vbox is vbox
-#style main_menu_text is gui_text
-#style main_menu_title is main_menu_text
-#style main_menu_version is main_menu_text
+style main_menu_vbox is vbox
+style main_menu_text is gui_text
+style main_menu_title is main_menu_text
+style main_menu_version is main_menu_text
 
 style main_menu_frame:
     xsize 280
     yfill True
 
-    background "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg"
+background "gui/overlay/main_menu.png"
 
-#style main_menu_vbox:
-#    xalign 1.0
-#    xoffset -20
-#    xmaximum 800
-#    yalign 1.0
-#    yoffset -20
+style main_menu_vbox:
+    xalign 1.0
+    xoffset -20
+    xsize 960
+    yalign 1.0
+    yoffset -20
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -508,7 +499,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
                 if scroll == "viewport":
 
                     viewport:
-                        yinitial yinitial
                         scrollbars "vertical"
                         mousewheel True
                         draggable True
@@ -523,7 +513,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
                     vpgrid:
                         cols 1
-                        yinitial yinitial
+                        yinitial 1.0
 
                         scrollbars "vertical"
                         mousewheel True
@@ -630,11 +620,58 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            hbox:
+                spacing 15
+                text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]") style "about_small"
 
+            hbox:
+                spacing 15
+                text _("Written By") style "about_small"
+                text _("Rosie | meltycreamcats")
 
+            hbox:
+                spacing 15
+                text _("Written By") style "about_small"
+                text _("Margaret Catter")
+            
+            null height 15
 
+            hbox:
+                spacing 15
+                text _("Original Character Art") style "about_small"
+                text _("By Deji")
 
+            hbox:
+                spacing 15
+                text _("Original Character Art") style "about_small"
+                text _("By LizM")
+
+            null height 15
+
+            hbox:
+                spacing 15
+                text _("Original Background Art") style "about_small"
+                text _("By Laynesis")
+
+            hbox:
+                spacing 15
+                text _("GUI Designed By") style "about_small"
+                text _("Re:Alice")
+
+            hbox:
+                spacing 15
+                text _("Phone Screen Adapted From") style "about_small"
+                text _("{a=https://lemmasoft.renai.us/forums/viewtopic.php?p=494322#p494322/}Valentin Bez'chanuk{/a}")
+
+            hbox:
+                spacing 15
+                text _("Quest Log Adapted From") style "about_small"
+                text _("{a=https://lemmasoft.renai.us/forums/viewtopic.php?f=51&t=25245}jw2pfd{/a}")
+
+            hbox:
+                spacing 15
+                text _("Placeholder Sprites By") style "about_small"
+                text _("{a=https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=29421}Deji{/a}")
 
 ## This is redefined in options.rpy to add text to the about screen.
 define gui.about = ""
@@ -646,6 +683,12 @@ style about_text is gui_text
 
 style about_label_text:
     size gui.label_text_size
+
+style about_small:
+    size 18
+    minwidth 260
+    text_align 1.0
+    yalign 0.9
 
 
 ## Load and Save screens #######################################################
@@ -786,9 +829,14 @@ style slot_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
-screen preferences():
+screen Options():
 
     tag menu
+
+    if renpy.mobile:
+        $ cols = 2
+    else:
+        $ cols = 4    
 
     use game_menu(_("Preferences"), scroll="viewport"):
 
@@ -821,6 +869,25 @@ screen preferences():
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
+
+#begin language_picker
+                ## Additional vboxes of type "radio_pref" or "check_pref" can be
+                ## added here, to add additional creator-defined preferences.
+
+                vbox:
+                    style_prefix "radio"
+                    label _("Language")
+
+                    textbutton "English" text_font "fonts/Acumin-RPro.otf" action Language(None)
+                    textbutton "Français" text_font "fonts/Acumin-RPro.otf" action Language("french")
+                    textbutton "Русский" text_font "fonts/Acumin-RPro.otf" action Language("russian")
+                    textbutton "Bahasa Melayu" text_font "fonts/Acumin-RPro.otf" action Language("malay")
+                    textbutton "한국어" text_font "fonts/NotoSansKR-Medium.otf" action Language("korean")
+                    textbutton "简体中文" text_font "fonts/NotoSans-Regular.ttf" action Language("simplified_chinese")
+                    textbutton "繁體中文" text_font "fonts/NotoSans-Regular.ttf" action Language("traditional_chinese")
+                    textbutton "Español" text_font "fonts/Acumin-RPro.otf" action Language("spanish")
+
+#end language_picker
 
             null height (4 * gui.pref_spacing)
 

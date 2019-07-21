@@ -87,7 +87,7 @@ pause (1)
 #INT. EIR’S APARTMENT, DAY - FRIDAY
 scene EirApartmentDay
 
-show text "{size=40}{font=Roboto-Black.ttf}Friday{/size}{/font}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}Friday{/size}{/font}" at truecenter with Pause (4)
 hide text with dissolve
 
 
@@ -182,7 +182,7 @@ pause (1)
 #INT. EIR’S OFFICE, DAY FRIDAY
 scene EirOfficeDay
 
-show text "{size=40}{font=Roboto-Black.ttf}9 AM{/size}{/font}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}9 AM{/size}{/font}" at truecenter with Pause (4)
 hide text
 
 show EirWork at left
@@ -218,7 +218,7 @@ $Mood_Happy -= 2
 hide EirWork
 hide cwPete
 
-show text "{size=40}{font=Roboto-Black.ttf}10:30 AM{/size}{/font}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}10:30 AM{/size}{/font}" at truecenter with Pause (4)
 hide text
 
 "She's about an hour into her work when she's distrupted again."
@@ -286,7 +286,7 @@ pause (1)
 
 scene bg grey
 
-show text "{size=40}{font=Roboto-Black.ttf}5:30 PM{/font}{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}5:30 PM{/font}{/size}" at truecenter with Pause (4)
 hide text
 
 show EirHappy at left
@@ -405,7 +405,7 @@ hide Eir
 
 #Skips a week 
 
-show text "{size=40}{font=Roboto-Black.ttf}Wednesday{/font}{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}Wednesday{/font}{/size}" at truecenter with Pause (4)
 hide text with dissolve
 window hide
 show bg black with w33
@@ -457,7 +457,7 @@ ready to start on this new project."
 hide Jade
 hide Eir
 
-show text "{size=40}{font=Roboto-Black.ttf}Wednesday{/font}{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}Wednesday{/font}{/size}" at truecenter with Pause (4)
 hide text with dissolve
 window hide
 show bg black with w33
@@ -531,7 +531,7 @@ hide Troy
 hide Marcia
 hide Harvey
 
-show text "{size=40}{font=Roboto-Black.ttf}Friday{/font}{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}Friday{/font}{/size}" at truecenter with Pause (4)
 hide text with dissolve
 window hide
 show bg black with w33
@@ -552,7 +552,7 @@ label start:
     $ RelationshipCW = 0
     $ RelationshipJade = 0
 
-show text "{size=40}{font=Roboto-Black.ttf}9:15 AM{/font}{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}9:15 AM{/font}{/size}" at truecenter with Pause (4)
 hide text 
 
 show EirWork at left
@@ -583,7 +583,7 @@ menu NoseyCoworker:
             "When Eir comes back from the bathroom no one is waiting for her. 
             She is able to continue working. She mouths sorry at Aubrey when they make eye contact."
 
-show text "{size=40}{font=Roboto-Black.ttf}1:45 PM{/font}{/size}" at truecenter with Pause (4)
+show text "{size=40}{font=font/Roboto-Black.ttf}1:45 PM{/font}{/size}" at truecenter with Pause (4)
 hide text
 
 show EirNeutral at left
@@ -698,12 +698,13 @@ ew "I need to get another ice pack."
 "I put away my ice pack, and exchange one for another."
 "Then I head back to my couch, comforted by my blankets and my bunny pajamas."
 $ renpy.pause(1.0)
-play sound "new_message.mp3"
+play sound "music/new_message.mp3"
 $ renpy.pause()
 "I hear my phone ding in my hand, and take a look at who’s texting me."
+"Please let it not be work"
 
 ##############################################################
-############################VIA TEXT############################
+############################VIA TEXT##########################
 ##############################################################
 
 
@@ -712,7 +713,7 @@ $ m_msg = []
 $ gg_msg = "Eir"
 
 window hide
-show screen telegram
+show screen EirPhone
 with dissolve
 
 $ renpy.pause(1.0)
@@ -751,9 +752,9 @@ python:
 
 "Argh so helpful."
 
- ##############################################################
- ############################VIA TEXT############################
- ##############################################################
+##############################################################
+############################VIA TEXT############################
+##############################################################
 
 python:
 
