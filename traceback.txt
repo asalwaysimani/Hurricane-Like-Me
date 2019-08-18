@@ -1,68 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 555, in script
-    show text "{size=40}{font=font/Roboto-Black.ttf}9:15 AM{/font}{/size}" at truecenter with Pause (4)
-Exception: Could not find font u'font/Roboto-Black.ttf'.
+  File "game/thoughtbubbles.rpy", line 1, in script
+    init python:
+  File "game/thoughtbubbles.rpy", line 4, in <module>
+    config.window_show_transition - dissolve
+TypeError: unsupported operand type(s) for -: 'Curry' and 'Curry'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 555, in script
-    show text "{size=40}{font=font/Roboto-Black.ttf}9:15 AM{/font}{/size}" at truecenter with Pause (4)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\ast.py", line 1375, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\exports.py", line 1578, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 2240, in do_with
-    clear=clear)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 2690, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 3174, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 2086, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 516, in renpy.display.render.render_screen
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\transition.py", line 87, in render
-    return null_render(self, width, height, st, at)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\transition.py", line 61, in null_render
-    st, at)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "accelerator.pyx", line 110, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\image.py", line 500, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\image.py", line 306, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\text\text.py", line 1989, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\text\text.py", line 619, in __init__
-    glyphs = ts.glyphs(s, self)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\text\text.py", line 242, in glyphs
-    fo = font.get_font(self.font, self.size, self.bold, self.italic, 0, self.antialias, self.vertical, self.hinting, layout.oversample)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\text\font.py", line 695, in get_font
-    face = load_face(fn)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\text\font.py", line 636, in load_face
-    raise Exception("Could not find font {0!r}.".format(orig_fn))
-Exception: Could not find font u'font/Roboto-Black.ttf'.
+  File "game/thoughtbubbles.rpy", line 1, in script
+    init python:
+  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\ast.py", line 900, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\python.py", line 1930, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/thoughtbubbles.rpy", line 4, in <module>
+    config.window_show_transition - dissolve
+TypeError: unsupported operand type(s) for -: 'Curry' and 'Curry'
 
 Windows-8-6.2.9200
 Ren'Py 7.2.2.491
 Hurricane Like Me Renpy 7.2.2.491
-Sat Jun 22 19:49:52 2019
+Thu Jul 25 16:10:50 2019

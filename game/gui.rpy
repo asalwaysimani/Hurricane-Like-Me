@@ -58,19 +58,20 @@ define gui.interface_text_color = '#404040'
 define gui.text_font = "fonts/AcariSans-Regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "fonts/AcariSans-Light.ttf"
+define gui.name_text_font = "fonts/Montserrat-Bold.ttf"
 
 ## The font used for out-of-game text.
 define gui.interface_text_font = "fonts/AcariSans-Bold.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 20
+define gui.text_size = 30
 
 ## The size of character names.
-define gui.name_text_size = 30
+define gui.name_text_size = 40
+define gui.name_text_color = "#ffffff"
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 22
+define gui.interface_text_size = 33
 
 ## The size of labels in the game's user interface.
 define gui.label_text_size = 24
@@ -86,7 +87,7 @@ define gui.title_text_size = 50
 
 ## The images used for the main and game menus. TODO:Come back and check this and make sure that it is the right size and right file
 define gui.main_menu_background = "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg" #A file that contains an image that is used in the background of all screens of the main menu.
-define gui.game_menu_background = "gui/game_menu2.png" #A file that contains an image that is used in the background of all screens of the game menu.
+define gui.game_menu_background = "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg" #A file that contains an image that is used in the background of all screens of the game menu.
 
 
 ## Dialogue ####################################################################
@@ -106,8 +107,8 @@ define gui.thoughtbubble_yalign = 0.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 240
-define gui.name_ypos = 0
+define gui.name_xpos = 150 ##LEFT/RIGHT
+define gui.name_ypos = -180 ##UP/DOWN
 define gui.thoughtbubble_xpos = -240
 define gui.thoughtbubble_ypos = 0
 
@@ -137,11 +138,12 @@ define gui.thoughtbubble_tile = False
 ## The placement of dialogue relative to the textbox. These can be a whole
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
-define gui.dialogue_xpos = 268
-define gui.dialogue_ypos = 50
+define gui.dialogue_xpos = 200
+define gui.dialogue_ypos = -110
+define gui.dialogue_text_xalign = 0.5
 
 ## The maximum width of dialogue text, in pixels.
-define gui.dialogue_width = 744
+define gui.dialogue_width = 1500
 
 ## The horizontal alignment of the dialogue text. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.

@@ -1,6 +1,223 @@
 #################################################################################
 ########################PHONE CODE GOES HERE#####################################
 #################################################################################
+
+
+#OPTIONS#
+# Picking up the phone
+transform txt_pickup:
+    yalign 1.0 xalign 0.5
+    yoffset 900
+    easein 0.3 yoffset 100
+
+transform txt_hide:
+    yalign 1.0 xalign 0.5
+    yoffset 100
+    easein 0.3 yoffset 1300   
+    
+
+transform txt_msg_bubble_tip:
+    xoffset 10
+    yoffset 1
+    
+transform txt_msg_bubble_tip2:
+    xoffset 165
+    yoffset 1
+
+transform scrolling_out_txt:
+    easeout 0.1 yoffset -30 alpha 0
+        
+transform incoming_msg:
+    yoffset 100
+    alpha 0
+    parallel:
+        easein 0.1 alpha 1
+    parallel:
+        easein 0.2 yoffset 0
+
+    on hide:
+        scrolling_out_message
+
+#### labels to shortcut stuff so you dont need to copypaste stuff repeatedly! #####
+
+label txt_startEir:
+    window hide
+    show EirPhone at txt_pickup
+    $ renpy.pause(0.2)
+    return
+
+label txt_startTroy:
+    window hide
+    show TroyPhone at txt_pickup
+    $ renpy.pause(0.2)
+    return
+
+    
+label txt_msg:
+    $ renpy.pause()
+    hide screen txt_msg
+    $ renpy.pause(0.1)
+    return
+        
+label txt_msg2:
+    $ renpy.pause()
+    hide screen txt_msg2
+    $ renpy.pause(0.1)
+    return
+
+label txt_msg3:
+    $ renpy.pause()
+    hide screen txt_msg3
+    $ renpy.pause(0.1)
+    return
+
+label txt_msgi:
+    $ renpy.pause()
+    hide screen txt_msgi
+    $ renpy.pause(0.1)
+    return
+
+label txt_after_menu:
+    hide screen txt_msg
+    hide screen txt_msg2
+    hide screen txt_msg3
+    hide screen txt_msgi
+    $ renpy.pause(0.1)
+    return    
+    
+label txt_end:
+    $ renpy.pause()
+    hide screen txt_msg
+    hide screen txt_msg2
+    hide screen txt_msg3
+    hide screen txt_msgi
+    show phone at phone_hide #Show phone refers to image that is phone
+    $ renpy.pause(0.2)
+    return
+
+label txt(who, what):
+    $ renpy.pause()
+    hide screen txt_msg
+    hide screen txt_msg2
+    hide screen txt_msg3
+    hide screen txt_msgi
+    $ renpy.pause(0.1)
+    # if you want to change the players name to be something else than "me" you can change it here
+    if who.lower() == "me":
+        show screen phone_message2(who, what)
+    else:
+        show screen phone_message(who, what)
+    return
+    
+label reply_txt(who, what):
+    $ renpy.pause()
+    hide screen txt_msg
+    hide screen txt_msg2
+    hide screen txt_msg3
+    hide screen txt_msgi
+    $ renpy.pause(0.1)
+    show screen txt_msg3(who,what)
+    return
+
+label msg_img(who, what,img):
+    $ renpy.pause()
+    hide screen txt_msg
+    hide screen txt_msg2
+    hide screen txt_msg3
+    hide screen txt_msgi
+    $ renpy.pause(0.1)
+    show screen phone_message_image(who, what,img)
+    return
+
+
+label msg_start(who, what):
+    # if you want to change the players name to be something else than "me" you can change it here
+    if who.lower() == "me":
+        show screen txt_msg2(who, what)
+    else:
+        show screen txt_msg(who, what)
+    return 
+    
+
+init 5:
+    style txt_msg_vbox:
+        xalign 0.5
+        yalign 0
+        ypos 380
+        xsize 360
+        xoffset -40
+    
+    style txt_msg_frame:
+        ypadding 10
+        xpadding 10
+
+    style txt_msg_frame2:
+        ypadding 10
+        xpadding 10
+    
+    style txt_msg_contents:
+        spacing 10
+    
+    style txt_msg is say_dialogue:
+        xoffset 0
+        outlines []
+        xalign 1
+        yalign 0
+
+    style txt_msg2 is say_dialogue:
+        xoffset 0
+        outlines []
+        xalign 1
+        yalign 0
+
+    style txt_msg_who is txt_msg:
+        size 25
+
+    style txt_msg_what is txt_msg:
+        size 24
+
+    style reply_txt is default:
+        size 18
+        xalign 0.5
+        xsize 475
+        ypadding 10
+        xpadding 10
+
+screen txt_msg(who,what):
+    vbox at incoming_msg:
+        style_group "txt_msg"
+
+screen txt_msg2(who, what):
+    vbox at incoming_message:
+        style_group "txt_msg"
+        xoffset -584        
+        xalign 1.0
+        # this one adds the triangular tip for the bubble, if you change colors you change this images too
+
+        frame:
+            style_group "txt_msg2"
+            xsize 200
+
+            vbox:
+                style "txt_msg_contents"
+                text who style "txt_msg_who"
+                text who style "txt_msg_what"
+
+screen txt_msg3(who, what):
+    vbox at incoming_message:
+        style_group "txt_msg"
+        xoffset -584
+        xalign 1.0
+        # this one adds the triangular tip for the bubble, if you change colors you change this images too
+
+        frame:
+            style_group "txt_msg2"
+            xsize 200
+
+            vbox: 
+                style "txt_msg_contensts"
+                text what style "txt_msg_what"
+
 init python:
 
     style_button_back = "#282E33"

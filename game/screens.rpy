@@ -109,7 +109,9 @@ screen say(who, what, side_image=None):
 
         text what id "what"
 
-#Eir thought bubbles windows
+##########################################
+########Eir thought bubbles windows#######
+##########################################
 
 screen thought(who, what, side_image=None):
     style_prefix "thought"
@@ -122,6 +124,10 @@ screen thought(who, what, side_image=None):
                 id "thoughtbox"
                 style "thoughtbox"
                 text who id "who"
+
+##########################################
+########END OF THOUGHT BUBBLE CODE########
+##########################################
 
 
     ## If there's a side image, display it above the text. Do not display on the
@@ -149,7 +155,15 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/Hurricane_Like_Me/Textbox/Textbox.png", xalign=0.5, yalign=1.0)
+
+#style thoughtbox:
+#    xalign 1.5
+#    xfill True
+#    yalign gui.thoughtbubble_yalign
+#    ysize gui.thoughtbubble_height
+
+#    background Image("gui/Hurricane_Like_Me/Thought/Thought.png", xalign=1.5, yalign=0.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -158,18 +172,18 @@ style namebox:
     ypos gui.name_ypos
     ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
+    #background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
-style EirThoughts:
-    xpos gui.thoughtbubble_xpos
-    xanchor gui.thoughtbubble_xalign
-    xsize gui.thoughtbubble_width
-    ypos gui.thoughtbubble_ypos
-    ysize gui.thoughtbubble_height
+#style EirThoughts:
+#    xpos gui.thoughtbubble_xpos
+#    xanchor gui.thoughtbubble_xalign
+#    xsize gui.thoughtbubble_width
+#    ypos gui.thoughtbubble_ypos
+#    ysize gui.thoughtbubble_height
 
-    background Frame("gui/Hurricane_Like_Me/Thought/Thought.png", gui.thoughtbubble_borders, title=gui.thoughtbubble_tile, xalign=gui.thoughtbubble_xalign)
-    padding gui.thoughtbubble_borders.padding
+#    background Frame("gui/Hurricane_Like_Me/Thought/Thought.png", gui.thoughtbubble_borders, title=gui.thoughtbubble_tile, xalign=gui.thoughtbubble_xalign)
+#    padding gui.thoughtbubble_borders.padding
     
 
 style say_label:
@@ -368,8 +382,8 @@ screen navigation():
         hotspot (1270, 184, 185, 60) action ShowMenu("preferences")
         hotspot (1546, 107, 124, 60) action Quit
 
-#    window:
-#        style "gm_root"
+    window:
+        style "gm_root"
     
     frame:
         style_group "gm_root"
@@ -447,7 +461,7 @@ style main_menu_frame:
     xsize 280
     yfill True
 
-background "gui/overlay/main_menu.png"
+background "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg"
 
 style main_menu_vbox:
     xalign 1.0
@@ -644,7 +658,7 @@ screen about():
             hbox:
                 spacing 15
                 text _("Original Character Art") style "about_small"
-                text _("By LizM")
+                text _("By ")
 
             null height 15
 

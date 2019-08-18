@@ -14,28 +14,20 @@
 
 define config.name = _("Hurricane Like Me")
 
-
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = False
-
+define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "0.1"
-
+define config.version = "Renpy 7.2.2.491"
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p("""
-Phone screen system developed by {a=https://nadianova.itch.io/phone-message-system-for-renpy/}nadia nova{/a}
-
-Quest log adapted from {a=https://lemmasoft.renai.us/forums/viewtopic.php?f=51&t=25245}jw2pfd{/a}
-
-Sprites by {a=https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=29421}Deji{/a}
-""")
+#define gui.about = _p("""
+#""")
 
 
 ## A short name for the game used for executables and directories in the built
@@ -43,6 +35,8 @@ Sprites by {a=https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=29421}Deji{
 ## or semicolons.
 
 define build.name = "HurricaneLikeMe"
+
+define build.version = "1.0"
 
 
 ## Sounds and music ############################################################
@@ -215,4 +209,6 @@ init python:
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
-# define build.itch_project = "renpytom/test-project"
+# define build.itch_project = "MargaretCatter/Hurricane-Like-Me"
+
+

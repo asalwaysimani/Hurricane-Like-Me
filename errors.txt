@@ -2,9 +2,25 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 363: u'selected' is not a keyword argument or valid child for the imagemap statement.
-    selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
-            ^
+File "game/script.rpy", line 368: end of line expected.
+    {i}"Hi! I’m not a thief, I just couldn’t take this to your place."{/i}
+                                                                      ^
+
+File "game/script.rpy", line 369: end of line expected.
+    {i}"When can I return your bag? Why don’t you have a passcode?"{/i}
+                                                                   ^
+
+File "game/script.rpy", line 410: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
+    ew "What does one even do to get their stuff back after losing it on a train anyway?"
+    ^
+
+File "game/script.rpy", line 431: end of line expected.
+    {i}"I roll off the couch to my feet. Tonight is a loss of epic proportion plus it’s late, I may as well head to bed."{/i}
+                                                                                                                         ^
+
+File "game/script.rpy", line 432: end of line expected.
+    {i}"I’ll figure out in the morning what I need to do to replace my things"{/i}
+                                                                              ^
 
 Ren'Py Version: Ren'Py 7.2.2.491
-Sat Jun 22 19:42:55 2019
+Sun Jul 14 11:17:44 2019
