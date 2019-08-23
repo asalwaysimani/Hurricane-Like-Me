@@ -113,27 +113,40 @@ screen say(who, what, side_image=None):
 ########Eir thought bubbles windows#######
 ##########################################
 
-screen thought(who, what, side_image=None):
-    style_prefix "thought"
-    
-    window:
-        id "window"
+screen thought(what, side_image=None, alignment='right'):
+    style_prefix "thoughtbox"
+    zorder 10
 
-        if who is not None:
-            window:
-                id "thoughtbox"
-                style "thoughtbox"
-                text who id "who"
+    frame:
+        background None
+        xfill True
+        at thoughtbox_transform
+        
+        window:
+            if alignment == 'right':
+                xalign 1.0
+                add side_image xpos -300 yalign 0.0
+            elif alignment == 'center':
+                xalign 0.6
+                add side_image xpos -300 yalign 0.0
+            else:
+                xalign 0.0
+                add side_image xpos 750 yalign 0.0
+            text what
+            
+transform thoughtbox_transform:
+    on appear:
+        ypos -500
+        linear 0.3 ypos 0
+    on show:
+        ypos -500
+        linear 0.3 ypos 0
+    on hide:
+        linear 0.3 ypos -500
 
 ##########################################
 ########END OF THOUGHT BUBBLE CODE########
 ##########################################
-
-
-    ## If there's a side image, display it above the text. Do not display on the
-    ## phone variant - there's no room.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
 
 
 ## Make the namebox available for styling through the Character object.
@@ -157,13 +170,16 @@ style window:
 
     background Image("gui/Hurricane_Like_Me/Textbox/Textbox.png", xalign=0.5, yalign=1.0)
 
-#style thoughtbox:
-#    xalign 1.5
-#    xfill True
-#    yalign gui.thoughtbubble_yalign
-#    ysize gui.thoughtbubble_height
+style thoughtbox_window:
+    xalign 0
+    xpos 1020
+    xsize 874
+    yalign gui.thoughtbubble_yalign
+    #ysize 500 #gui.thoughtbubble_height
+    #L R T B
+    padding (50, 20, 100, 80)
 
-#    background Image("gui/Hurricane_Like_Me/Thought/Thought.png", xalign=1.5, yalign=0.0)
+    background Frame("gui/Hurricane_Like_Me/Thought/Thought.png", left=430, right= 380, top=0, bottom=115)
 
 style namebox:
     xpos gui.name_xpos
@@ -175,15 +191,15 @@ style namebox:
     #background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
-#style EirThoughts:
-#    xpos gui.thoughtbubble_xpos
-#    xanchor gui.thoughtbubble_xalign
-#    xsize gui.thoughtbubble_width
-#    ypos gui.thoughtbubble_ypos
-#    ysize gui.thoughtbubble_height
+style EirThoughts:
+    xpos gui.thoughtbubble_xpos
+    xanchor gui.thoughtbubble_xalign
+    xsize gui.thoughtbubble_width
+    ypos gui.thoughtbubble_ypos
+    ysize gui.thoughtbubble_height
 
-#    background Frame("gui/Hurricane_Like_Me/Thought/Thought.png", gui.thoughtbubble_borders, title=gui.thoughtbubble_tile, xalign=gui.thoughtbubble_xalign)
-#    padding gui.thoughtbubble_borders.padding
+    background Frame("gui/Hurricane_Like_Me/Thought/Thought.png", gui.thoughtbubble_borders, title=gui.thoughtbubble_tile, xalign=gui.thoughtbubble_xalign)
+    padding gui.thoughtbubble_borders.padding
     
 
 style say_label:
@@ -369,55 +385,6 @@ style quick_button_text:
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
 
-screen navigation():
-
-    imagemap:
-        ground "gui/Hurricane_Like_Me/TitleScreen/Menu.png"
-        hover "gui/Hurricane_Like_Me/TitleScreen/Menu-Hover.png"
-        #selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
-
-        hotspot (352, 113, 155, 60) action ShowMenu("credits")
-        hotspot (613, 117, 125, 60) action ShowMenu("load")
-        hotspot (841, 94, 315, 80) action Start()
-        hotspot (1270, 184, 185, 60) action ShowMenu("preferences")
-        hotspot (1546, 107, 124, 60) action Quit
-
-    window:
-        style "gm_root"
-    
-    frame:
-        style_group "gm_root"
-        xalign .98
-        yalign .98
-
-    hbox:
-        style_prefix "navigation"
-        ypos gui.navigation_xpos
-        xalign 0.5
-        yalign -1.0
-        spacing gui.navigation_spacing
-        if main_menu:
-            textbutton _("Credits")action ShowMenu("credits")
-            textbutton _("Load") action ShowMenu("load")
-            textbutton _("Start Game") action Start()
-
-        else:
-            textbutton _("History") action ShowMenu("history")
-            textbutton _("Save Game") action ShowMenu("save")
-            textbutton _("Load Game") action ShowMenu("load")
-            textbutton _("Options") action ShowMenu("preferences")
-        if _in_replay:
-            textbutton _("End Replay") action EndReplay(confirm=True)
-        elif not main_menu:
-            textbutton _("Main Menu") action MainMenu()
-            textbutton _("About") action ShowMenu("about")
-        if renpy.variant("pc"):
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Options") action ShowMenu("preferences")
-            ## The quit button is banned on iOS and unnecessary on Android.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
-
-
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 
@@ -439,8 +406,30 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
-    text "[renpy.version_string] \"[renpy.version_name]\"" style "main_menu_version"
+
+    style_prefix "main_menu"
+
+    tag menu 
+
+    window:
+        imagemap:
+            yalign 1.0
+            ground "gui/Hurricane_Like_Me/TitleScreen/Menu.png"
+            hover "gui/Hurricane_Like_Me/TitleScreen/Menu-Hover.png"
+            #selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
+            # hotspot (X, Y, W, H) action
+            hotspot (352, 113, 155, 60) action ShowMenu("credits")
+            hotspot (613, 117, 125, 60) action ShowMenu("load")
+            hotspot (841, 94, 315, 80) action Start()
+            hotspot (1270, 184, 185, 60) action ShowMenu("preferences")
+            hotspot (1546, 107, 124, 60) action Quit
+    
+#    frame:
+#        style_group "gm_root"
+#        xalign .98
+#        yalign .98
+
+    #text "[renpy.version_string] \"[renpy.version_name]\"" style "main_menu_version"
 
     #if gui.show_name:
 
@@ -457,11 +446,10 @@ style main_menu_text is gui_text
 style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
-style main_menu_frame:
+style main_menu_window:
     xsize 280
     yfill True
-
-background "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg"
+    background "gui/Hurricane_Like_Me/TitleScreen/Wallpaper.jpg"
 
 style main_menu_vbox:
     xalign 1.0
@@ -542,7 +530,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
                     transclude
 
-    use navigation
+    #use navigation
 
     textbutton _("Return"):
         style "return_button"
@@ -572,7 +560,7 @@ style game_menu_outer_frame:
     bottom_padding 30
     top_padding 120
 
-    background "gui/overlay/game_menu.png"
+    #background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
     xsize 280
@@ -1512,8 +1500,10 @@ style nvl_button_text is button_text
 style nvl_window:
     xfill True
     yfill True
+    
+    background None
 
-    background "gui/nvl.png"
+    #background "gui/nvl.png"
     padding gui.nvl_borders.padding
 
 style nvl_entry:
@@ -1554,115 +1544,6 @@ style nvl_button:
 
 style nvl_button_text:
     properties gui.button_text_properties("nvl_button")
-
-
-
-################################################################################
-## Mobile Variants
-################################################################################
-
-style pref_vbox:
-    variant "medium"
-    xsize 450
-
-## Since a mouse may not be present, we replace the quick menu with a version
-## that uses fewer and bigger buttons that are easier to touch.
-screen quick_menu():
-    variant "touch"
-
-    zorder 100
-
-    hbox:
-        style_prefix "quick"
-
-        xalign 0.5
-        yalign 1.0
-
-        textbutton _("Back") action Rollback()
-        textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-        textbutton _("Auto") action Preference("auto-forward", "toggle")
-        textbutton _("Menu") action ShowMenu()
-
-
-style window:
-    variant "small"
-    background "gui/phone/textbox.png"
-
-style radio_button:
-    variant "small"
-    foreground "gui/phone/button/check_[prefix_]foreground.png"
-
-style check_button:
-    variant "small"
-    foreground "gui/phone/button/check_[prefix_]foreground.png"
-
-style nvl_window:
-    variant "small"
-    background "gui/phone/nvl.png"
-
-style main_menu_frame:
-    variant "small"
-    background "gui/phone/overlay/main_menu.png"
-
-style game_menu_outer_frame:
-    variant "small"
-    background "gui/phone/overlay/game_menu.png"
-
-style game_menu_navigation_frame:
-    variant "small"
-    xsize 340
-
-style game_menu_content_frame:
-    variant "small"
-    top_margin 0
-
-style pref_vbox:
-    variant "small"
-    xsize 400
-
-style bar:
-    variant "small"
-    ysize gui.bar_size
-    left_bar Frame("gui/phone/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
-    right_bar Frame("gui/phone/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
-
-style vbar:
-    variant "small"
-    xsize gui.bar_size
-    top_bar Frame("gui/phone/bar/top.png", gui.vbar_borders, tile=gui.bar_tile)
-    bottom_bar Frame("gui/phone/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
-
-style scrollbar:
-    variant "small"
-    ysize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-
-style vscrollbar:
-    variant "small"
-    xsize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-
-style slider:
-    variant "small"
-    ysize gui.slider_size
-    base_bar Frame("gui/phone/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/horizontal_[prefix_]thumb.png"
-
-style vslider:
-    variant "small"
-    xsize gui.slider_size
-    base_bar Frame("gui/phone/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/vertical_[prefix_]thumb.png"
-
-style slider_pref_vbox:
-    variant "small"
-    xsize None
-
-style slider_pref_slider:
-    variant "small"
-    xsize 600
 
 #####################################################
 ################SCREENS I'VE ADDED#######################

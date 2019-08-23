@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 18: invalid syntax
-    Eir(None, kind nvl,ctc="ctc_blink")
-                      ^
+File "game/characters.rpy", line 1: expected statement.
+    init   
+           ^
 
-Ren'Py Version: Ren'Py 7.2.2.491
-Thu Jul 25 16:07:56 2019
+Ren'Py Version: Ren'Py 7.3.2.320
+Sun Aug 18 15:17:53 2019

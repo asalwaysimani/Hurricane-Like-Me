@@ -109,8 +109,8 @@ define gui.thoughtbubble_yalign = 0.0
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
 define gui.name_xpos = 150 ##LEFT/RIGHT
 define gui.name_ypos = -180 ##UP/DOWN
-define gui.thoughtbubble_xpos = -240
-define gui.thoughtbubble_ypos = 0
+define gui.thoughtbubble_xpos = -340
+define gui.thoughtbubble_ypos = -180
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -127,7 +127,7 @@ define gui.thoughtbubble_height = None
 ## The borders of the box containing the character's name, in left, top, right,
 ## bottom order.
 define gui.namebox_borders = Borders(5, 5, 5, 5)
-define gui.thoughtbubble_borders = Borders(2, 2, 2, 2)
+define gui.thoughtbubble_borders = Borders(1, 1, 1, 1)
 
 ## If True, the background of the namebox will be tiled, if False, the
 ## background if the namebox will be scaled.

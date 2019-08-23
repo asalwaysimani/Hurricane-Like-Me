@@ -1,0 +1,30 @@
+Don't use frame
+style prefix at main menu screen
+
+change hotspot values using photoshot xy hw from info (lines 405, 406, 407, 408, 409)
+
+fix padding on text for thought box (50 20 100 80)
+
+
+Put text on both ends of thought bubbles type {fast} so it doesnt retype or to have it happen at the same time put different text right after so it looks like the thoughts are the same
+
+Ex
+
+cwCallahan "Excuse me Eir?"
+
+show ewChibi at topleft
+show screen thought ("{i}Ugh{/i}, not this guy again.")
+
+cwCallahan "Excuse me Eir?{fast}"
+
+or
+cwCallahan "Excuse me Eir?"
+
+show ewChibi at topleft
+show screen thought ("{i}Ugh{/i}, not this guy again.")
+
+cwCallahan "Could you deal with the Johnsons? They’re outside."
+
+"messenger/eir/background.png" ---> "gui/Hurricane_Like_Me/Handphone/" +who+".png
+
+style prefix handphone insert scrollbar in phone section at bottom. xsize and xpostion resize once rescaled

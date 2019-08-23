@@ -248,31 +248,36 @@ init python:
     style.txt_base.color = "#fff"
 
     yadj = ui.adjustment()
+    store.m_msg = []
 
-    def eir(txt, who=False, sound=False):
-        store.m_msg.append((who, txt, sound))
+    def eir(txt, sound=False):
+        store.m_msg.append(("EirBody", txt, sound))
         store.yadj.value = store.yadj.range+300
         renpy.restart_interaction()
         renpy.pause()
-    def kstar(txt, who=False, sound=False):
-        store.m_msg.append((who, txt, sound))
+    
+    def kstar(txt, sound=False):
+        store.m_msg.append(("KStar", txt, sound))
         store.yadj.value = store.yadj.range+300
         renpy.restart_interaction()
-        if who:
-            renpy.play("music/new_message.mp3", "sound")
+        renpy.play("music/sfx/new_message.mp3", "sound") #new_message is eirs ringtone for text
         renpy.pause()
-    def troy(txt, who=False, sound=False):
-        store.m_msg.append((who, txt, sound))
+    
+    def troy(txt, alert=False, sound=False):
+        store.m_msg.append(("TroyBoy", txt, sound))
         store.yadj.value = store.yadj.range+300
         renpy.restart_interaction()
+        if alert:
+            renpy.play("music/sfx/new_message.mp3", "sound") #new_message is eirs ringtone for text
         renpy.pause()
-    def kingcourt(txt, who=False, sound=False):
-        store.m_msg.append((who, txt, sound))
+    
+    def kingcourt(txt, sound=False):
+        store.m_msg.append(("KingCourt", txt, sound))
         store.yadj.value = store.yadj.range+300
         renpy.restart_interaction()
-        if who:
-            renpy.play("music/sms-alert-5-daniel_simon.mp3", "sound")
+        renpy.play("music/sfx/sound_message.mp3", "sound") #sound_message is Troys ringtone for text
         renpy.pause()
+    
     def del_last_msg():
         if len(store.m_msg) > 0:
             del store.m_msg[-1]
@@ -280,64 +285,56 @@ init python:
     def del_all_msg():
         store.m_msg = []
 
+screen Handphone(msg_name):
+    frame:
+        if msg_name == "eir":
+            background "gui/Hurricane_Like_Me/Handphone/Handphone.png" xysize (600,675) align (0.9, .05 )# CHANGE POSISTION OF BACKGROUND VIA PHOTOSHOP, needs to be centered
+        else:
+            background "gui/Hurricane_Like_Me/Handphone/Handphone-Purple.png" xysize (600,675) align (0.9,.4) # CHANGE POSISTION OF BACKGROUND VIA PHOTOSHOP, needs to be right justified
 
-screen EirPhone(who, what):
-    frame background "gui/Hurricane_Like_Me/Handphone/Handphone.png" xysize (600,675) align (0.9,.4):
-        frame background None xysize (560, 510) align (0.5,0.58):
-            viewport id "vp_msg" mousewheel True  yadjustment yadj:
-                vbox spacing 15 xsize 550 xalign 0.4 box_reverse True:
-                    for message in m_msg[::-1]:
-                        $ who, txt, sound = message
-                        $ xgn = 0.0 if who else 1.0
-                        if sound:
-                            imagebutton auto "messenger/sound_%s.png" xalign xgn action Play("sound", sound)
-                        else:
-                            if eir:
-                                button xalign xgn xmaximum 580 xpadding 20 ypadding 10 background Frame("messenger/eir.png", 25, 25):
-                                    text "%s"%(txt) style "txt_base"
-                            elif kstar:
-                                button xalign xgn xmaximum 580 xpadding 20 ypadding 10 background Frame("messenger/karla.png", 25, 25):
-                                    text "%s"%(txt) style "txt_base"
-        #Senders Name And Information
-        text "%s"%(msg_name) style "txt_base" size 35 xalign 0.31 xanchor 0.0 yalign 0.04
-        #Senders Avatar
-        add "messenger/av/"+msg_name.lower().replace(' ', '_')+".png" pos (100,27)
-        #Arrow
-        imagebutton auto "messenger/arr_%s.png" pos (10, 33) action NullAction()
-        #Erase Messages
-        button background style_button_inst hover_background style_button_hovr xalign 0.99 yalign 0.03 action Function(del_all_msg) xysize (60,60):
-            text "  x  " style "txt_base" size 40 pos (36, -2)
-        #Scroller on Side
-        vbar value YScrollValue("vp_msg") style "bar_vert"
+        #"messenger/" + msg_name +"/background.png (SHOULD BE HANDPHONE FOLDER FIGURE IT OUT)
+        
+        #frame background None xysize (560, 510) align (0.5,0.58):
+        viewport id "vp_msg" mousewheel True  yadjustment yadj: #position of text msg in phone
+            xsize 490
+            ysize 770
+            xpos 60
+            ypos 160
+            scrollbars "vertical"
 
-screen TroyPhone(who, what):
-    frame background "gui/Hurricane_Like_Me/Handphone/Handphone-Purple.png" xysize (600,675) align (0.9,.4):
-        frame background None xysize (560, 510) align (0.5,0.58):
-            viewport id "vp_msg" mousewheel True  yadjustment yadj:
-                vbox spacing 15 xsize 550 xalign 0.4 box_reverse True:
-                    for message in m_msg[::-1]:
-                        $ who, txt, sound = message
-                        $ xgn = 0.0 if who else 1.0
-                        if sound:
-                            imagebutton auto "messenger/sound_%s.png" xalign xgn action Play("sound", sound)
-                        else:
-                            if troy:
-                                button xalign xgn xmaximum 580 xpadding 20 ypadding 10 background Frame("messenger/troy.png", 25, 25):
-                                    text "%s"%(txt) style "txt_base"
-                            elif kingcourt:
-                                button xalign xgn xmaximum 580 xpadding 20 ypadding 10 background Frame("messenger/courtney.png", 25, 25):
-                                    text "%s"%(txt) style "txt_base"
-        #Senders Name And Information
-        text "%s"%(msg_name) style "txt_base" size 35 xalign 0.31 xanchor 0.0 yalign 0.04
-        #Senders Avatar
-        add "messenger/av/"+msg_name.lower().replace(' ', '_')+".png" pos (100,27)
-        #Arrow
-        imagebutton auto "messenger/arr_%s.png" pos (10, 33) action NullAction()
-        #Erase Messages
-        button background style_button_inst hover_background style_button_hovr xalign 0.99 yalign 0.03 action Function(del_all_msg) xysize (60,60):
-            text "  x  " style "txt_base" size 40 pos (36, -2)
-        #Scroller on Side
-        vbar value YScrollValue("vp_msg") style "bar_vert"
+            vbox spacing 15 box_reverse True:
+                for message in m_msg[::-1]:
+                    $ who, txt, sound = message
+                    #$ xgn = 0.0 if who else 1.0
+                    if sound:
+                        imagebutton auto "messenger/sound_%s.png" xalign xgn action Play("sound", sound)
+                    else:
+                        frame:
+                            background "gui/Hurricane_Like_Me/Handphone/%stextbox.png" % msg_name
+                            xmaximum 580
+                            ysize 115
+
+                            image "gui/Hurricane_Like_Me/Handphone/AVI/%s.png" % who:
+                                xpos 5
+                                ypos 5
+                            text who:
+                                xpos 130
+                                ypos -3
+                                size 25
+
+                            text txt:
+                                xpos 130
+                                xsize 330
+                                ypos 35
+                                color "#000"
+                                size 18
+                                line_spacing .2
+
+screen EirPhone():
+    use Handphone("eir")
+    
+screen TroyPhone():
+    use Handphone("troy")
 #################################################################################
 
 
