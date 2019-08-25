@@ -129,7 +129,7 @@ show Eir Panic at left
 ew "What is it?"
 cwPete " I think I accidentally deleted a file for the Mendes drafts, could you come check?"
 "{i}Oh you’ve got to be kidding me.{/i}"
-show Eir VHappy
+show Eir Happy
 ew "I’m happy to help! Just let me drop this at my desk real fast"
 "I’m not happy to help."
 hide cwPete
