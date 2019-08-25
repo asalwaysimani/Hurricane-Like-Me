@@ -29,12 +29,26 @@ define psg = Character("Customer Service Rep Alan")
 define rep = Character("Sheen Representative")
 define fdl = Character("Receptionist Jenny")
 define ewChibi = Character("Inner Eir", image="ewChibi")
-define chibi_deadpanned = "images/by_RoseSense/Eir_Chibi_Deadpanned.png"
-define chibi_panicked = "images/by_RoseSense/Eir_Chibi_Panicked.png"
-define chibi_angry = "images/by_RoseSense/Eir_Chibi_Angry.png"
+#define chibi_deadpanned = "images/by_RoseSense/Eir_Chibi_Deadpanned.png"
+#define chibi_panicked = "images/by_RoseSense/Eir_Chibi_Panicked.png"
+#define chibi_angry = "images/by_RoseSense/Eir_Chibi_Angry.png"
 ###################################################################################
 ####################################IMAGES#########################################
 ###################################################################################
+
+layeredimage ewChibi:
+    group expressions:
+        attribute deadpanned default:
+            "images/by_RoseSense/Eir_Chibi_Deadpanned (1).png"
+        attribute panicked:
+            "images/by_RoseSense/Eir_Chibi_Panicked (1).png"
+        attribute angry:
+            "images/by_RoseSense/Eir_Chibi_Angry (1).png"
+    #group moodlets:
+    #    attribute embarrassed:
+    #    attribute intense:
+    #    attribute tired:
+    #    attribute surprised:
 
 layeredimage Eir:
     group outfit:

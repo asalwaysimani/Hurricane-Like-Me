@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/backgrounds and music.rpy", line 51: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-    image ExtSubwayStation = "images/by_Laynesis/ExtSubwayStationDay
+File "game/screens.rpy", line 1567: Line is indented, but the preceding add statement does not expect a block. Please check this line's indentation.
+    at transform:
+    ^
 
 Ren'Py Version: Ren'Py 7.3.2.320
-Sun Aug 25 11:23:05 2019
+Sun Aug 25 15:40:55 2019

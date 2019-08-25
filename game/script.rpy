@@ -1,9 +1,35 @@
 ﻿# The script of the game goes in this file.
 
+
+init python:
+    mp = MultiPersistent("HurricaneLikeMe.renpy.org")
+
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 # The game starts here.
+
+transform eir_moodletbounce: 
+    xpos 150
+    ypos 600
+    linear .175 yoffset -10
+    linear .175 yoffset 0
+    linear .175 yoffset -4
+    linear .175 yoffset 0
+    yoffset 0
+    repeat 5
+
 label start:
+
+    $ Mood_Happy = 0
+    $ Mood_Focus = 0
+    $ Mood_Hungry = 0
+    $ Mood_Chill = 0
+    $ Mood_Sleep = 0
+    $ Mood_Panic = 0
+    $ Mood_Stress = 0
+
+    $ RelationshipCW = 0
+    $ RelationshipJade = 0
 
 show bg rose with w12
 pause (.5)
@@ -12,20 +38,29 @@ hide text with dissolve
 hide bg rose with w12
 pause (1)
 scene bg rose
+
+show screen moodpointdisplay
+
 show Troy Happy at right
 
 # These display lines of dialogue.
 tc "So this is they story of me, Troy Colby, and the time I tried to do the right thing and still got stuck literally holding the bag."
+
+$ Mood_Chill += 1
 
 show Eir Angry at left
 
 ew "Now wait a second there Troy!"
 tc "This is Eir, she's the main character of this game."
 
+show ewChibi deadpanned 
+
 ew "Thats right I'm the main character so why are you here doing the intro?"
 tc "Because you were late, we were supposed to start this ten minutes ago."
 
 show Eir Embarrassed at left
+
+$ Mood_Chill += 1
 
 ew "Ek, no we were supposed to start when I got here!"
 
@@ -60,10 +95,11 @@ hide bg grey with w12
 
 #INT. EIR’S APARTMENT, DAY - FRIDAY
 scene EirBedroomDay
+play sound alarmclockcaw
 "The alarm clock goes off with a cruel consistency, and I groan under my blankets."
 "Beep beep beep."
 ew "Please, please be quiet."
-show Eir Bored
+show Eir Tired PJs
 "My pleas don’t matter to the clock. Eventually I remove my hand from a nest of blankets to slap the alarm clock into submission. I can afford five more minutes."
 "...Right?"
 "The alarm clock says otherwise, continuing to beep despite my groans and hits."
@@ -75,8 +111,12 @@ show Eir Panic
 "Oh god. Oh my god."
 "For a moment I contemplate if I really need a job."
 "And then I’m up."
-"I rush into the closet, moving past the piles of clothes and digging through my shoes. I take a glance at the outfit I prepared on hanging on the back of my bedroom door. Black shoes will do. I dig out a pair."
-show Eir
+play sound WakeUpWalla
+"I rush into the closet,"
+
+"Moving past the piles of clothes and digging through my shoes. I take a glance at the outfit I prepared on hanging on the back of my bedroom door. Black shoes will do. I dig out a pair."
+
+show Eir Work
 ew "Okay, I have this in the bag"
 "I stumble through the stray shoes and clothes, grab a book from my End Table Of Books™ to read on the way, and change while I get my hair presentable."
 
@@ -94,7 +134,9 @@ pause (1)
 #INT. EIR’S OFFICE, DAY FRIDAY
 scene EirOfficeDay
 
-"9 AM"
+show text "{size=+50}{font=fonts/CaviarDreams_Bold.ttf}9AM{/font}{/size}" at top with Pause (10)
+hide text with dissolve
+
 show Eir at left
 "I arrive to the office exactly on time. Which given that I ride mass transit it is a testament to my skill."
 "Smoothing my skirt down I unshoulder my bag and make my way to my cubicial."
@@ -144,7 +186,7 @@ show bg black with w33
 pause (1)
 
 scene EirOfficeAfternoon
-"4:30 PM"
+show text "4:30 PM" at truecenter with Pause
 show Eir Happy at left
 "My jaw cracks a little as I yawn. In my shoes so do my toes as I flex them."
 "I glance at my computer clock, thirty minutes until quitting time."
@@ -238,7 +280,7 @@ hide text with dissolve
 #INT. EIR’S OFFICE, EVENING THURSDAY
 scene EirOfficeNight
 show Eir
-"I glance at the clock then around the office. No one is heading my way, no one is looking at my funny. "
+"I glance at the clock then around the office. No one is heading my way, no one is looking at me funny. "
 "This could be my shot. I glance at the clock again."
 "Technically I’m done with the draft of the new Sheen project, in record time even for me."
 "Technically I could leave. Another glance around the office."

@@ -1,40 +1,65 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-TypeError: unbound method get_tooltip() must be called with Quit instance as first argument (got nothing instead)
+  File "game/script.rpy", line 51, in script
+    ew "Thats right I'm the main character so why are you here doing the intro?"
+  File "game/screens.rpy", line 1564, in execute
+    screen moodpointdisplay:
+  File "game/screens.rpy", line 1564, in execute
+    screen moodpointdisplay:
+  File "game/screens.rpy", line 1565, in execute
+    if Mood_Chill >= 1:
+  File "game/screens.rpy", line 1566, in execute
+    add eir_moodletbounce:
+NameError: name 'eir_moodletbounce' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 912, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 2004, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
-    python hide:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
-    ui.interact()
+  File "game/script.rpy", line 51, in script
+    ew "Thats right I'm the main character so why are you here doing the intro?"
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 706, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/exports.py", line 1336, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/character.py", line 1139, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/character.py", line 842, in do_display
+    **display_args)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/character.py", line 591, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
   File "/Applications/renpy-6.99.14.3-sdk/renpy/ui.py", line 295, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 2699, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3507, in interact_core
-    rv = renpy.display.focus.mouse_handler(ev, x, y)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/focus.py", line 407, in mouse_handler
-    return change_focus(new_focus, default=default)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/focus.py", line 362, in change_focus
-    set_focused(current, newfocus.arg, newfocus.screen)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/focus.py", line 109, in set_focused
-    new_tooltip = widget._get_tooltip()
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/behavior.py", line 746, in _get_tooltip
-    return get_tooltip(self.action)
-  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/behavior.py", line 373, in get_tooltip
-    return func()
-TypeError: unbound method get_tooltip() must be called with Quit instance as first argument (got nothing instead)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3091, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/screen.py", line 430, in visit_all
+    callback(self)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3091, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/screen.py", line 440, in per_interact
+    self.update()
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 1564, in execute
+    screen moodpointdisplay:
+  File "game/screens.rpy", line 1564, in execute
+    screen moodpointdisplay:
+  File "game/screens.rpy", line 1565, in execute
+    if Mood_Chill >= 1:
+  File "game/screens.rpy", line 1566, in execute
+    add eir_moodletbounce:
+  File "<screen language>", line 1566, in <module>
+NameError: name 'eir_moodletbounce' is not defined
 
 Darwin-16.6.0-x86_64-i386-64bit
 Ren'Py 7.3.2.320
 Hurricane Like Me Renpy 7.2.2.491
-Sun Aug 25 11:56:47 2019
+Sun Aug 25 15:41:19 2019
