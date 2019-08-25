@@ -45,9 +45,11 @@ image EirOfficeITDept = "images/by_Laynesis/IT_full.jpg"
 image IntJadeOffice = "images/by_Laynesis/J_office_int.jpg"
 image ExtJadeOffice = "images/by_Laynesis/J_office_ext.jpg"
 
-image IntSubwayCar = "images/by_Laynesis/IntSubwayCarDay"
+image IntSubwayCar = "images/by_Laynesis/IntSubwayCar"
 
-image IntSubwayStation = "images/by_Laynesis/IntSubwayStationDay"
+image IntSubwayStation = "images/by_Laynesis/IntSubwayStation"
+
+image ExtSubwayStationDay = "images/by_Laynesis/ExtSubwayStationDay"
 
 image IntPhoneStoreDay = "images/by_Laynesis/IntPhoneStoreDay"
 

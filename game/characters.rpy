@@ -28,11 +28,10 @@ define itg = Character("Steve, the IT Guy")
 define psg = Character("Customer Service Rep Alan")
 define rep = Character("Sheen Representative")
 define fdl = Character("Receptionist Jenny")
-
+define ewChibi = Character("Inner Eir", image="ewChibi")
 define chibi_deadpanned = "images/by_RoseSense/Eir_Chibi_Deadpanned.png"
 define chibi_panicked = "images/by_RoseSense/Eir_Chibi_Panicked.png"
 define chibi_angry = "images/by_RoseSense/Eir_Chibi_Angry.png"
-
 ###################################################################################
 ####################################IMAGES#########################################
 ###################################################################################
@@ -49,7 +48,7 @@ layeredimage Eir:
         attribute Neutral default:
             "images/by_Sysen/Eir/Neutral.png"
         attribute Embarrassed:
-            "images/by_Sysen/Eir/embarrased.png"
+            "images/by_Sysen/Eir/embarrassed.png"
         attribute Intense:
             "images/by_Sysen/Eir/intense.png"
         attribute Tired:

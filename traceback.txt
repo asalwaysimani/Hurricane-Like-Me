@@ -1,105 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 83, in script
-    $ kstar ("I’m not judging its handy dandy for this exact moment.")
-  File "game/script.rpy", line 83, in <module>
-    $ kstar ("I’m not judging its handy dandy for this exact moment.")
-  File "game/phone.rpy", line 264, in kstar
-    renpy.play("music/new_message.mp3", "sound")
-  File "game/phone.rpy", line 323, in execute
-    for message in m_msg[::-1]:
-  File "game/phone.rpy", line 323, in execute
-    for message in m_msg[::-1]:
-  File "game/phone.rpy", line 324, in execute
-    $ who, txt, sound = message
-  File "game/phone.rpy", line 288, in execute
-    
-  File "game/phone.rpy", line 288, in execute
-    
-  File "game/phone.rpy", line 289, in execute
-    screen EirPhone(who, what):
-  File "game/phone.rpy", line 297, in execute
-    if sound:
-  File "game/phone.rpy", line 298, in execute
-    imagebutton auto "messenger/sound_%s.png" xalign xgn action Play("sound", sound)
-  File "game/phone.rpy", line 299, in execute
-    else:
-  File "game/phone.rpy", line 300, in execute
-    if eir:
-  File "game/phone.rpy", line 303, in execute
-    elif kstar:
-  File "game/phone.rpy", line 306, in execute
-    #Senders Name And Information
-  File "game/phone.rpy", line 306, in keywords
-    #Senders Name And Information
-TypeError: not all arguments converted during string formatting
+TypeError: unbound method get_tooltip() must be called with Quit instance as first argument (got nothing instead)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 83, in script
-    $ kstar ("I’m not judging its handy dandy for this exact moment.")
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\ast.py", line 900, in execute
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 912, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\python.py", line 1930, in py_exec_bytecode
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 2004, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "game/script.rpy", line 83, in <module>
-    $ kstar ("I’m not judging its handy dandy for this exact moment.")
-  File "game/phone.rpy", line 264, in kstar
-    renpy.play("music/new_message.mp3", "sound")
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\exports.py", line 1457, in pause
-    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\ui.py", line 289, in interact
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ui.py", line 295, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 2690, in interact
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 2699, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 3074, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 534, in visit_all
-    d.visit_all(callback, seen)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 534, in visit_all
-    d.visit_all(callback, seen)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 534, in visit_all
-    d.visit_all(callback, seen)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\screen.py", line 424, in visit_all
-    callback(self)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 3074, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\screen.py", line 434, in per_interact
-    self.update()
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\screen.py", line 619, in update
-    self.screen.function(**self.scope)
-  File "game/phone.rpy", line 323, in execute
-    for message in m_msg[::-1]:
-  File "game/phone.rpy", line 323, in execute
-    for message in m_msg[::-1]:
-  File "game/phone.rpy", line 324, in execute
-    $ who, txt, sound = message
-  File "game/phone.rpy", line 288, in execute
-    
-  File "game/phone.rpy", line 288, in execute
-    
-  File "game/phone.rpy", line 289, in execute
-    screen EirPhone(who, what):
-  File "game/phone.rpy", line 297, in execute
-    if sound:
-  File "game/phone.rpy", line 298, in execute
-    imagebutton auto "messenger/sound_%s.png" xalign xgn action Play("sound", sound)
-  File "game/phone.rpy", line 299, in execute
-    else:
-  File "game/phone.rpy", line 300, in execute
-    if eir:
-  File "game/phone.rpy", line 303, in execute
-    elif kstar:
-  File "game/phone.rpy", line 306, in execute
-    #Senders Name And Information
-  File "game/phone.rpy", line 306, in keywords
-    #Senders Name And Information
-  File "<screen language>", line 307, in <module>
-TypeError: not all arguments converted during string formatting
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3507, in interact_core
+    rv = renpy.display.focus.mouse_handler(ev, x, y)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/focus.py", line 407, in mouse_handler
+    return change_focus(new_focus, default=default)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/focus.py", line 362, in change_focus
+    set_focused(current, newfocus.arg, newfocus.screen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/focus.py", line 109, in set_focused
+    new_tooltip = widget._get_tooltip()
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/behavior.py", line 746, in _get_tooltip
+    return get_tooltip(self.action)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/behavior.py", line 373, in get_tooltip
+    return func()
+TypeError: unbound method get_tooltip() must be called with Quit instance as first argument (got nothing instead)
 
-Windows-8-6.2.9200
-Ren'Py 7.2.2.491
+Darwin-16.6.0-x86_64-i386-64bit
+Ren'Py 7.3.2.320
 Hurricane Like Me Renpy 7.2.2.491
-Thu Aug 22 16:04:57 2019
+Sun Aug 25 11:56:47 2019
