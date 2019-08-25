@@ -1,17 +1,17 @@
-Sun Aug 18 10:53:20 2019
+Sun Aug 18 13:14:56 2019
 Darwin-16.6.0-x86_64-i386-64bit
-Ren'Py 7.2.2.491
+Ren'Py 7.3.2.320
  
 
 Bootstrap to the start of init.init took 0.08s
 Early init took 0.00s
-Loader init took 0.07s
+Loader init took 0.01s
 Loading error handling took 0.04s
-Loading script took 0.16s
-Loading save slot metadata. took 0.02s
+Loading script took 0.91s
+Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
+Running init code took 0.15s
 Loading analysis data took 0.04s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
@@ -20,16 +20,16 @@ Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.02s
 DPI scale factor: 1.000000
-Creating interface object took 0.17s
+Creating interface object took 0.15s
 Cleaning stores took 0.00s
-Init translation took 0.03s
+Init translation took 0.02s
 Build styles took 0.00s
-Load screen analysis took 0.03s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.07s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.16s
+Save bytecode. took 0.06s
 Running _start took 0.00s
 Performance test:
 Interface start took 0.03s
@@ -174,7 +174,9 @@ Extensions:
     GL_SGIS_texture_lod
 Number of texture units: 8
 Using shader environment.
-Using copy RTT.
+Using FBO RTT.
+FBO Maximum Texture Size: 16384
+Root FBO is: 0
 Using gl renderer.
 Texture testing:
 - Hardware max texture size: 16384
@@ -184,11 +186,372 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Total time until interface ready: 1.46528506279s
+FBO Maximum Texture Size: 16384
+Root FBO is: 0
+Total time until interface ready: 2.17061901093s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.017813 seconds.
-- Frame drawn at 0.031875 seconds.
-- Frame drawn at 0.062260 seconds.
-- Frame drawn at 0.078656 seconds.
-- 0.078656 seconds to render 5 frames.
+- Frame drawn at 0.017499 seconds.
+- Frame drawn at 0.032163 seconds.
+- Frame drawn at 0.051347 seconds.
+- Frame drawn at 0.065155 seconds.
+- 0.065155 seconds to render 5 frames.
+.DS_Store
+Apology.rpy
+Apology.rpyc
+Calculator Check.rpy
+Calculator Check.rpyc
+DrinkswithCoworkers.rpy
+DrinkswithCoworkers.rpyc
+Grocery Shopping.rpy
+Grocery Shopping.rpyc
+HLMquestlog.rpy
+HLMquestlog.rpyc
+Roboto-Black.ttf
+Roboto-BlackItalic.ttf
+Roboto-Light.ttf
+Roboto-Regular.ttf
+TheFridayWhenItHappens.rpy
+TheFridayWhenItHappens.rpyc
+WorkSideChoices.rpy
+WorkSideChoices.rpyc
+backgrounds and music.rpy
+backgrounds and music.rpyc
+characters.rpy
+characters.rpyc
+gui.rpy
+gui.rpyc
+inventory.rpy
+inventory.rpyc
+music_sfx.rpyc
+options.rpy
+options.rpyc
+qscreens.rpy
+qscreens.rpyc
+questlog.rpy
+questlog.rpyc
+screens.rpy
+screens.rpyc
+script.rpy
+script.rpyc
+wipes.rpy
+wipes.rpyc
+Patch/Patch
+Patch/Sequel Script
+cache/bytecode.rpyb
+cache/pyanalysis.rpyb
+cache/screens.rpyb
+gui/.DS_Store
+gui/CaviarDreams_Bold.ttf
+gui/frame.png
+gui/game_menu.png
+gui/game_menu2.png
+gui/main_menu.png
+gui/main_menu2.png
+gui/namebox.png
+gui/notify.png
+gui/nvl.png
+gui/skip.png
+gui/textbox.png
+gui/window_icon.png
+gui/window_icon2.png
+gui/bar/bottom.png
+gui/bar/left.png
+gui/bar/right.png
+gui/bar/top.png
+gui/button/check_foreground.png
+gui/button/check_selected_foreground.png
+gui/button/choice_hover_background.png
+gui/button/choice_idle_background.png
+gui/button/hover_background.png
+gui/button/idle_background.png
+gui/button/quick_hover_background.png
+gui/button/quick_idle_background.png
+gui/button/radio_foreground.png
+gui/button/radio_selected_foreground.png
+gui/button/slot_hover_background.png
+gui/button/slot_idle_background.png
+gui/overlay/confirm.png
+gui/overlay/game_menu.png
+gui/overlay/main_menu.png
+gui/phone/.DS_Store
+gui/phone/nvl.png
+gui/phone/textbox.png
+gui/phone/bar/bottom.png
+gui/phone/bar/left.png
+gui/phone/bar/right.png
+gui/phone/bar/top.png
+gui/phone/button/check_foreground.png
+gui/phone/button/check_selected_foreground.png
+gui/phone/button/hover_background.png
+gui/phone/button/idle_background.png
+gui/phone/button/radio_foreground.png
+gui/phone/button/radio_selected_foreground.png
+gui/phone/button/slot_hover_background.png
+gui/phone/button/slot_idle_background.png
+gui/phone/overlay/game_menu.png
+gui/phone/overlay/main_menu.png
+gui/phone/scrollbar/horizontal_hover_bar.png
+gui/phone/scrollbar/horizontal_hover_thumb.png
+gui/phone/scrollbar/horizontal_idle_bar.png
+gui/phone/scrollbar/horizontal_idle_thumb.png
+gui/phone/scrollbar/vertical_hover_bar.png
+gui/phone/scrollbar/vertical_hover_thumb.png
+gui/phone/scrollbar/vertical_idle_bar.png
+gui/phone/scrollbar/vertical_idle_thumb.png
+gui/phone/slider/horizontal_hover_bar.png
+gui/phone/slider/horizontal_hover_thumb.png
+gui/phone/slider/horizontal_idle_bar.png
+gui/phone/slider/horizontal_idle_thumb.png
+gui/phone/slider/vertical_hover_bar.png
+gui/phone/slider/vertical_hover_thumb.png
+gui/phone/slider/vertical_idle_bar.png
+gui/phone/slider/vertical_idle_thumb.png
+gui/scrollbar/horizontal_hover_bar.png
+gui/scrollbar/horizontal_hover_thumb.png
+gui/scrollbar/horizontal_idle_bar.png
+gui/scrollbar/horizontal_idle_thumb.png
+gui/scrollbar/vertical_hover_bar.png
+gui/scrollbar/vertical_hover_thumb.png
+gui/scrollbar/vertical_idle_bar.png
+gui/scrollbar/vertical_idle_thumb.png
+gui/slider/horizontal_hover_bar.png
+gui/slider/horizontal_hover_thumb.png
+gui/slider/horizontal_idle_bar.png
+gui/slider/horizontal_idle_thumb.png
+gui/slider/vertical_hover_bar.png
+gui/slider/vertical_hover_thumb.png
+gui/slider/vertical_idle_bar.png
+gui/slider/vertical_idle_thumb.png
+images/.DS_Store
+images/Backplate2.png
+images/Backplate3.png
+images/Backplate4.png
+images/Backplate5.png
+images/box.png
+images/box2.png
+images/box3.png
+images/bubble-tip.png
+images/bubble-tip2.png
+images/hurricane_like_me_logo_by_mitoky.png
+images/infoscreenBG.png
+images/phone.png
+images/pic1.png
+images/pic2.png
+images/by_Kia/1.jpg
+images/by_Kia/10.jpg
+images/by_Kia/11.jpg
+images/by_Kia/12.jpg
+images/by_Kia/13.jpg
+images/by_Kia/14.png
+images/by_Kia/15.png
+images/by_Kia/16.png
+images/by_Kia/17.png
+images/by_Kia/18.png
+images/by_Kia/19.jpg
+images/by_Kia/2.png
+images/by_Kia/20.jpg
+images/by_Kia/21.jpg
+images/by_Kia/22.png
+images/by_Kia/23.png
+images/by_Kia/24.png
+images/by_Kia/25.png
+images/by_Kia/26.png
+images/by_Kia/27.png
+images/by_Kia/28.png
+images/by_Kia/29.png
+images/by_Kia/3.jpg
+images/by_Kia/30.png
+images/by_Kia/31.png
+images/by_Kia/32.png
+images/by_Kia/33.png
+images/by_Kia/34.png
+images/by_Kia/35.jpg
+images/by_Kia/36.jpg
+images/by_Kia/37.png
+images/by_Kia/4.jpg
+images/by_Kia/5.jpg
+images/by_Kia/5.png
+images/by_Kia/6.jpg
+images/by_Kia/7.png
+images/by_Kia/8.jpg
+images/by_Kia/9.jpg
+images/by_Kia/bites.jpg
+images/by_Kia/bowtie.png
+images/by_Kia/circlewipe-ccw.jpg
+images/by_Kia/circlewipe-cw.jpg
+images/by_Kia/cmet.jpg
+images/by_Kia/curtains.png
+images/by_Kia/cw-side.jpg
+images/by_Kia/cw-top.jpg
+images/by_Kia/dots.png
+images/by_Kia/edges.png
+images/by_Kia/flips.png
+images/by_Kia/fur.jpg
+images/by_Kia/glasswool.jpg
+images/by_Kia/goslow.png
+images/by_Kia/letter.png
+images/by_Kia/maze.png
+images/by_Kia/pix1.jpg
+images/by_Kia/pix2.png
+images/by_Kia/pix3.png
+images/by_Kia/pix4.png
+images/by_Kia/puzz.png
+images/by_Kia/radio.jpg
+images/by_Kia/rain1.jpg
+images/by_Kia/rain2.jpg
+images/by_Kia/shatter.png
+images/by_Kia/shot.png
+images/by_Kia/snake.png
+images/by_Kia/snake2.png
+images/by_Kia/snakes.png
+images/by_Kia/snow1.png
+images/by_Kia/sunshine.jpg
+images/by_Kia/test.jpg
+images/by_Kia/wet.jpg
+images/by_Kia/wipe.png
+images/by_LIZM/.DS_Store
+images/by_LIZM/Courtney/.DS_Store
+images/by_LIZM/Eir/.DS_Store
+images/by_LIZM/Jade/.DS_Store
+images/by_LIZM/Karla/.DS_Store
+images/by_LIZM/Troy/.DS_Store
+images/by_deji/Courtney_Bored.png
+images/by_deji/Courtney_Happy.png
+images/by_deji/Courtney_Neutral.png
+images/by_deji/Courtney_VHappy.png
+images/by_deji/Coworker1_Blush.png
+images/by_deji/Coworker1_Embarrassed.png
+images/by_deji/Coworker1_Neutral.png
+images/by_deji/Coworker2_Neutral.png
+images/by_deji/Coworker3_Neutral.png
+images/by_deji/Eir_Angry.png
+images/by_deji/Eir_Bored.png
+images/by_deji/Eir_Embarrassed.png
+images/by_deji/Eir_Happy.png
+images/by_deji/Eir_Neutral.png
+images/by_deji/Eir_Panic.png
+images/by_deji/Eir_VHappy.png
+images/by_deji/Icon
+images/by_deji/ItGuy_Happy.png
+images/by_deji/ItGuy_Intense.png
+images/by_deji/ItGuy_Neutral.png
+images/by_deji/ItGuy_Panic.png
+images/by_deji/ItGuy_Surprised.png
+images/by_deji/Jade_Angry.png
+images/by_deji/Jade_Blush.png
+images/by_deji/Jade_Bored.png
+images/by_deji/Jade_Embarrassed.png
+images/by_deji/Jade_Happy.png
+images/by_deji/Jade_Intense.png
+images/by_deji/Jade_Neutral.png
+images/by_deji/Jade_Panic.png
+images/by_deji/Jade_Sad.png
+images/by_deji/Jade_Surprised.png
+images/by_deji/Jade_VHappy.png
+images/by_deji/Jade_VSad.png
+images/by_deji/Karla_Bored.png
+images/by_deji/Karla_Happy.png
+images/by_deji/Karla_Intense.png
+images/by_deji/Karla_Neutral.png
+images/by_deji/Karla_Surprised.png
+images/by_deji/Karla_VHappy.png
+images/by_deji/StationAgent_Neutral.png
+images/by_deji/StoreEmployee_Bored.png
+images/by_deji/StoreEmployee_Intense.png
+images/by_deji/StoreEmployee_Neutral.png
+images/by_deji/StoreEmployee_Panic.png
+images/by_deji/StoreEmployee_Sad.png
+images/by_deji/StoreEmployee_VSad.png
+images/by_deji/Troy_Angry.png
+images/by_deji/Troy_Blush.png
+images/by_deji/Troy_Bored.png
+images/by_deji/Troy_Embarrassed.png
+images/by_deji/Troy_Happy.png
+images/by_deji/Troy_Neutral.png
+images/by_deji/Troy_Panic.png
+images/by_deji/Troy_VHappy.png
+images/by_unclemugen/.DS_Store
+images/by_unclemugen/condo_Day 07.jpg
+images/by_unclemugen/condo_Day 08.jpg
+images/by_unclemugen/future_office.jpg
+images/by_unclemugen/menstoilet_03.jpg
+images/by_unclemugen/room_afternoon_light_off.jpg
+images/by_unclemugen/room_afternoon_light_on.jpg
+images/by_unclemugen/room_dawn_light_off.jpg
+images/by_unclemugen/room_dawn_light_on.jpg
+images/by_unclemugen/room_dusk_light_off.jpg
+images/by_unclemugen/room_dusk_light_on.jpg
+images/by_unclemugen/room_evening_light_off.jpg
+images/by_unclemugen/room_evening_light_on.jpg
+images/by_unclemugen/room_morning_light_off.jpg
+images/by_unclemugen/room_morning_light_on.jpg
+images/by_unclemugen/room_night_light_off.jpg
+images/by_unclemugen/room_noon_light_off (1).jpg
+images/by_unclemugen/room_noon_light_off.jpg
+images/by_unclemugen/room_noon_light_on.jpg
+images/by_unclemugen/street_background_house_front.jpg
+images/by_unclemugen/train_one.jpg
+images/by_unclemugen/train_one_transparent.png
+images/by_unclemugen/train_station_almost_dusk copy.jpg
+images/by_unclemugen/train_station_morning copy.jpg
+images/by_unclemugen/train_station_night copy.jpg
+images/by_unclemugen/train_station_noon copy.jpg
+images/messenger/.DS_Store
+images/messenger/arr_hover.png
+images/messenger/arr_idle.png
+images/messenger/back.png
+images/messenger/back2.png
+images/messenger/box3.png
+images/messenger/box4.png
+images/messenger/box5.png
+images/messenger/eir.png
+images/messenger/karla.png
+images/messenger/sound_hover.png
+images/messenger/sound_idle.png
+images/messenger/av/.DS_Store
+images/messenger/av/KSTAR.png
+images/messenger/av/KingCourt.png
+music/Angel Share.mp3
+music/Bicycle.mp3
+music/Crinoline Dreams.mp3
+music/Digital Lemonade.mp3
+music/Dreamer.mp3
+music/Easy Lemon 60 second.mp3
+music/Music_Box-Big_Daddy-1389738694.mp3
+music/alarm_clock.mp3
+music/city-street-intersection-traffic_fkKzHq4O.wav
+music/city-street-walking-ambience-looping_fy3iFBEu.wav
+music/new_message.mp3
+music/old-memories-bbc-1215-65.wav
+music/ready-for-the-new-dawn_MJipmIBO.wav
+music/sleeping-peacefully_GJkBQ8ru.wav
+music/sleeping-to-forget_zkRzwMHO.wav
+music/sms-alert-5-daniel_simon.mp3
+music/soft-piano-love-music-bbc-1215-85.wav
+music/ssm-102518-Winter-flame-GC-01.wav
+music/ssm-102518-anybody-home.wav
+music/ssm-102518-supernova-sunset.wav
+music/stand-back_G13-qfSd.wav
+music/such-a-great-day_zkmu7ISu.wav
+music/top-of-the-world-full_GyYoqWEu.wav
+saves/_reload-2-LT1.save
+saves/auto-1-LT1.save
+saves/auto-10-LT1.save
+saves/auto-2-LT1.save
+saves/auto-3-LT1.save
+saves/auto-4-LT1 (1).save
+saves/auto-4-LT1.save
+saves/auto-5-LT1 (1).save
+saves/auto-5-LT1.save
+saves/auto-6-LT1.save
+saves/auto-7-LT1 (1).save
+saves/auto-7-LT1.save
+saves/auto-8-LT1.save
+saves/auto-9-LT1 (1).save
+saves/auto-9-LT1.save
+saves/navigation.json
+saves/persistent
+tl/.DS_Store
+tl/None/common.rpym
+tl/None/common.rpymc
