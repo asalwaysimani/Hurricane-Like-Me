@@ -50,7 +50,7 @@ cwCallahan "Oh thank god I caught you Eir, I thought you left already!"
 
 "{i}Drats{/i}" #Upper screen text as if in a thought
 
-call DrinksWithCoworker
+call DrinksWithCoworker from _call_DrinksWithCoworker
 
 
 

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/phone.rpy", line 328: u'line_height' is not a keyword argument or valid child for the text statement.
-    line_height "3"
-               ^
+File "game/script.rpy", line 319: choice menuitem expects a non-empty block.
+    "Help, visibly happy to help":
+                                  ^
 
-Ren'Py Version: Ren'Py 7.2.2.491
-Thu Aug 22 16:43:32 2019
+Ren'Py Version: Ren'Py 7.3.2.320
+Sun Sep 15 13:40:41 2019

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1567: Line is indented, but the preceding add statement does not expect a block. Please check this line's indentation.
-    at transform:
-    ^
+File "game/script.rpy", line 36: expected statement.
+    add eir_moodletbounce
+                         ^
 
-Ren'Py Version: Ren'Py 7.3.2.320
-Sun Aug 25 15:40:55 2019
+Ren'Py Version: Ren'Py 7.2.2.491
+Mon Aug 26 10:10:40 2019

@@ -29,6 +29,9 @@ define psg = Character("Customer Service Rep Alan")
 define rep = Character("Sheen Representative")
 define fdl = Character("Receptionist Jenny")
 define ewChibi = Character("Inner Eir", image="ewChibi")
+define cwMarcia = Character("Barista Marcia")
+define cwHarvey = Character("Barista Harvey")
+
 #define chibi_deadpanned = "images/by_RoseSense/Eir_Chibi_Deadpanned.png"
 #define chibi_panicked = "images/by_RoseSense/Eir_Chibi_Panicked.png"
 #define chibi_angry = "images/by_RoseSense/Eir_Chibi_Angry.png"
@@ -45,10 +48,16 @@ layeredimage ewChibi:
         attribute angry:
             "images/by_RoseSense/Eir_Chibi_Angry (1).png"
     #group moodlets:
-    #    attribute embarrassed:
-    #    attribute intense:
-    #    attribute tired:
-    #    attribute surprised:
+    #    attribute neutral:
+    #        "images/by_deji/PopUps/Eir-Neutral.png"
+    #    attribute angry:
+    #        "images/by_deji/PopUps/Eir-Angry.png"
+    #    attribute bored:
+    #        "images/by_deji/PopUps/Eir-Bored.png"
+    #    attribute happy:
+    #        "images/by_deji/PopUps/Eir-Happy.png"
+    #    attribute panic:
+    #        "images/by_deji/PopUps/Eir-Panic.png"
 
 layeredimage Eir:
     group outfit:
@@ -86,13 +95,13 @@ layeredimage Eir:
 layeredimage Troy:
     group outfit:
         attribute Casual default:
-            "images/by_Sysen/Troy/Casual.png"
+            "images/by_Sysen/Troy/casual.png"
         attribute Barista1:
-            "images/by_Sysen/Troy/Barista1.png"
+            "images/by_Sysen/Troy/barisata1.png"
         attribute Barista2:
-            "images/by_Sysen/Troy/Barista2.png"
+            "images/by_Sysen/Troy/barisata2.png"
         attribute BikeMessenger:
-            "images/by_Sysen/Troy/Bike.png"
+            "images/by_Sysen/Troy/bike.png"
     group accessories:
         attribute Glasses:
             "images/by_Sysen/Troy/glasses.png"
@@ -115,17 +124,32 @@ layeredimage Troy:
             "images/by_Sysen/Troy/Intense.png"
 
 
-image Jade = "images/by_deji/Jade_Neutral.png"
-image side Karla = "images/by_deji/Karla_Neutral.png"
-image side Karla Bored = "images/by_deji/Karla_Bored.png"
-image side Courtney = "images/by_deji/Courtney_Neutral.png"
-image side Courtney Happy = "images/by_deji/Courtney_Happy.png"
+layeredimage Jade:
+    group expressions:
+        attribute Neutral default:
+            "images/by_deji/Jade_Neutral.png"
+        attribute Angry:
+            "images/by_deji/Jade_Angry.png"
+        attribute Bored:
+            "images/by_deji/Jade_Bored.png"
+        attribute Intense:
+            "images/by_deji/Jade_Intense.png"
+        attribute VHappy:
+            "images/by_deji/Jade_VHappy.png"
+#image side Karla = "images/by_deji/Karla_Neutral.png"
+#image side Karla Bored = "images/by_deji/Karla_Bored.png"
+#image side Courtney = "images/by_deji/Courtney_Neutral.png"
+#image side Courtney Happy = "images/by_deji/Courtney_Happy.png"
 
 image cwPete = "images/by_deji/Coworker2_Neutral.png"
 image cwPete Blush = "images/by_deji/Coworker2_Blush.png"
 image cwPete Embarrassed = "images/by_deji/Coworker2_Embarrassed.png"
 image cwAubrey = "images/by_deji/Coworker1_Neutral.png"
 image cwCallahan = "images/by_deji/Coworker3_Neutral.png"
+
+image cwMarcia = "images/by_deji/Marcia_Shame.png"
+image cwHarvey = "images/by_deji/Harvey_Neutral.png"
+
 image ItGuy = "images/by_deji/ItGuy_Neutral.png"
 image psgEmployee = "images/by_deji/StoreEmployee_Bored.png"
 image side StationAgent1 = "images/by_deji/StationAgent_Neutral.png"

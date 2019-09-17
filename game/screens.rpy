@@ -1562,17 +1562,6 @@ screen invdisplay:
                 text ("[item.item]")
 
 screen moodpointdisplay:
-        if Mood_Chill >= 1:
-            add eir_moodletbounce:
-                xpos 150
-                ypos 600
-                at transform:
-                    yoffset 0
-                    linear .175 yoffset -10
-                    linear .175 yoffset 0
-                    linear .175 yoffset -4
-                    linear .175 yoffset 0
-                    repeat 5
         vbox:
             xalign 1.0
             yalign 0.0
@@ -1583,6 +1572,7 @@ screen moodpointdisplay:
             text "Sleep :[Mood_Sleep]"
             text "Panic :[Mood_Panic]"
             text "Stress :[Mood_Stress]"
+            text "Embarrassed :[Mood_Embarrassed]"
 
 
 
