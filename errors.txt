@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 36: expected statement.
-    add eir_moodletbounce
-                         ^
+File "game/phone.rpy", line 285: u'else' is not a keyword argument or valid child for the for statement.
+    else:
+        ^
 
-Ren'Py Version: Ren'Py 7.2.2.491
-Mon Aug 26 10:10:40 2019
+Ren'Py Version: Ren'Py 7.3.2.320
+Sun Sep 29 11:19:35 2019

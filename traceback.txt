@@ -1,74 +1,75 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/by_Sysen/Troy/barista1.png'>:
-  File "game/script.rpy", line 614, in script call
-    credits = ('Backgrounds', 'Uncle Mugen'), ('Sprites', 'Deji'), ('Writing', 'meltycreamcats'), ('Writing', 'margaretcatter'), ('Programming', 'margaretcatter'), ('Programming', 'Arsym'), ('GUI Design', 'Re:Alice') ('Music', 'Kevin MacLeod'), ('Music', 'XXX'), ('SFX', 'Mike Koenig'), ('GFX Wipes', 'Kia')
-  File "game/Beta Ending.rpy", line 14, in script
-    tc "So I bet you're wondering where I was?"
-IOError: Couldn't find file 'images/by_Sysen/Troy/barista1.png'.
+While running game code:
+  File "game/script.rpy", line 710, in script
+    $ eir ("Soooo much, you down to hear it?")
+  File "game/script.rpy", line 710, in <module>
+    $ eir ("Soooo much, you down to hear it?")
+  File "game/phone.rpy", line 305, in eir
+    renpy.pause()
+  File "game/phone.rpy", line 257, in execute
+    screen txt_msg():
+  File "game/phone.rpy", line 257, in execute
+    screen txt_msg():
+  File "game/phone.rpy", line 265, in execute
+    window:
+  File "game/phone.rpy", line 270, in execute
+    vbox:
+Exception: Style u'phonemenu' does not exist.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 614, in script call
-    credits = ('Backgrounds', 'Uncle Mugen'), ('Sprites', 'Deji'), ('Writing', 'meltycreamcats'), ('Writing', 'margaretcatter'), ('Programming', 'margaretcatter'), ('Programming', 'Arsym'), ('GUI Design', 'Re:Alice') ('Music', 'Kevin MacLeod'), ('Music', 'XXX'), ('SFX', 'Mike Koenig'), ('GFX Wipes', 'Kia')
-  File "game/Beta Ending.rpy", line 14, in script
-    tc "So I bet you're wondering where I was?"
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\ast.py", line 694, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\exports.py", line 1322, in say
-    who(what, *args, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\character.py", line 1127, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, **display_args)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\character.py", line 842, in do_display
-    **display_args)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\character.py", line 591, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\ui.py", line 289, in interact
+  File "game/script.rpy", line 710, in script
+    $ eir ("Soooo much, you down to hear it?")
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ast.py", line 912, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/python.py", line 2004, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 710, in <module>
+    $ eir ("Soooo much, you down to hear it?")
+  File "game/phone.rpy", line 305, in eir
+    renpy.pause()
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/exports.py", line 1471, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/ui.py", line 295, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 2690, in interact
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 2699, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 3174, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\core.py", line 2086, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 516, in renpy.display.render.render_screen
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "accelerator.pyx", line 110, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\image.py", line 500, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\image.py", line 306, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\im.py", line 580, in render
-    return cache.get(self, render=True)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\im.py", line 266, in get
-    surf = image.load()
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\display\im.py", line 625, in load
-    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "L:\Programs\Renpy\renpy-7.2.2-sdk\renpy\loader.py", line 576, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/by_Sysen/Troy/barista1.png'.
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3091, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/screen.py", line 430, in visit_all
+    callback(self)
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/core.py", line 3091, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/screen.py", line 440, in per_interact
+    self.update()
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/phone.rpy", line 257, in execute
+    screen txt_msg():
+  File "game/phone.rpy", line 257, in execute
+    screen txt_msg():
+  File "game/phone.rpy", line 265, in execute
+    window:
+  File "game/phone.rpy", line 270, in execute
+    vbox:
+  File "/Applications/renpy-6.99.14.3-sdk/renpy/display/layout.py", line 524, in __init__
+    self._clipping = self.style.clipping
+  File "gen/styleclass.pxi", line 189, in renpy.styledata.styleclass.Style.clipping.__get__
+  File "style.pyx", line 493, in renpy.style.StyleCore._get
+  File "style.pyx", line 679, in renpy.style.build_style
+  File "style.pyx", line 142, in renpy.style.get_full_style
+  File "style.pyx", line 83, in renpy.style.get_style
+Exception: Style u'phonemenu' does not exist.
 
-Windows-8-6.2.9200
-Ren'Py 7.2.2.491
+Darwin-16.6.0-x86_64-i386-64bit
+Ren'Py 7.3.2.320
 Hurricane Like Me Renpy 7.2.2.491
-Mon Sep 16 23:34:54 2019
+Sun Sep 29 11:20:13 2019

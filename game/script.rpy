@@ -320,7 +320,7 @@ show ewChibi angry at topleft
 show screen thought ("I’m not happy to help.")
 hide screen thought
 hide ewChibi
-
+    
 menu:
     "Help, visibly happy to help.":
 
@@ -410,7 +410,7 @@ pause (1)
 
 #INT. JADES OFFICE
 
-scene IntJadeOffice
+scene IntJadeOffice #Needs to be changed to evening variate of this background
 
 show Jade VHappy at right
 show Eir Work Happy at left
@@ -485,7 +485,7 @@ show bg black with w33
 pause (1)
 
 #INT. EIR’S APARTMENT, NIGHT - FRIDAY
-scene EirBedroomEvening
+scene EirBedroomNight
 
 show Eir Work
 
@@ -675,6 +675,101 @@ tc "I’m {i}definitely{/i} going now."
 
 hide cwMarcia
 hide Troy
+
+#INT. EIR’S APARTMENT, EVENING - THURSDAY
+
+scene EirBedroomNight
+
+##############################################################
+############################VIA TEXT############################
+##############################################################
+
+show screen EirPhone
+#call txt_startEir
+$ del_all_msg()
+$ kstar("So, when are we hanging? Did you say you wanted to do Saturday or Sunday?")
+$ eir("Why not booooth! I got a bunch done so I can swing it if you can") # alert=True)
+$ kstar(">:) I’m hella down. This week’s been disgusting, as you already know.")
+$ eir("Lol I can’t believe what your coworker tried to pull.")
+$ kstar("RIGHT? But enough about that, I’m gonna get mad again if I talk about my week.")
+$ kstar("How's yours been?")
+
+menu:
+
+    "Detailed recount of all the ways she loves her jobs just wishes her coworkers were more independent.":
+        jump detailed
+        #block of code to run
+    "Minor gripes about work, mostly glossed over":
+        jump minor
+    "Glosses over everything and deflects when Karla tries to press her":
+        jump glossy
+
+label detailed:
+    show screen txt_msg
+
+    $ eir ("Soooo much, you down to hear it?")
+
+    $ kstar ("Yeah definitely")
+
+    $ eir ("Okay so I love my job but my coworkers are way too dependent on me!! Any time anything happens I’m the one who has to fix it! AND my boss gave me a huge project to work on that’ll help my career, but how am I supposed to get it done with all this bullshit! Ugh, I hate people.") 
+
+    $ kstar ("Damn that sucks. Guess we both have some work problems, huh?")
+
+    $ eir ("Tell me about it. I’m just exhausted Karla, I don’t know when I’ll fuck it up.")
+
+    $ kstar ("Who says you will though? You could pull all this off.")
+
+    $ eir ("I guess lol? I just don’t have that much faith in myself")
+
+    $ kstar ("Well maybe you should, stop being stupid Eir")
+
+    $ eir ("I got it, I got it.") 
+
+    hide screen txt_msg
+    jump txt_after_menu
+
+label minor:
+    show screen txt_msg
+
+    $ eir ("Work’s just being a bitch")
+
+    $ kstar ("How so?")
+
+    $ eir ("I just got a bunch of new work, but I’ll manage.") 
+
+    $ kstar ("If you say so...I’m worried though.") 
+
+    $ eir ("Don’t be!! Might be a mess in life, but I usually don’t fuck up work too badly.")
+
+    $ kstar ("Okay that’s true.") 
+    hide screen txt_msg
+    jump txt_after_menu
+
+label glossy:
+    show screen txt_msg
+
+    $ eir ("It’s nothing! Life’s just a little tough right now but it’s all good now.")
+
+    $ kstar ("Are you sure??")
+
+    $ eir ("Super sure!")
+
+    $ kstar ("Weren’t you just saying you had a project or something? You can talk to me you know.")
+
+    $ eir ("I know I can. I’m fine though, seriously.") 
+
+    $ kstar (":/")
+
+    $ eir (":)")
+    hide screen txt_msg
+    jump txt_after_menu
+
+hide screen EirPhone
+#call txt_end
+
+##############################################################
+#######################END  TEXT##############################
+##############################################################
 
 #END OF ACT
 show bg black with w9
