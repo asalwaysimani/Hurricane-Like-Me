@@ -264,13 +264,13 @@ screen txt_msg():
 
     window:
         style "phone_choice"
-        xalign 0.5
+        xalign 1.0
         yalign 0.5
 
         vbox:
             style "phone_menu"
             spacing 2
-            for caption, action, chosen in [("test","test2","test3")]:
+            for caption, action, chosen in [("ALPHA","BETA","ZETA")]:
                 if action:
                     if chosen:
                         button:

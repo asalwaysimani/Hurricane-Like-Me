@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/phone.rpy", line 285: u'else' is not a keyword argument or valid child for the for statement.
-    else:
-        ^
+File "game/script.rpy", line 809: expected 'name' not found.
+    screen thought ("She did not take the hint.")
+                    ^
 
 Ren'Py Version: Ren'Py 7.3.2.320
-Sun Sep 29 11:19:35 2019
+Sun Sep 29 12:03:30 2019

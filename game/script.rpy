@@ -695,7 +695,7 @@ $ kstar("RIGHT? But enough about that, I’m gonna get mad again if I talk about
 $ kstar("How's yours been?")
 
 menu:
-
+    
     "Detailed recount of all the ways she loves her jobs just wishes her coworkers were more independent.":
         jump detailed
         #block of code to run
@@ -770,6 +770,50 @@ hide screen EirPhone
 ##############################################################
 #######################END  TEXT##############################
 ##############################################################
+
+#INT. EIR’S OFFICE, MORNING FRIDAY
+
+scene EirOfficeDay
+
+show text "{size=+50}{font=fonts/CaviarDreams_Bold.ttf}8:26AM{/font}{/size}" at top with Pause (10)
+hide text with dissolve
+
+"Eir comes into the office thirty minutes early for the first time in--well, the first time ever. She prides herself on many things, but coming in early has never been one of them. This is a good sign."
+
+show Eir Work at center
+
+"As she sits down at her desk, Eir feels confident she can get work done. For once, her confidence isn’t unfounded. She’s doing pretty well for herself. That is, until lunch rolls around."
+
+show cwAubrey at right
+
+cwAubrey "Hey Eir!"
+
+show screen thought ("Oh god what is it now? How? Why")
+
+show Eir Happy
+
+ew "Hey Aubrey, what’s up?"
+
+cwAubrey "You know, I really wanted to talk to you about this project I’ve been working on."
+
+hide screen thought
+
+ew "Uh, what about it?"
+
+"Eir loudly clears her throat to indicate she’s working on something. That hint flies past Aubrey, who pulls up a chair next to her and starts talking."
+
+show screen thought ("Please take the hint, please take the hint, please take the hint")
+
+cwAubrey "I wanted to say that I’m really interested in how I can explore the aspect of communal food that my client--"
+
+show screen thought ("She did not take the hint.")
+
+"Aubrey goes on. And on. And on. Normally, Eir would be thrilled to have a coworker approach for something without asking for help. But these are not normal circumstances."
+
+ew "Uh, Aubrey--"
+
+hide screen thought
+
 
 #END OF ACT
 show bg black with w9
