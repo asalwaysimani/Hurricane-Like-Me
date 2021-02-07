@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 36: expected statement.
-    add eir_moodletbounce
-                         ^
+File "game/script.rpy", line 809: expected 'name' not found.
+    screen thought ("She did not take the hint.")
+                    ^
 
-Ren'Py Version: Ren'Py 7.2.2.491
-Mon Aug 26 10:10:40 2019
+Ren'Py Version: Ren'Py 7.3.2.320
+Sun Sep 29 12:03:30 2019

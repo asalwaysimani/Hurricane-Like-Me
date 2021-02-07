@@ -320,7 +320,7 @@ show ewChibi angry at topleft
 show screen thought ("I’m not happy to help.")
 hide screen thought
 hide ewChibi
-
+    
 menu:
     "Help, visibly happy to help.":
 
@@ -410,7 +410,7 @@ pause (1)
 
 #INT. JADES OFFICE
 
-scene IntJadeOffice
+scene IntJadeOffice #Needs to be changed to evening variate of this background
 
 show Jade VHappy at right
 show Eir Work Happy at left
@@ -485,7 +485,7 @@ show bg black with w33
 pause (1)
 
 #INT. EIR’S APARTMENT, NIGHT - FRIDAY
-scene EirBedroomEvening
+scene EirBedroomNight
 
 show Eir Work
 
@@ -675,6 +675,145 @@ tc "I’m {i}definitely{/i} going now."
 
 hide cwMarcia
 hide Troy
+
+#INT. EIR’S APARTMENT, EVENING - THURSDAY
+
+scene EirBedroomNight
+
+##############################################################
+############################VIA TEXT############################
+##############################################################
+
+show screen EirPhone
+#call txt_startEir
+$ del_all_msg()
+$ kstar("So, when are we hanging? Did you say you wanted to do Saturday or Sunday?")
+$ eir("Why not booooth! I got a bunch done so I can swing it if you can") # alert=True)
+$ kstar(">:) I’m hella down. This week’s been disgusting, as you already know.")
+$ eir("Lol I can’t believe what your coworker tried to pull.")
+$ kstar("RIGHT? But enough about that, I’m gonna get mad again if I talk about my week.")
+$ kstar("How's yours been?")
+
+menu:
+    
+    "Detailed recount of all the ways she loves her jobs just wishes her coworkers were more independent.":
+        jump detailed
+        #block of code to run
+    "Minor gripes about work, mostly glossed over":
+        jump minor
+    "Glosses over everything and deflects when Karla tries to press her":
+        jump glossy
+
+label detailed:
+    show screen txt_msg
+
+    $ eir ("Soooo much, you down to hear it?")
+
+    $ kstar ("Yeah definitely")
+
+    $ eir ("Okay so I love my job but my coworkers are way too dependent on me!! Any time anything happens I’m the one who has to fix it! AND my boss gave me a huge project to work on that’ll help my career, but how am I supposed to get it done with all this bullshit! Ugh, I hate people.") 
+
+    $ kstar ("Damn that sucks. Guess we both have some work problems, huh?")
+
+    $ eir ("Tell me about it. I’m just exhausted Karla, I don’t know when I’ll fuck it up.")
+
+    $ kstar ("Who says you will though? You could pull all this off.")
+
+    $ eir ("I guess lol? I just don’t have that much faith in myself")
+
+    $ kstar ("Well maybe you should, stop being stupid Eir")
+
+    $ eir ("I got it, I got it.") 
+
+    hide screen txt_msg
+    jump txt_after_menu
+
+label minor:
+    show screen txt_msg
+
+    $ eir ("Work’s just being a bitch")
+
+    $ kstar ("How so?")
+
+    $ eir ("I just got a bunch of new work, but I’ll manage.") 
+
+    $ kstar ("If you say so...I’m worried though.") 
+
+    $ eir ("Don’t be!! Might be a mess in life, but I usually don’t fuck up work too badly.")
+
+    $ kstar ("Okay that’s true.") 
+    hide screen txt_msg
+    jump txt_after_menu
+
+label glossy:
+    show screen txt_msg
+
+    $ eir ("It’s nothing! Life’s just a little tough right now but it’s all good now.")
+
+    $ kstar ("Are you sure??")
+
+    $ eir ("Super sure!")
+
+    $ kstar ("Weren’t you just saying you had a project or something? You can talk to me you know.")
+
+    $ eir ("I know I can. I’m fine though, seriously.") 
+
+    $ kstar (":/")
+
+    $ eir (":)")
+    hide screen txt_msg
+    jump txt_after_menu
+
+hide screen EirPhone
+#call txt_end
+
+##############################################################
+#######################END  TEXT##############################
+##############################################################
+
+#INT. EIR’S OFFICE, MORNING FRIDAY
+
+scene EirOfficeDay
+
+show text "{size=+50}{font=fonts/CaviarDreams_Bold.ttf}8:26AM{/font}{/size}" at top with Pause (10)
+hide text with dissolve
+
+"Eir comes into the office thirty minutes early for the first time in--well, the first time ever. She prides herself on many things, but coming in early has never been one of them. This is a good sign."
+
+show Eir Work at center
+
+"As she sits down at her desk, Eir feels confident she can get work done. For once, her confidence isn’t unfounded. She’s doing pretty well for herself. That is, until lunch rolls around."
+
+show cwAubrey at right
+
+cwAubrey "Hey Eir!"
+
+show screen thought ("Oh god what is it now? How? Why")
+
+show Eir Happy
+
+ew "Hey Aubrey, what’s up?"
+
+cwAubrey "You know, I really wanted to talk to you about this project I’ve been working on."
+
+hide screen thought
+
+ew "Uh, what about it?"
+
+"Eir loudly clears her throat to indicate she’s working on something. That hint flies past Aubrey, who pulls up a chair next to her and starts talking."
+
+show screen thought ("Please take the hint, please take the hint, please take the hint")
+
+cwAubrey "I wanted to say that I’m really interested in how I can explore the aspect of communal food that my client--"
+
+show screen thought ("She did not take the hint.")
+
+"Aubrey goes on. And on. And on. Normally, Eir would be thrilled to have a coworker approach for something without asking for help. But these are not normal circumstances."
+
+ew "Uh, Aubrey--"
+
+hide screen thought
+
 
 #END OF ACT
 show bg black with w9

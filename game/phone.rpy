@@ -3,13 +3,14 @@
 #################################################################################
 
 
-#OPTIONS#
+#OPTIONS PAGE FROM THE zPHONE TEMPLATES TUTORIAL#
 # Picking up the phone
 transform txt_pickup:
     yalign 1.0 xalign 0.5
     yoffset 900
     easein 0.3 yoffset 100
 
+# End the phone conversation
 transform txt_hide:
     yalign 1.0 xalign 0.5
     yoffset 100
@@ -71,9 +72,9 @@ label txt_msg3:
     $ renpy.pause(0.1)
     return
 
-label txt_msgi:
+label txt_msg1:
     $ renpy.pause()
-    hide screen txt_msgi
+    hide screen txt_msg1
     $ renpy.pause(0.1)
     return
 
@@ -81,7 +82,7 @@ label txt_after_menu:
     hide screen txt_msg
     hide screen txt_msg2
     hide screen txt_msg3
-    hide screen txt_msgi
+    hide screen txt_msg1
     $ renpy.pause(0.1)
     return    
     
@@ -90,7 +91,7 @@ label txt_end:
     hide screen txt_msg
     hide screen txt_msg2
     hide screen txt_msg3
-    hide screen txt_msgi
+    hide screen txt_msg1
     show phone at phone_hide #Show phone refers to image that is phone
     $ renpy.pause(0.2)
     return
@@ -100,13 +101,13 @@ label txt(who, what):
     hide screen txt_msg
     hide screen txt_msg2
     hide screen txt_msg3
-    hide screen txt_msgi
+    hide screen txt_msg1
     $ renpy.pause(0.1)
     # if you want to change the players name to be something else than "me" you can change it here
     if who.lower() == "me":
-        show screen phone_message2(who, what)
+        show screen txt_msg2(who, what)
     else:
-        show screen phone_message(who, what)
+        show screen txt_msg(who, what)
     return
     
 label reply_txt(who, what):
@@ -114,7 +115,7 @@ label reply_txt(who, what):
     hide screen txt_msg
     hide screen txt_msg2
     hide screen txt_msg3
-    hide screen txt_msgi
+    hide screen txt_msg1
     $ renpy.pause(0.1)
     show screen txt_msg3(who,what)
     return
@@ -124,11 +125,10 @@ label msg_img(who, what,img):
     hide screen txt_msg
     hide screen txt_msg2
     hide screen txt_msg3
-    hide screen txt_msgi
+    hide screen txt_msg1
     $ renpy.pause(0.1)
     show screen phone_message_image(who, what,img)
     return
-
 
 label msg_start(who, what):
     # if you want to change the players name to be something else than "me" you can change it here
@@ -147,6 +147,11 @@ init 5:
         xsize 360
         xoffset -40
     
+    style txt_menu:
+        size 18
+        ypadding 10
+        xpadding 10
+
     style txt_msg_frame:
         ypadding 10
         xpadding 10
@@ -247,6 +252,49 @@ init python:
     style.txt_base.size = 30
     style.txt_base.color = "#fff"
 
+#######Phone Choice Buttons go here#######
+
+screen txt_msg():
+    
+    #style_prefix "choice"
+
+    #vbox:
+    #    for i in items:
+    #        textbutton i.caption action i.action
+
+    window:
+        style "phone_choice"
+        xalign 1.0
+        yalign 0.5
+
+        vbox:
+            style "phone_menu"
+            spacing 2
+            for caption, action, chosen in [("ALPHA","BETA","ZETA")]:
+                if action:
+                    if chosen:
+                        button:
+                            action action
+                            style "phone_choice_chosen_button"
+                            text caption style "phone_choice_chosen"
+                    else:
+                        button:
+                            action action
+                            style "phone_choice_button"
+                            text caption style "phone_choice"
+                else:
+                    text caption style "phone_caption"
+
+init python:
+    style.phone_choice_button.background = Frame("gui/Hurricane_Like_Me/Phone_Choice/Base.png", 44,44)
+    style.phone_choice_button.hover_background = Frame("gui/Hurricane_Like_Me/Phone_Choice/Bottom_Select_Hover.png", 44, 44)
+    style.phone_choice_chosen_button.background = Frame("gui/Hurricane_Like_Me/Phone_Choice/Upper-select_Hover.png", 44, 44)
+    style.phone_choice_chosen_button.hover_background = Frame("gui/Hurricane_Like_Me/Phone_Choice/Upper-select_Idle.png", 44,44)
+
+    style.phone_choice.color = "#ffffff"
+    style.phone_choice_chosen.color = "#ffffff"
+    style.phone_choice.size = 18
+
     yadj = ui.adjustment()
     store.m_msg = []
 
@@ -336,6 +384,8 @@ screen EirPhone():
 screen TroyPhone():
     use Handphone("troy")
 #################################################################################
+
+
 
 
 #################################################################################
