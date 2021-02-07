@@ -330,6 +330,41 @@ style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
 
 
+define hotspotCoords = [
+(),
+(1397, 450, 45, 45), # Island
+(986, 450, 45, 45), # Red-Blue Intersection Top
+(838, 997, 45, 45), # Very bottom Blue
+(519, 732, 45, 45), # Red-Pink Intersection Bottom Left
+(374, 293, 45, 45), # Very Left Red
+]
+
+screen choice_map(items):
+
+    imagemap:
+
+        ground "gui/Hurricane_Like_Me/Map/idle_hor.png"
+        idle "gui/Hurricane_Like_Me/Map/selected_hor.png"
+        hover "gui/Hurricane_Like_Me/Map/selected_hor.png"
+
+        for x in items:
+
+            hotspot store.hotspotCoords[ x.kwargs["spot"] ]:
+                action x.action 
+                at mapHover 
+
+transform mapHover():
+
+    on idle:
+        alpha 1.0
+        linear 0.7 alpha 0.0
+        linear 0.7 alpha 1.0
+        repeat
+
+    on hover:
+        alpha 1.0
+
+
 ## Quick Menu screen ###########################################################
 ##
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
