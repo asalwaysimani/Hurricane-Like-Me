@@ -54,6 +54,22 @@ show Eir Angry at left
 ew "Now wait a second there Troy!"
 tc "This is Eir, she's the main character of this game."
 
+
+menu (screen = "choice_map"):
+
+    "Intersection" (spot = 2):
+
+        "You went to the Intersection!!!"
+
+    "Main Station" (spot = 3):
+
+        "You went to the Main Station Blue!"
+
+    "Left Red Stop" (spot = 5):
+
+        "You went to the very west side on red lineor smth aso asd as."
+
+
 ew "Thats right I'm the main character so why are you here doing the intro?"
 tc "Because you were late, we were supposed to start this ten minutes ago."
 
