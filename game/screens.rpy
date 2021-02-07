@@ -356,7 +356,7 @@ screen quick_menu():
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Report an error") action OpenURL ("https://goo.gl/forms/e6kKdM6WdDIffhIj2")
-            textbutton _("Prefs") action ShowMenu('preferences')
+            textbutton _("Prefs") action ShowMenu('Options')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -385,6 +385,29 @@ style quick_button_text:
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
 
+default _game_menu_screen = "navigation"
+
+screen navigation():
+
+    modal True
+
+    add "gui/Hurricane_Like_Me/Menu/bg.png"
+
+    imagemap:
+        align (0.5, 0.5)
+        ground None
+        idle "gui/Hurricane_Like_Me/Menu/Menu-Idle.png"
+        hover "gui/Hurricane_Like_Me/Menu/Menu-Hover.png"
+
+        hotspot (188, 400, 317, 65) action Return()
+        hotspot (198, 472, 295, 65) action ShowMenu("load")
+        hotspot (208, 549, 277, 65) action ShowMenu("save")
+        hotspot (234, 627, 225, 65) action ShowMenu("Options")
+        hotspot (273, 704, 145, 65) action MainMenu()
+
+    key "game_menu" action Return()
+
+
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 
@@ -411,18 +434,34 @@ screen main_menu():
 
     tag menu 
 
-    window:
-        imagemap:
-            yalign 1.0
-            ground "gui/Hurricane_Like_Me/TitleScreen/Menu.png"
-            hover "gui/Hurricane_Like_Me/TitleScreen/Menu-Hover.png"
-            #selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
-            # hotspot (X, Y, W, H) action
-            hotspot (352, 113, 155, 60) action ShowMenu("credits")
-            hotspot (613, 117, 125, 60) action ShowMenu("load")
-            hotspot (841, 94, 315, 80) action Start()
-            hotspot (1270, 184, 185, 60) action ShowMenu("preferences")
-            hotspot (1546, 107, 124, 60) action Quit
+    add "gui/Hurricane_Like_Me/TitleScreen/background.png"
+
+    # Patreon
+    imagebutton:
+        pos (0, 155)
+        idle "gui/Hurricane_Like_Me/TitleScreen/Button_Patreon.png"
+        hover "gui/Hurricane_Like_Me/TitleScreen/Button_Patreon_Hover.png"
+        action OpenURL("https://www.patreon.com/MargaretCatterDev")
+
+    # Discord
+    imagebutton:
+        pos (0, 260)
+        idle "gui/Hurricane_Like_Me/TitleScreen/Button_Discord.png"
+        hover "gui/Hurricane_Like_Me/TitleScreen/Button_Discord_Hover.png"
+        action OpenURL("https://en.wikipedia.org/wiki/Puppy")
+
+    # Bottom menu
+    imagemap:
+        yalign 1.0
+        ground "gui/Hurricane_Like_Me/TitleScreen/Menu.png"
+        hover "gui/Hurricane_Like_Me/TitleScreen/Menu-Hover.png"
+        #selected "gui/Hurricane_Like_me/TitleScreen/Menu-Select.png"
+        # hotspot (X, Y, W, H) action
+        hotspot (329, 117, 201, 53) action ShowMenu("credits")
+        hotspot (569, 117, 201, 53) action ShowMenu("load")
+        hotspot (779, 61, 446, 128) action Start()
+        hotspot (1254, 117, 201, 53) action ShowMenu("Options")
+        hotspot (1494, 117, 201, 53) action Quit()
     
 #    frame:
 #        style_group "gm_root"
@@ -536,8 +575,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
         style "return_button"
 
         action Return()
-
-    label title
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
@@ -706,14 +743,1109 @@ screen save():
 
     tag menu
 
-    use file_slots(_("Save"))
+    add "gui/Hurricane_Like_Me/Save and Load/backgroundSave.png"
+
+    # Back
+    imagebutton:
+        xalign 0.5
+        pos (145, 100)
+        idle "gui/Hurricane_Like_Me/Save and Load/Button_Back.png"
+        hover "gui/Hurricane_Like_Me/Save and Load/Button_Back_Hover.png"
+        action Return()
+
+    # Load
+    imagebutton:
+        xalign 0.5
+        pos (1805, 100)
+        idle "gui/Hurricane_Like_Me/Save and Load/Button_Load.png"
+        hover "gui/Hurricane_Like_Me/Save and Load/Button_Load_Hover.png"
+        action ShowMenu("load")
+
+    # Slot 1
+    $ currentSlot = 1
+    frame:
+        background None
+        padding (0, 0)
+        pos (262, 263)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileSave(currentSlot)
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 2
+    $ currentSlot = 2
+    frame:
+        background None
+        padding (0, 0)
+        pos (1097, 263)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileSave(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 3
+    $ currentSlot = 3
+    frame:
+        background None
+        padding (0, 0)
+        pos (262, 551)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileSave(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 4
+    $ currentSlot = 4
+    frame:
+        background None
+        padding (0, 0)
+        pos (1097, 551)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+    # Slot 5
+    $ currentSlot = 5
+    frame:
+        background None
+        padding (0, 0)
+        pos (262, 817)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileSave(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 6
+    $ currentSlot = 6
+    frame:
+        background None
+        padding (0, 0)
+        pos (1097, 817)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileSave(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    imagemap:
+        ground "gui/Hurricane_Like_Me/Save and Load/Pages.png"
+        # idle Null()
+        hover "gui/Hurricane_Like_Me/Save and Load/Pages-Select.png"
+        pos (1835, 200)
+
+        hotspot (10, 28, 41, 42) action FilePage(1) selected ( FileCurrentPage() == "1" )
+        hotspot (10, 79, 41, 42) action FilePage(2) selected ( FileCurrentPage() == "2" )
+        hotspot (10, 131, 41, 42) action FilePage(3) selected ( FileCurrentPage() == "3" )
+        hotspot (10, 183, 41, 42) action FilePage(4) selected ( FileCurrentPage() == "4" )
+        hotspot (10, 238, 41, 42) action FilePage(5) selected ( FileCurrentPage() == "5" )
+        hotspot (10, 290, 41, 42) action FilePage(6) selected ( FileCurrentPage() == "6" )
+        hotspot (10, 341, 41, 42) action FilePage(7) selected ( FileCurrentPage() == "7" )
+        hotspot (10, 393, 41, 42) action FilePage(8) selected ( FileCurrentPage() == "8" )
+        hotspot (10, 450, 41, 42) action FilePage(9) selected ( FileCurrentPage() == "9" )
+        hotspot (10, 502, 41, 42) action FilePage(10) selected ( FileCurrentPage() == "10" )
+        hotspot (10, 554, 41, 42) action FilePage(11) selected ( FileCurrentPage() == "11" )
+        hotspot (10, 605, 41, 42) action FilePage(12) selected ( FileCurrentPage() == "12" )
+        hotspot (10, 660, 41, 42) action FilePage(13) selected ( FileCurrentPage() == "13" )
+        hotspot (10, 712, 41, 42) action FilePage(14) selected ( FileCurrentPage() == "14" )
+        hotspot (10, 764, 41, 42) action FilePage(15) selected ( FileCurrentPage() == "15" )
+        hotspot (10, 817, 41, 42) action FilePage(16) selected ( FileCurrentPage() == "16" )
+        
 
 
 screen load():
 
     tag menu
 
-    use file_slots(_("Load"))
+    add "gui/Hurricane_Like_Me/Save and Load/backgroundLoad.png"
+
+    # Back
+    imagebutton:
+        xanchor 0.5
+        pos (145, 100)
+        idle "gui/Hurricane_Like_Me/Save and Load/Button_Back.png"
+        hover "gui/Hurricane_Like_Me/Save and Load/Button_Back_Hover.png"
+        action Return()
+
+    # Load
+    if not main_menu:
+        imagebutton:
+            xanchor 0.5
+            pos (1805, 100)
+            idle "gui/Hurricane_Like_Me/Save and Load/Button_Save.png"
+            hover "gui/Hurricane_Like_Me/Save and Load/Button_Save_Hover.png"
+            action ShowMenu("save")
+
+    # Slot 1
+    $ currentSlot = 1
+    frame:
+        background None
+        padding (0, 0)
+        pos (262, 263)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Action Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileLoad(currentSlot)
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 2
+    $ currentSlot = 2
+    frame:
+        background None
+        padding (0, 0)
+        pos (1097, 263)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileLoad(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 3
+    $ currentSlot = 3
+    frame:
+        background None
+        padding (0, 0)
+        pos (262, 551)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileLoad(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 4
+    $ currentSlot = 4
+    frame:
+        background None
+        padding (0, 0)
+        pos (1097, 551)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileLoad(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 5
+    $ currentSlot = 5
+    frame:
+        background None
+        padding (0, 0)
+        pos (262, 817)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileLoad(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+    # Slot 6
+    $ currentSlot = 6
+    frame:
+        background None
+        padding (0, 0)
+        pos (1097, 817)
+        xsize 714
+        ysize 206   
+
+        # Wing
+        frame:
+            padding (0, 0)
+            xalign 1.0
+            ypos 8
+            xsize 365
+            ysize 163
+
+            # Background of the Wing
+            if FileLoadable(currentSlot):
+                background "gui/Hurricane_Like_Me/Save and Load/usedWing.png"
+            else:
+                background "gui/Hurricane_Like_Me/Save and Load/emptyWing.png"
+
+            # Slot number
+            if FileLoadable(currentSlot):
+                text "SAVE #{}".format( FileSlotName(currentSlot, 6).zfill(3) ):
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+            else:
+                text "SAVE #000":
+                    xpos 200
+                    ypos 1
+                    size 30
+                    font "fonts/AcariSans-Bold.ttf"
+                    color "ffffff"
+
+            # Details for saved files
+            if FileLoadable(currentSlot):
+
+                # Chapter
+                text FileSaveName(currentSlot):
+                    xpos 50
+                    ypos 55
+                    size 44
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+                text FileTime(currentSlot, format = "%d %b %Y   %H:%M:%S"):
+                    xpos 50
+                    ypos 110
+                    size 24
+                    font "fonts/AcariSans-Regular.ttf"
+                    color "ffffff"
+
+
+        # File Screenshot or "Empty Data" image 
+        if not FileLoadable(currentSlot):
+            add "gui/Hurricane_Like_Me/Save and Load/emptyData.png":
+                pos (9, 9)
+        else:
+            add FileScreenshot(currentSlot):
+                size (342, 187)
+                pos (9, 9)
+
+        # Tv
+        add "gui/Hurricane_Like_Me/Save and Load/tv.png"      
+
+        # Button
+        button:
+            xsize 714
+            ysize 206
+            background None
+            hover_background "gui/Hurricane_Like_Me/Save and Load/Hover_Selected_File.png"
+            action FileLoad(currentSlot) 
+
+        # Delete Button
+        if FileLoadable(currentSlot):
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Save and Load/Button_Delete.png"
+                hover "gui/Hurricane_Like_Me/Save and Load/Button_Delete_Hover.png"
+                pos (665, 50)
+                action FileDelete(currentSlot)
+
+
+    imagemap:
+        ground "gui/Hurricane_Like_Me/Save and Load/Pages.png"
+        # idle Null()
+        hover "gui/Hurricane_Like_Me/Save and Load/Pages-Select.png"
+        selected_idle "gui/Hurricane_Like_Me/Save and Load/Pages-Select.png"
+        pos (1835, 200)
+
+        hotspot (10, 28, 41, 42) action FilePage(1) selected ( FileCurrentPage() == "1" )
+        hotspot (10, 79, 41, 42) action FilePage(2) selected ( FileCurrentPage() == "2" )
+        hotspot (10, 131, 41, 42) action FilePage(3) selected ( FileCurrentPage() == "3" )
+        hotspot (10, 183, 41, 42) action FilePage(4) selected ( FileCurrentPage() == "4" )
+        hotspot (10, 238, 41, 42) action FilePage(5) selected ( FileCurrentPage() == "5" )
+        hotspot (10, 290, 41, 42) action FilePage(6) selected ( FileCurrentPage() == "6" )
+        hotspot (10, 341, 41, 42) action FilePage(7) selected ( FileCurrentPage() == "7" )
+        hotspot (10, 393, 41, 42) action FilePage(8) selected ( FileCurrentPage() == "8" )
+        hotspot (10, 450, 41, 42) action FilePage(9) selected ( FileCurrentPage() == "9" )
+        hotspot (10, 502, 41, 42) action FilePage(10) selected ( FileCurrentPage() == "10" )
+        hotspot (10, 554, 41, 42) action FilePage(11) selected ( FileCurrentPage() == "11" )
+        hotspot (10, 605, 41, 42) action FilePage(12) selected ( FileCurrentPage() == "12" )
+        hotspot (10, 660, 41, 42) action FilePage(13) selected ( FileCurrentPage() == "13" )
+        hotspot (10, 712, 41, 42) action FilePage(14) selected ( FileCurrentPage() == "14" )
+        hotspot (10, 764, 41, 42) action FilePage(15) selected ( FileCurrentPage() == "15" )
+        hotspot (10, 817, 41, 42) action FilePage(16) selected ( FileCurrentPage() == "16" )
 
 
 screen file_slots(title):
@@ -835,183 +1967,204 @@ screen Options():
 
     tag menu
 
-    if renpy.mobile:
-        $ cols = 2
-    else:
-        $ cols = 4    
+    add "gui/Hurricane_Like_Me/Setting/background.png"
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    # # Title
+    # imagebutton:
+    #     xanchor 0.5
+    #     pos (145, 100)
+    #     idle "gui/Hurricane_Like_Me/Setting/Button_Title.png"
+    #     hover "gui/Hurricane_Like_Me/Setting/Button_Title_Hover.png"
+    #     action ShowMenu("main_menu")
 
-        vbox:
+    # Back
+    imagebutton:
+        xanchor 0.5
+        pos (145, 100) # Was (1805, 100)
+        idle "gui/Hurricane_Like_Me/Setting/Button_Back.png"
+        hover "gui/Hurricane_Like_Me/Setting/Button_Back_Hover.png"
+        action Return()
 
-            hbox:
-                box_wrap True
+    # Fullscreen
+    imagebutton:
+        pos (1329, 347)
+        idle "gui/Hurricane_Like_Me/Setting/Button_Fullscreen.png"
+        hover "gui/Hurricane_Like_Me/Setting/Button_Fullscreen.png"
+        selected_idle "gui/Hurricane_Like_Me/Setting/Button_Fullscreen_Select.png"
+        selected_hover "gui/Hurricane_Like_Me/Setting/Button_Fullscreen_Select.png"
+        action Preference("display", "fullscreen")
 
-                if renpy.variant("pc"):
+    # Window
+    imagebutton:
+        pos (1629, 347)
+        idle "gui/Hurricane_Like_Me/Setting/Button_Windowed.png"
+        hover "gui/Hurricane_Like_Me/Setting/Button_Windowed.png"
+        selected_idle "gui/Hurricane_Like_Me/Setting/Button_Windowed_Select.png"
+        selected_hover "gui/Hurricane_Like_Me/Setting/Button_Windowed_Select.png"
+        action Preference("display", "window")
 
-                    vbox:
-                        style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
+    # Unread
+    imagebutton:
+        pos (1329, 506)
+        idle "gui/Hurricane_Like_Me/Setting/Button_Unread.png"
+        hover "gui/Hurricane_Like_Me/Setting/Button_Unread.png"
+        selected_idle "gui/Hurricane_Like_Me/Setting/Button_Unread_Select.png"
+        selected_hover "gui/Hurricane_Like_Me/Setting/Button_Unread_Select.png"
+        action Preference("skip", "seen")
 
-                vbox:
-                    style_prefix "radio"
-                    label _("Rollback Side")
-                    textbutton _("Disable") action Preference("rollback side", "disable")
-                    textbutton _("Left") action Preference("rollback side", "left")
-                    textbutton _("Right") action Preference("rollback side", "right")
+    # All
+    imagebutton:
+        pos (1629, 506)
+        idle "gui/Hurricane_Like_Me/Setting/Button_All.png"
+        hover "gui/Hurricane_Like_Me/Setting/Button_All.png"
+        selected_idle "gui/Hurricane_Like_Me/Setting/Button_All_Select.png"
+        selected_hover "gui/Hurricane_Like_Me/Setting/Button_All_Select.png"
+        action Preference("skip", "all")
 
-                vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+    # vbox:
+    #     style_prefix "radio"
+    #     label _("Rollback Side")
+    #     textbutton _("Disable") action Preference("rollback side", "disable")
+    #     textbutton _("Left") action Preference("rollback side", "left")
+    #     textbutton _("Right") action Preference("rollback side", "right")
 
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
+    # vbox:
+    #     style_prefix "check"
+    #     label _("Skip")
+    #     textbutton _("Unseen Text") action Preference("skip", "toggle")
+    #     textbutton _("After Choices") action Preference("after choices", "toggle")
+    #     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
-#begin language_picker
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
+    ## Additional vboxes of type "radio_pref" or "check_pref" can be
+    ## added here, to add additional creator-defined preferences.
 
-                vbox:
-                    style_prefix "radio"
-                    label _("Language")
+    # vbox:
+    #     style_prefix "radio"
+    #     label _("Language")
 
-                    textbutton "English" text_font "fonts/Acumin-RPro.otf" action Language(None)
-                    textbutton "Français" text_font "fonts/Acumin-RPro.otf" action Language("french")
-                    textbutton "Русский" text_font "fonts/Acumin-RPro.otf" action Language("russian")
-                    textbutton "Bahasa Melayu" text_font "fonts/Acumin-RPro.otf" action Language("malay")
-                    textbutton "한국어" text_font "fonts/NotoSansKR-Medium.otf" action Language("korean")
-                    textbutton "简体中文" text_font "fonts/NotoSans-Regular.ttf" action Language("simplified_chinese")
-                    textbutton "繁體中文" text_font "fonts/NotoSans-Regular.ttf" action Language("traditional_chinese")
-                    textbutton "Español" text_font "fonts/Acumin-RPro.otf" action Language("spanish")
-
-#end language_picker
-
-            null height (4 * gui.pref_spacing)
-
-            hbox:
-                style_prefix "slider"
-                box_wrap True
-
-                vbox:
-
-                    label _("Text Speed")
-
-                    bar value Preference("text speed")
-
-                    label _("Auto-Forward Time")
-
-                    bar value Preference("auto-forward time")
-
-                vbox:
-
-                    if config.has_music:
-                        label _("Music Volume")
-
-                        hbox:
-                            bar value Preference("music volume")
-
-                    if config.has_sound:
-
-                        label _("Sound Volume")
-
-                        hbox:
-                            bar value Preference("sound volume")
-
-                            if config.sample_sound:
-                                textbutton _("Test") action Play("sound", config.sample_sound)
+    #     textbutton "English" text_font "fonts/Acumin-RPro.otf" action Language(None)
+    #     textbutton "Français" text_font "fonts/Acumin-RPro.otf" action Language("french")
+    #     textbutton "Русский" text_font "fonts/Acumin-RPro.otf" action Language("russian")
+    #     textbutton "Bahasa Melayu" text_font "fonts/Acumin-RPro.otf" action Language("malay")
+    #     textbutton "한국어" text_font "fonts/NotoSansKR-Medium.otf" action Language("korean")
+    #     textbutton "简体中文" text_font "fonts/NotoSans-Regular.ttf" action Language("simplified_chinese")
+    #     textbutton "繁體中文" text_font "fonts/NotoSans-Regular.ttf" action Language("traditional_chinese")
+    #     textbutton "Español" text_font "fonts/Acumin-RPro.otf" action Language("spanish")
 
 
-                    if config.has_voice:
-                        label _("Voice Volume")
+    # 
 
-                        hbox:
-                            bar value Preference("voice volume")
+    # BGM
+    window:
+        area (650, 342, 397, 24)
+        background "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
 
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
+        bar:
+            area (14, 7, 376, 10)
+            left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+            right_bar None
+            thumb None
+            value Preference("music volume")
 
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
+    # Sound
+    window:
+        area (650, 413, 397, 24)
+        background "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
 
-                        textbutton _("Mute All"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
+        bar:
+            area (14, 7, 376, 10)
+            left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+            right_bar None
+            thumb None
+            value Preference("sfx volume")
 
+    # Ambience
+    window:
+        area (650, 487, 397, 24)
+        background "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
 
-style pref_label is gui_label
-style pref_label_text is gui_label_text
-style pref_vbox is vbox
+        bar:
+            area (14, 7, 376, 10)
+            left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+            right_bar None
+            thumb None
+            value Preference("music volume")
 
-style radio_label is pref_label
-style radio_label_text is pref_label_text
-style radio_button is gui_button
-style radio_button_text is gui_button_text
-style radio_vbox is pref_vbox
+        text "Hooked up to Music volume":
+            pos (14, 7)
 
-style check_label is pref_label
-style check_label_text is pref_label_text
-style check_button is gui_button
-style check_button_text is gui_button_text
-style check_vbox is pref_vbox
+    # Voice
+    window:
+        area (650, 560, 397, 24)
+        background "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
 
-style slider_label is pref_label
-style slider_label_text is pref_label_text
-style slider_slider is gui_slider
-style slider_button is gui_button
-style slider_button_text is gui_button_text
-style slider_pref_vbox is pref_vbox
+        bar:
+            area (14, 7, 376, 10)
+            left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+            right_bar None
+            thumb None
+            value Preference("voice volume")
 
-style mute_all_button is check_button
-style mute_all_button_text is check_button_text
+    # Text speed
+    window:
+        area (650, 734, 397, 24)
+        background "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
 
-style pref_label:
-    top_margin gui.pref_spacing
-    bottom_margin 2
+        bar:
+            area (14, 7, 376, 10)
+            left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+            right_bar None
+            thumb None
+            value Preference("text speed")
 
-style pref_label_text:
-    yalign 1.0
+    # Auto speed
+    window:
+        area (650, 804, 397, 24)
+        background "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
 
-style pref_vbox:
-    xsize 225
+        bar:
+            area (14, 7, 376, 10)
+            left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+            right_bar None
+            thumb None
+            value Preference("auto-forward time")
 
-style radio_vbox:
-    spacing gui.pref_button_spacing
+    # bar:
+    #     pos (663, 349)
+    #     base_bar "gui/Hurricane_Like_Me/Setting/Slider/Base.png"
+    #     left_bar "gui/Hurricane_Like_Me/Setting/Slider/Fill.png"
+    #     left_gutter 2
+    #     value Preference("music volume")
 
-style radio_button:
-    properties gui.button_properties("radio_button")
-    foreground "gui/button/check_[prefix_]foreground.png"
+    # Restore defaults
+    imagebutton:
+        pos (1325, 690)
+        idle "gui/Hurricane_Like_Me/Setting/Button_Restore.jpg"
+        hover "gui/Hurricane_Like_Me/Setting/Button_Restore_Hover.jpg"
+        action Confirm( "Are you sure you want to return settings to default?", Function(optionDefaults) ) # Add defaults
 
-style radio_button_text:
-    properties gui.button_text_properties("radio_button")
+    # # Return
+    # imagebutton:
+    #     pos (1156, 900)
+    #     idle "gui/Hurricane_Like_Me/Setting/Button_Return.png"
+    #     hover "gui/Hurricane_Like_Me/Setting/Button_Return_Hover.png"
+    #     action Return()
 
-style check_vbox:
-    spacing gui.pref_button_spacing
+init -1 python:
 
-style check_button:
-    properties gui.button_properties("check_button")
-    foreground "gui/button/check_[prefix_]foreground.png"
+    def optionDefaults():
+        preferences.fullscreen = False
+        preferences.skip_unseen = False
 
-style check_button_text:
-    properties gui.button_text_properties("check_button")
+        preferences.set_volume('music', 0.8)
+        preferences.set_volume('sfx', 0.8)
+        preferences.set_volume('music', 0.8) # "Hooked up to Music volume"
+        preferences.set_volume('voice', 0.8)
 
-style slider_slider:
-    xsize 350
+        preferences.text_cps = 80
+        preferences.afm_time = 15
 
-style slider_button:
-    properties gui.button_properties("slider_button")
-    yalign 0.5
-    left_margin 10
-
-style slider_button_text:
-    properties gui.button_text_properties("slider_button")
-
-style slider_vbox:
-    xsize 450
+        renpy.restart_interaction()
 
 
 ## History screen ##############################################################
@@ -1282,27 +2435,40 @@ screen confirm(message, yes_action, no_action):
 
     zorder 200
 
-    style_prefix "confirm"
+    add "gui/Hurricane_Like_Me/Menu/bg.png"
 
-    add "gui/overlay/confirm.png"
+    window:
+        background "gui/Hurricane_Like_Me/Confirm/Noticement.png"
+        xsize 877
+        ysize 419
+        align (0.5, 0.5)
 
-    frame:
+        frame:
+            background None
+            xsize 600
+            xalign 0.5
+            yanchor 0.5
+            ypos 210
 
-        vbox:
-            xalign .5
-            yalign .5
-            spacing 30
+            text message:
+                align (0.5, 0.5)
+                color "ffffff"
+                font "fonts/Acumin-RPro.otf"
+                size 32
 
-            label _(message):
-                style "confirm_prompt"
-                xalign 0.5
+        hbox:
+            align (0.5, 0.8)
+            spacing 100
 
-            hbox:
-                xalign 0.5
-                spacing 100
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Confirm/Button_Yes.png"
+                hover "gui/Hurricane_Like_Me/Confirm/Button_Yes_Hover.png"
+                action yes_action
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+            imagebutton:
+                idle "gui/Hurricane_Like_Me/Confirm/Button_No.png"
+                hover "gui/Hurricane_Like_Me/Confirm/Button_No_Hover.png"
+                action no_action
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action
@@ -1323,12 +2489,6 @@ style confirm_frame:
 style confirm_prompt_text:
     text_align 0.5
     layout "subtitle"
-
-style confirm_button:
-    properties gui.button_properties("confirm_button")
-
-style confirm_button_text:
-    properties gui.button_text_properties("confirm_button")
 
 
 ## Skip indicator screen #######################################################
