@@ -19,6 +19,10 @@ transform eir_moodletbounce:
 
 label start:
 
+    # This is here for test purposes. 
+    # Contacts should be added as soon as possible.
+    $ phone.addContact(ew)
+
     $ Mood_Happy = 0
     $ Mood_Focus = 0
     $ Mood_Hungry = 0
@@ -54,23 +58,32 @@ show Eir Angry at left
 ew "Now wait a second there Troy!"
 tc "This is Eir, she's the main character of this game."
 
-
-menu (screen = "choice_map"):
-
-    "Intersection" (spot = 2):
-
-        "You went to the Intersection!!!"
-
-    "Main Station" (spot = 3):
-
-        "You went to the Main Station Blue!"
-
-    "Left Red Stop" (spot = 5):
-
-        "You went to the very west side on red lineor smth aso asd as."
-
-
 ew "Thats right I'm the main character so why are you here doing the intro?"
+
+######## Phone test code ################################
+
+ew "Let's test the Phone!"
+ew "I will now send a message. It will write itself into a list, and it will show me saying the message."
+$ phone.sendMessage(ew, "This is a test of the phone!")
+
+$ phoneExample = str(phone.phonebook[ew].messages)
+ew "And now, if we check the list...\n[phoneExample]"
+
+ew "But! I can also write a message into a list without saying it!"
+$ phone.sendMessage(ew, "This is a test quiet message!", say = False)
+ew "Like this!"
+ew "Don't believe me?"
+$ phoneExample = str(phone.phonebook[ew].messages)
+ew "[phoneExample]"
+ew "So what does this mean?"
+ew "This means that we can both send quiet messages and show them later..."
+ew "...And view them as they arrive. And of course, it won't be me saying it, we can have a special phone screen!"
+ew "Which we will have anyway, since we need a way to, you know, show the messages?"
+ew "BASICALLY. I'll make the screen now. And we can worry about showing it and hiding it later."
+ew "Back to the script!"
+
+#########################################################
+
 tc "Because you were late, we were supposed to start this ten minutes ago."
 
 show Eir Embarrassed at left

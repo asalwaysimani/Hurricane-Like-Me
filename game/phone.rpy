@@ -4,6 +4,8 @@ define xyz = Character("Eileen", who_color = "#c8ffc8")
 # Note: The code will not work with characters that were created
 #       with the "kind" argument other than the default, None.
 
+# Note: Contacts should be defined early.
+
 init -5 python:
 
     # This is so that Contacts will be in the
@@ -26,22 +28,33 @@ init -5 python:
                 raise Exception("addContact() was not given a Character object, or not one created with \"kind = None\".")
 
             if character in self.phonebook.keys():
-                raise Exception("That Character is already in the contacts.")
+                raise Exception("That Character is already in Contacts.")
 
-            # Creates a new Contact object and maps it to this Character.
-            self.phonebook[character] = Contact(**contactProperties)
+            # Creates a new Contact object and maps it to this Character from both sides.
+            self.phonebook[character] = Contact(character, **contactProperties)
 
-        def sendMessage(self, character, what):
-            pass
+            print("Phone: {} has been added into Contacts.".format(character.name))
 
+        def sendMessage(self, character, what, say = True):
+            
+            if not character in self.phonebook.keys():
 
+                if type(character) == store.ADVCharacter:
+                    raise Exception("Trying to send a message to a Character that hasn't been added into Contacts.")
+                else:
+                    raise Exception("sendMessage was not Given a Character object.")
+
+            self.phonebook[character].messageSent(character, what, say = say)
 
 
     # A record about a person and their messages.
     # These are only found inside a Phonebook object.
     class Contact():
         
-        def __init__(self, name = None, image = None, messageSound = None):
+        def __init__(self, character, name = None, image = None, messageSound = None):
+
+            # Character from which this Contact was created.
+            self.boundCharacter = character
 
             # By default, the phone will use given Character's name.
             # However, this can be changed by giving the "name" argument.
@@ -61,7 +74,18 @@ init -5 python:
             # Stores messages with this Contact.
             self.messages = []
 
+        def messageSent(self, who, what, sound = True, say = True):
+
+            self.messages.append( [who, what] )
+
+            if say:
+                renpy.say(who, what)
+
+            # if sound:
+            #     renpy.play.sound()
+
 
     ###############################################################
 
-    phone = Phone()
+# Has to be default, otherwise it will not participate in rollback.
+default phone = Phone()
