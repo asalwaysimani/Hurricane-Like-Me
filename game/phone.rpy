@@ -2,9 +2,13 @@
 define xyz = Character("Eileen", who_color = "#c8ffc8")
 
 # Note: The code will not work with characters that were created
-#       with the "kind" argument other than None, the default.
+#       with the "kind" argument other than the default, None.
 
 init -5 python:
+
+    # This is so that Contacts will be in the
+    # same order everytime we open the phone.
+    from collections import OrderedDict
 
     # Phone. This class includes all the methods
     # for controlling all the phone functions.
@@ -12,41 +16,50 @@ init -5 python:
 
         def __init__(self):
 
-            self.phonebook = Phonebook()
+            # Keys are strings, names of Character objects.
+            # Values are Contacts created based on Character objects.
+            self.phonebook = OrderedDict()
 
-
-        def addContact(self, character):
+        def addContact(self, character, **contactProperties):
             
             if not type(character) == store.ADVCharacter:
                 raise Exception("addContact() was not given a Character object, or not one created with \"kind = None\".")
 
-            self.phonebook.addContact(character)
+            if character in self.phonebook.keys():
+                raise Exception("That Character is already in the contacts.")
+
+            # Creates a new Contact object and maps it to this Character.
+            self.phonebook[character] = Contact(**contactProperties)
 
         def sendMessage(self, character, what):
             pass
 
 
-    # Point of the phonebook as a standalone class
-    # is to make a list that can be indexed by 
-    # Ren'Py Characters for easier functionality.
-    # This is only found inside a Phone object.
-    class Phonebook():
-
-        def __init__():
-
-            self.
-
-        def addContact(character):
-            
-            if character.name
 
 
     # A record about a person and their messages.
     # These are only found inside a Phonebook object.
     class Contact():
         
-        def __init__(self):
-            pass
+        def __init__(self, name = None, image = None, messageSound = None):
+
+            # By default, the phone will use given Character's name.
+            # However, this can be changed by giving the "name" argument.
+            # Useful for giving nicknames, for example:
+            # You can then send messages to the "Boyfriend" character, but
+            # the phone can view it as messages from "Honey <3"
+            self.name = character.name if name == None else name
+
+            # Image of the contact in the phone book.
+            # Should be of pre-given dimensions.
+            self.image = image
+
+            # Sound that plays when receiving a message from
+            # this contact.
+            self.messageSound = messageSound
+
+            # Stores messages with this Contact.
+            self.messages = []
 
 
     ###############################################################
