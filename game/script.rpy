@@ -63,23 +63,17 @@ ew "Thats right I'm the main character so why are you here doing the intro?"
 ######## Phone test code ################################
 
 ew "Let's test the Phone!"
-ew "I will now send a message. It will write itself into a list, and it will show me saying the message."
+ew "I will now send a message. The screen is... temporary, so keep that in mind."
 $ phone.sendMessage(ew, "This is a test of the phone!")
-
-$ phoneExample = str(phone.phonebook[ew].messages)
-ew "And now, if we check the list...\n[phoneExample]"
-
 ew "But! I can also write a message into a list without saying it!"
-$ phone.sendMessage(ew, "This is a test quiet message!", say = False)
+$ phone.sendMessage(ew, "This is a test quiet message number 1!", say = False)
+$ phone.sendMessage(ew, "This is a test quiet message number 2!", say = False)
+$ phone.sendMessage(ew, "This is a test quiet message number 3!", say = False)
 ew "Like this!"
-ew "Don't believe me?"
-$ phoneExample = str(phone.phonebook[ew].messages)
-ew "[phoneExample]"
+ew "Don't believe me? Here, let me show you, I've added 3 messages while we were talking!"
+$ phone.showConversation(ew)
 ew "So what does this mean?"
-ew "This means that we can both send quiet messages and show them later..."
-ew "...And view them as they arrive. And of course, it won't be me saying it, we can have a special phone screen!"
-ew "Which we will have anyway, since we need a way to, you know, show the messages?"
-ew "BASICALLY. I'll make the screen now. And we can worry about showing it and hiding it later."
+ew "Well, we really just need to get the Phone screen together."
 ew "Back to the script!"
 
 #########################################################

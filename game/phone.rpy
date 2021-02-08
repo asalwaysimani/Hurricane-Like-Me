@@ -46,6 +46,18 @@ init -5 python:
 
             self.phonebook[character].messageSent(character, what, say = say)
 
+        def showConversation(self, character):
+
+            if not character in self.phonebook.keys():
+
+                if type(character) == store.ADVCharacter:
+                    raise Exception("Trying to show messages with a Character that hasn't been added into Contacts.")
+                else:
+                    raise Exception("showConversation was not Given a Character object.")
+
+            renpy.invoke_in_new_context( renpy.call_screen , "phoneConvoScreen", character )
+
+
 
     # A record about a person and their messages.
     # These are only found inside a Phonebook object.
@@ -74,12 +86,23 @@ init -5 python:
             # Stores messages with this Contact.
             self.messages = []
 
-        def messageSent(self, who, what, sound = True, say = True):
+        def showPhoneConversation(self, character):
 
-            self.messages.append( [who, what] )
+            renpy.invoke_in_new_context( renpy.call_screen , "phoneConvoScreen", character )
+
+
+        def messageSent(self, character, what, sound = True, say = True):
+
+            self.messages.append( [self.name, what] )
 
             if say:
-                renpy.say(who, what)
+
+                self.showPhoneConversation(character)
+
+                # I would have to modify the Say screen and redirect it to 
+                # phoneConvoScreen that way, which I do not want.
+                #
+                # renpy.say(character, what)
 
             # if sound:
             #     renpy.play.sound()
@@ -89,3 +112,17 @@ init -5 python:
 
 # Has to be default, otherwise it will not participate in rollback.
 default phone = Phone()
+
+screen phoneConvoScreen( who ):
+
+    vbox:
+        align (0.5, 0.5)
+
+        for message in phone.phonebook[who].messages:
+
+            hbox:
+                spacing 20
+                text message[0]
+                text message[1]
+
+    key "dismiss" action Return()
