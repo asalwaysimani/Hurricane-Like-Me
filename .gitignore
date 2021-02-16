@@ -12,3 +12,13 @@ game/images/by_LIZM/Karla/.DS_Store
 game/images/by_unclemugen/.DS_Store
 game/images/messenger/.DS_Store
 game/tl/.DS_Store
+errors.txt
+errors (1).txt
+files.txt
+log.txt
+log (1).txt
+log (2).txt
+traceback (1).txt
+game/*.rpyc
+cache/
+game/*.bak
