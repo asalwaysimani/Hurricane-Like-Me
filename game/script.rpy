@@ -21,7 +21,8 @@ label start:
 
     # This is here for test purposes. 
     # Contacts should be added as soon as possible.
-    $ phone.addContact(ew)
+    $ phone.addContact(ew, nameColor = "ec0e3d", textColor = "ec0e91")
+    $ phone.addContact(tc, nameColor = "0e25ec", textColor = "0ed8ec")
 
     $ Mood_Happy = 0
     $ Mood_Focus = 0
@@ -63,18 +64,24 @@ ew "Thats right I'm the main character so why are you here doing the intro?"
 ######## Phone test code ################################
 
 ew "Let's test the Phone!"
-ew "I will now send a message. The screen is... temporary, so keep that in mind."
-$ phone.sendMessage(ew, "This is a test of the phone!")
-ew "But! I can also write a message into a list without saying it!"
-$ phone.sendMessage(ew, "This is a test quiet message number 1!", say = False)
-$ phone.sendMessage(ew, "This is a test quiet message number 2!", say = False)
-$ phone.sendMessage(ew, "This is a test quiet message number 3!", say = False)
-ew "Like this!"
-ew "Don't believe me? Here, let me show you, I've added 3 messages while we were talking!"
-$ phone.showConversation(ew)
-ew "So what does this mean?"
-ew "Well, we really just need to get the Phone screen together."
-ew "Back to the script!"
+ew "It is called by `$ phone.sendMessage( characterWithWhoYouHaveTheConversation, characterWhoSentTheMessage, theMessage )`"
+$ phone.sendMessage(tc, ew, "A message to myself!")
+ew "This is the conversation I have with Troy."
+$ phone.sendMessage(tc, tc, "Eir! Hey!", say = False)
+ew "Actually..."
+$ phone.sendMessage(tc, tc, "Eir! Are you even listening?", say = False)
+ew "I think Troy just sent me some messages!"
+$ phone.sendMessage(tc, tc, "Stop ignoring me!!!")
+ew "Jeez. This guy."
+ew "Silent messages are accomplished with the keyword argument `say = False`."
+ew "Lemme just send some more messages into that conversation to test the scrolling."
+$ phone.sendMessage(tc, ew, "Number one")
+$ phone.sendMessage(tc, ew, "Number deux")
+$ phone.sendMessage(tc, ew, "Number drei")
+ew "Oh, in case you haven't noticed yet..."
+ew "When you have your mouse inside the phone, you can scroll the messages."
+ew "But when outside the phone, scrolling will rollback and rollforward. Neat, huh?"
+ew "End test!"
 
 #########################################################
 
