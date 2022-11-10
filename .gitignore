@@ -22,3 +22,4 @@ traceback (1).txt
 game/*.rpyc
 cache/
 game/*.bak
+game/saves/persistent
